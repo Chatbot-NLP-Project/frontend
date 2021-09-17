@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 
 import SignIn from './pages/SignIn/index';
 import SignUp from './pages/SignUp/index';
+import Profile from './pages/Profile/index';
 // import DomainSelection from './pages/DomainSelection';
 import Telecommunication from './pages/Telecommunication/index';
 
@@ -23,6 +24,9 @@ function App() {
         <Route path="/signin" exact component={SignIn} exact/>
         {/* <Route path="/domainselection" exact component={DomainSelection} exact/> */}
         {/* <Route path="/telecommunication" exact component={Telecommunication} exact/> */}
+
+        {/* <Route path="/profile/:id" exact component={Profile}/> */}
+        <Route path="/profile" exact component={Profile}/>
       </Switch>
     </Router>
   </ChakraProvider>
