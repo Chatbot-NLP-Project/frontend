@@ -11,6 +11,7 @@ import SignUp from "./pages/SignUp/index";
 import Telecommunication from "./pages/Telecommunication/index";
 import LandingPage from "./pages/Landing/index";
 import DomaineSelection from "./pages/DomainSelection/index";
+import Profile from "./pages/Profile/index";
 
 function App() {
   const [auth, setAuth] = useState(false);
@@ -27,6 +28,8 @@ function App() {
           {/* <Route path="/telecommunication" exact component={Telecommunication} exact/> */}
           <Route path="/home" exact component={LandingPage} />
           <Route path="/domain" exact component={DomaineSelection} />
+          {/* <Route path="/profile/:id" exact component={Profile}/> */}
+          <Route path="/profile" exact component={Profile} />
         </Switch>
       </Router>
     </ChakraProvider>
