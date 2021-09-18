@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
 
 import Navbar from "./components/Navbar";
+import SideNav from "./components/SideNav/SideNav";
 
 import SignIn from "./pages/SignIn/index";
 import SignUp from "./pages/SignUp/index";
@@ -20,6 +21,8 @@ function App() {
     <ChakraProvider>
       <Router>
         <Navbar Auth={auth} />
+        {/* add authentication to side nav */}
+        {/* <SideNav />   */}
         <Switch>
           {/* Common Routes */}
           <Route path="/signUp" exact component={SignUp} />
