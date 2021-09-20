@@ -4,12 +4,21 @@ import Labels from "./Labels";
 import "./Details.css";
 import ProfileImage from "./ProfileImage";
 import FormDetails from "./FormDetails";
+import Axios from 'axios';
 
 
 const Details = ({id}) => {
 
     const [changeDetails, setChangeDeatils] = useState(false);
     const [changePassword, setChangePassword] = useState(false);
+
+      Axios.get("/localhost:5000/profile", {
+        id: 1
+      }).then((response) => {
+          console.log(response);
+      }).catch((error) => {
+          console.log(error);
+      })
 
     return (  
         <div className="details-container">

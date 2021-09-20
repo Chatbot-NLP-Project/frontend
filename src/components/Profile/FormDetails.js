@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useHistory } from "react-router";
 
-const FormDetails = () => {
+const FormDetails = ({id}) => {
 
     // const { profileImage, firstName, lastName, phoneNumber, email } = useFetch('dblink' + id)
+    
     const [firstName,setFirstName] = useState('First Name');
     const [lastName,setLastName] = useState('Last Name');
     const [email,setEmail] = useState('Email');
