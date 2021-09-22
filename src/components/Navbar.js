@@ -43,33 +43,31 @@ function Navbar(props) {
   }
 
   return (
-    
     <Flex
       as="nav"
       align="center"
       justify="space-between"
       wrap="wrap"
       pt="1.0rem"
-      bg={colorMode === "light" ? "yellow.50" : "#101522"}
+      bg={colorMode === "light" ? "#DCE3FA" : "#101522"}
       color="white"
       position="fixed"
       top="0"
       width="100%"
       zIndex="10000"
     >
-
       <Flex align="center" mr={10}>
         <Img ml="1.5rem" src="../logo2.png" alt="logo" h="80px" w="80px" />
         <Text
-        bgGradient="linear(to-l, #7928CA,#FF0080)"
-        bgClip="text"
-        fontSize="2xl"
-        fontWeight="extrabold"
-      >
-        XYRON
-      </Text>
+          bgGradient="linear(to-l, #7928CA,#FF0080)"
+          bgClip="text"
+          fontSize="2xl"
+          fontWeight="extrabold"
+        >
+          XYRON
+        </Text>
       </Flex>
-      
+
       <IconButton
         display={{ base: "block", md: "none" }}
         variant="outline"
@@ -177,7 +175,7 @@ function Navbar(props) {
         h="5px"
         b="0px"
         mt="10px"
-        bg={colorMode === "light" ? "#1EB39A" : "blue"}
+        bg={colorMode === "light" ? "blue.900" : "blue"}
       />
     </Flex>
   );

@@ -13,7 +13,7 @@ import Telecommunication from "./pages/Telecommunication/index";
 import LandingPage from "./pages/Landing/index";
 import DomaineSelection from "./pages/DomainSelection/index";
 import Profile from "./pages/Profile/index";
-
+import Chat from "./pages/Healthcare/index";
 function App() {
   const [auth, setAuth] = useState(false);
   const [signInClicked, setSignInClicked] = useState(false);
@@ -22,7 +22,7 @@ function App() {
       <Router>
         <Navbar Auth={auth} />
         {/* add authentication to side nav */}
-        {/* <SideNav />   */}
+        {/* <SideNav /> */}
         <Switch>
           {/* Common Routes */}
           <Route path="/signUp" exact component={SignUp} />
@@ -31,6 +31,7 @@ function App() {
           {/* <Route path="/telecommunication" exact component={Telecommunication} exact/> */}
           <Route path="/home" exact component={LandingPage} />
           <Route path="/domain" exact component={DomaineSelection} />
+          <Route path="/chat" exact component={Chat} />
           {/* <Route path="/profile/:id" exact component={Profile}/> */}
           <Route path="/profile" exact component={Profile} />
         </Switch>
