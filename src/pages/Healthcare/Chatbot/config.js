@@ -15,13 +15,13 @@ const config = {
   botName: "XYRON",
   customComponents: {
     header: () => (
-      <Flex backgroundColor="#E3F6FC">
+      <Flex backgroundColor="#00004d">
         <BotIcon />
         <Heading
           ml="10px"
           as="h3"
           size="sm"
-          color="#00004d"
+          color="#ffffff"
           fontWeight="bold"
           lineHeight={1.5}
           mt="25px"
@@ -52,7 +52,7 @@ const config = {
       color: "black",
     },
     userMessageBox: {
-      backgroundColor: "#F3BA4A",
+      backgroundColor: "#E3F6FC",
     },
   },
 };
