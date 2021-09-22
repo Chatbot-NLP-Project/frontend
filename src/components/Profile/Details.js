@@ -11,11 +11,23 @@ const Details = ({id}) => {
 
     const [changeDetails, setChangeDeatils] = useState(false);
     const [changePassword, setChangePassword] = useState(false);
+    const [changeImage, setChangeImage] = useState(false)
+    const [email, setEmail] = useState(null);
+    const [firstName,setFirstName] = useState(null);
+    const [lastName,setLastName] = useState(null);
+    const [phoneNumber,setPhoneNumber] = useState(null);
 
-      Axios.get("/localhost:5000/profile", {
-        id: 1
+      Axios.get("http://localhost:5000/profile", {
+        params : {
+            user_id:1   // set the user id by session_id
+        }
       }).then((response) => {
-          console.log(response);
+        //   setUser(response.data)
+          setFirstName(response.data.first_name);
+          setLastName(response.data.last_name);
+          setPhoneNumber(response.data.phone_number);
+          setEmail(response.data.email);
+        
       }).catch((error) => {
           console.log(error);
       })
@@ -26,15 +38,15 @@ const Details = ({id}) => {
 
             {(!changeDetails && !changePassword) && (
                 <>
-                    <ProfileImage />
-                    <Labels id={id} setChangeDeatils={setChangeDeatils} setChangePassword={setChangePassword}/>
+                    <ProfileImage changeImage={changeImage} setChangeImage={setChangeImage} changeDetails={changeDetails}/>
+                    <Labels firstName={firstName} lastName={lastName} phoneNumber={phoneNumber} email={email}  setChangeDeatils={setChangeDeatils} setChangePassword={setChangePassword} changeImage={changeImage}/>
                 </>
             )}
 
             {changeDetails && (
                 <>
-                    <ProfileImage />
-                    <FormDetails id={id} setChangeDeatils={setChangeDeatils} setChangePassword={setChangePassword}/>
+                    <ProfileImage changeImage={changeImage} setChangeImage={setChangeImage} changeDetails={changeDetails} />
+                    <FormDetails firstName={firstName} lastName={lastName} phoneNumber={phoneNumber} email={email} setFirstName={setFirstName}  setLastName={setLastName} setPhoneNumber={setPhoneNumber} setEmail={setEmail} setChangeDeatils={setChangeDeatils} setChangePassword={setChangePassword} />
                 </>
             )}
 

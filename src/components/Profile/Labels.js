@@ -1,11 +1,8 @@
 import { useState } from "react";
-const Labels = ({id, setChangeDeatils, setChangePassword}) => {
+const Labels = ({email, firstName, lastName,phoneNumber, setChangeDeatils, setChangePassword, changeImage}) => {
 
     // const { profileImage, firstName, lastName, phoneNumber, email } = useFetch('dblink' + id)
-    const [firstName,setFirstName] = useState('First Name');
-    const [lastName,setLastName] = useState('Last Name');
-    const [email,setEmail] = useState('Email');
-    const [phoneNumber,setPhoneNumber] = useState('Phone Number');
+
 
     const handleEditDetails = () => {
         setChangeDeatils(true);
@@ -19,7 +16,7 @@ const Labels = ({id, setChangeDeatils, setChangePassword}) => {
         <div className="details-content-right">
                 <div id="profile-details">
                 <h3>Profile Details</h3>
-                    <button id="edit-details-btn" type="submit" onClick={handleEditDetails}>Edit Details</button>
+                    { (!changeImage) && (<button id="edit-details-btn" type="submit" onClick={handleEditDetails}>Edit Details</button>)}
                     <ul>
                     <li>First Name : <span>{firstName}</span></li>
                     <li>Last Name : <span>{lastName}</span></li>

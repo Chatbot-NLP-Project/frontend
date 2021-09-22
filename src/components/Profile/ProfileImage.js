@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-const ProfileImage = ({id}) => {
+const ProfileImage = ({id, changeImage, setChangeImage, changeDetails}) => {
 
     // const { profileImage, firstName, lastName, phoneNumber, email } = useFetch('dblink' + id)
     const [profileImage, setProfileImage] = useState('imgs/svg-9.svg')
-    const [changeImage, setChangeImage] = useState(false)
+    
     const [selectImage, setSelectImage] = useState(null)
     const handleChangePic = (e) => {
         console.log(e);
@@ -27,7 +27,7 @@ const ProfileImage = ({id}) => {
     return ( 
             <div className="details-content-left">
                 <img className="profile-img" src={profileImage} alt="Security" />
-                { !changeImage && (<button id="edit-pic-btn" type="submit" onClick={handleChangePic}>
+                { (!changeImage && !changeDetails) && (<button id="edit-pic-btn" type="submit" onClick={handleChangePic}>
                     <img id="edit-pic-btn-icon" src="imgs/icon1.png" alt="" />
                     {/* <input type="file" Upload /> */}
 
