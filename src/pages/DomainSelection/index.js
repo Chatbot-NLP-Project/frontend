@@ -3,7 +3,15 @@ import React from "react";
 import Footer from "../../components/Sections/Footer";
 import styled from "styled-components";
 
-import { Box, Heading, Stack, Image, Flex, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Heading,
+  Stack,
+  Image,
+  Flex,
+  Text,
+  Button,
+} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import Header from "../../components/Sections/Header";
 
@@ -33,7 +41,7 @@ export const Card = styled(Link)`
   align-items: center;
   margin: 20px;
   padding: 20px;
-  height: 300px;
+  height: 350px;
 
   &:nth-child(2) {
     margin: 24px;
@@ -102,8 +110,8 @@ export default function DSelection() {
               >
                 Are you sick? Do you want to channel a doctor?
               </Heading>
-
               <Text color={"gray.500"}></Text>
+              <Button>Chat now</Button>
             </Stack>
           </Card>
           <Card>
@@ -126,6 +134,7 @@ export default function DSelection() {
               </Heading>
 
               <Text color={"gray.500"}></Text>
+              <Button>Chat now</Button>
             </Stack>
           </Card>
           <Card>
@@ -148,6 +157,7 @@ export default function DSelection() {
               </Heading>
 
               <Text color={"gray.500"}></Text>
+              <Button>Chat now</Button>
             </Stack>
           </Card>
           <Card>
@@ -182,6 +192,7 @@ export default function DSelection() {
               </Heading>
 
               <Text color={"gray.500"}></Text>
+              <Button>Chat now</Button>
             </Stack>
           </Card>
         </Container>

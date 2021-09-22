@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
 
 import Navbar from "./components/Navbar";
+import SideNav from "./components/SideNav/SideNav";
 
 import SignIn from "./pages/SignIn/index";
 import SignUp from "./pages/SignUp/index";
@@ -12,7 +13,7 @@ import Telecommunication from "./pages/Telecommunication/index";
 import LandingPage from "./pages/Landing/index";
 import DomaineSelection from "./pages/DomainSelection/index";
 import Profile from "./pages/Profile/index";
-
+import Chat from "./pages/Healthcare/index";
 function App() {
   const [auth, setAuth] = useState(false);
   const [signInClicked, setSignInClicked] = useState(false);
@@ -20,6 +21,8 @@ function App() {
     <ChakraProvider>
       <Router>
         <Navbar Auth={auth} />
+        {/* add authentication to side nav */}
+        {/* <SideNav /> */}
         <Switch>
           {/* Common Routes */}
           <Route path="/signUp" exact component={SignUp} />
@@ -28,6 +31,7 @@ function App() {
           {/* <Route path="/telecommunication" exact component={Telecommunication} exact/> */}
           <Route path="/home" exact component={LandingPage} />
           <Route path="/domain" exact component={DomaineSelection} />
+          <Route path="/chat" exact component={Chat} />
           {/* <Route path="/profile/:id" exact component={Profile}/> */}
           <Route path="/profile" exact component={Profile} />
         </Switch>
