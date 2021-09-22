@@ -3,6 +3,7 @@ import { createChatBotMessage } from "react-chatbot-kit";
 import BotAvatar from "../Components/botAvatar";
 import BotIcon from "../Components/botIcon";
 // import Options from "../components/Options/Options";
+import Doctors from "../Components/Doctors/doctors";
 const config = {
   initialMessages: [
     createChatBotMessage(
@@ -35,7 +36,16 @@ const config = {
   state: {
     currentState: ["normal"],
     sympthoms: [],
+    doctors: [],
   },
+  widgets: [
+    {
+      widgetName: "doctors",
+      widgetFunc: (props) => <Doctors {...props} />,
+      mapStateToProps: ["doctors"],
+    },
+  ],
+
   //   widgets: [
   //     {
   //       widgetName: "options",
