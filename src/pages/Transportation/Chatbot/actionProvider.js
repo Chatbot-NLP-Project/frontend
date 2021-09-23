@@ -97,11 +97,11 @@ class ActionProvider {
 
   // Transportation Only
 
-  methodHandler = (to, from, method) => {
-    // var msg;
-    // Axios.post("http://127.0.0.1:5000/predict", { diseases: message }).then(
+
+  methodHandler = (to, from) => {
+    // Axios.post("http://127.0.0.1:5000/travel", { to: to, from: from, }).then(
     //   (response) => {
-    //     console.log(message);
+    //     console.log(response);
     //     msg = this.createChatBotMessage(response.data.members);
     //     this.setChatbotMessage(msg);
     //     console.log(response.data.members);
@@ -109,13 +109,14 @@ class ActionProvider {
     // );
   };
 
-
+  fromHandler = (message) => {
+    // check if from, to set
+    // call methodHandler
+  }
 
   stationHandler = (message) => {
     var wrds = message.split(' ').map(v => v.toLowerCase());
-
     const countOccurrences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);
-
     for (let i = 0; i < wrds.length; i++) {
       if (wrds[i] == 'to' && countOccurrences(wrds, 'to') >1) { 
         wrds.splice(i, 1);
@@ -123,37 +124,31 @@ class ActionProvider {
         break; 
       }
     }
-
     if ( wrds.includes('from') ) {
       this.addFrom(wrds[wrds.indexOf('from') + 1]) ;
     }
     if ( wrds.includes('to') ) {
       this.addTo(wrds[wrds.indexOf('to') + 1]) ;
     }
-    if ( wrds.includes('bus') ) {
-      this.addMethod('bus') ;
-    }
-    if ( wrds.includes('train') ) {
-      this.addMethod('train') ;
-    }
-
   };
 
-
-
-
-  helloHandler = (message) => {
+  messageHandler = (message, state) => {
     var msg;
     Axios.post("http://127.0.0.1:5000/reply", { msg: message }).then(
       (response) => {
-        // console.log(response.data.members);
-        this.stationHandler(message)
         if (response.data.members == "travel") {
+          console.log(response.data.members);
           this.setChatbotState("travel");
-          // console.log(message);
-          // this.stationHandler(message)
-          msg = this.createChatBotMessage("What is the starting point?");
-          this.removeDisease();
+          this.stationHandler(message);
+          console.log(state.from);
+          // if from is not set, ask to set from
+          // if (!from) {
+          //   msg = this.createChatBotMessage("What is the starting point?");
+          // }
+          // call database and get available options
+          // this.methodHandler(to, from);
+          // display options
+          msg = this.createChatBotMessage('Not yet finished');
         } else {
           msg = this.createChatBotMessage(response.data.members);
         }

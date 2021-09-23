@@ -36,11 +36,9 @@ const config = {
   },
   state: {
     currentState: ["normal"],
-    sympthoms: [], // delete this
-    from: '',
-    to: '',
-    method: '',
-    schedule: '',
+    from: [],
+    to: [],
+    schedule: [],
     methods: [],
     schedules: [],
   },

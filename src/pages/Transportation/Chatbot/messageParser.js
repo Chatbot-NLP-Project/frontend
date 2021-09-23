@@ -8,26 +8,33 @@ class MessageParser {
 
   parse(message) {
     var siz = this.state.currentState.length - 1;
-    // console.log(message); messeage well received
-    // this.actionProvider.stationHandler(message);
-    console.log(this.state); //wqdqd
-    if (
-      this.state.currentState[siz] == "travel" &&
-      this.state.to.length == 1 
-    ) { if (this.state.from.length == 1) 
-        { if (this.state.method.length == 1) 
-          {  this.actionProvider.methodsHandler(this.state.to, this.state.from, this.state.method);
-          } else {
-        // ask for the method
-          }
-        } else {
-      // ask where to start from
-    }    
-     } 
-    else {
-      this.actionProvider.helloHandler(message);
+    if ( this.state.currentState[siz] == "travel"){
+      this.actionProvider.fromHandler(message);
     }
+    else{
+    this.actionProvider.stationHandler(message);
+    this.actionProvider.messageHandler(message, this.state);
+    }
+
   }
+
+  // parse(message) {
+  //   var siz = this.state.currentState.length - 1;
+  //   console.log(this.state); 
+  //   if (
+  //     this.state.currentState[siz] == "travel" &&
+  //     this.state.to.length == 1 
+  //   ) { if (this.state.from.length == 1)        
+  //         { 
+  //           this.actionProvider.methodsHandler(this.state.to, this.state.from, this.state.method);
+  //       } else {
+  //     // ask where to start from
+  //   }    
+  //    } 
+  //   else {
+  //     this.actionProvider.messageHandler(message);
+  //   }
+  // }
 }
 
 export default MessageParser;
