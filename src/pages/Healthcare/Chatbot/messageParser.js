@@ -20,6 +20,15 @@ class MessageParser {
       }
     } else if (this.state.currentState[siz] == "findDoctor") {
       this.actionProvider.findDoctor(message);
+    } else if (this.state.currentState[siz] == "channel") {
+      const cha = {
+        name: this.state.channel[0].name,
+        hospital: this.state.channel[0].hospital,
+        date: this.state.date[0],
+        time: message,
+      };
+      // console.log(cha);
+      this.actionProvider.channelDoctor(message, cha);
     } else {
       this.actionProvider.helloHandler(message);
     }
@@ -33,7 +42,7 @@ class MessageParser {
     // this.num += 1;
     // this.num = this.num + 1;
     // // console.log(this.num);
-    console.log(this.state);
+    // console.log(this.state);
   }
 }
 

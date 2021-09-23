@@ -9,14 +9,16 @@ import {
   Link,
   Button,
 } from "@chakra-ui/react";
-import { FaHospital, BsPersonFill } from "react-icons/fa";
-import { IoPersonCircle } from "react-icons/fa";
+// import { FaHospital, BsPersonFill } from "react-icons/fa";
+// import { IoPersonCircle } from "react-icons/fa";
 
 const Doctors = (props) => {
-  console.log(props.doctors);
-
   const renderDoctor = () => {
     return props.doctors.map((doctor) => {
+      function selectDate() {
+        props.actionProvider.selectDoctor(doctor.doctorID);
+        // console.log(doctor.doctorID);
+      }
       return (
         <StackItem key={doctor.doctorID}>
           <Box
@@ -59,7 +61,7 @@ const Doctors = (props) => {
                 size="md"
                 // ml={3}
                 mr={3}
-                onClick={props.actionProvider.channelDoctor}
+                onClick={selectDate}
               >
                 Channel
               </Button>

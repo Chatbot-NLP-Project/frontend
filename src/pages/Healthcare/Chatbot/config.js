@@ -39,6 +39,8 @@ const config = {
     currentState: ["normal"],
     sympthoms: [],
     doctors: [],
+    channel: [],
+    date: [],
   },
   widgets: [
     {

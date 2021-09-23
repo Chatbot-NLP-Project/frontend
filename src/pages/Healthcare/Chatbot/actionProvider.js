@@ -105,19 +105,46 @@ class ActionProvider {
   //   this.setChatbotMessage(msg);
   // };
 
-  channelDoctor = () => {
+  selectDoctor = (docID) => {
     // const msg1 = this.createChatBotMessage("Sure wait a minite");
     // this.setChatbotMessage(msg1);
+    this.setState((state) => ({
+      ...state,
+      channel: [state.doctors[docID - 1]],
+    }));
     const msg2 = this.createChatBotMessage("Sure. Please select the date", {
       widget: "calender",
     });
+    this.setChatbotState("channel");
     this.setChatbotMessage(msg2);
   };
 
   selectTime = (value) => {
-    const msg1 = this.createChatBotMessage("Sure wait a minite");
-    console.log(value);
+    const msg1 = this.createChatBotMessage(
+      "Sure wait a minite and please enter time (9.00 AM - 4.00 PM)"
+    );
+    var date =
+      value.getFullYear() +
+      "-" +
+      (value.getMonth() + 1) +
+      "-" +
+      value.getDate();
+
+    console.log(date);
+    this.setState((state) => ({
+      ...state,
+      date: [date],
+    }));
+
     this.setChatbotMessage(msg1);
+  };
+  channelDoctor = (message, chObject) => {
+    const msg2 = this.createChatBotMessage("Thank You");
+    // this.setChatbotState("channel");
+    this.setChatbotState("normal");
+    console.log(chObject);
+
+    this.setChatbotMessage(msg2);
   };
 }
 
