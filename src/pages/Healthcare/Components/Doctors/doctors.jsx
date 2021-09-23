@@ -3,15 +3,12 @@ import React from "react";
 import {
   Box,
   Heading,
-  UnorderedList,
   StackItem,
   Stack,
   Flex,
-  useColorModeValue,
   Link,
   Button,
 } from "@chakra-ui/react";
-import styled from "styled-components";
 import { FaHospital, BsPersonFill } from "react-icons/fa";
 import { IoPersonCircle } from "react-icons/fa";
 
@@ -62,6 +59,7 @@ const Doctors = (props) => {
                 size="md"
                 // ml={3}
                 mr={3}
+                onClick={props.actionProvider.channelDoctor}
               >
                 Channel
               </Button>

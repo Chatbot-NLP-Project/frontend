@@ -4,6 +4,8 @@ import BotAvatar from "../Components/botAvatar";
 import BotIcon from "../Components/botIcon";
 // import Options from "../components/Options/Options";
 import Doctors from "../Components/Doctors/doctors";
+import CalenderObject from "../Components/Calender/calender";
+
 const config = {
   initialMessages: [
     createChatBotMessage(
@@ -43,6 +45,10 @@ const config = {
       widgetName: "doctors",
       widgetFunc: (props) => <Doctors {...props} />,
       mapStateToProps: ["doctors"],
+    },
+    {
+      widgetName: "calender",
+      widgetFunc: (props) => <CalenderObject {...props} />,
     },
   ],
 

@@ -104,6 +104,21 @@ class ActionProvider {
   //   const msg = this.createChatBotMessage("Please Enter three symptom");
   //   this.setChatbotMessage(msg);
   // };
+
+  channelDoctor = () => {
+    // const msg1 = this.createChatBotMessage("Sure wait a minite");
+    // this.setChatbotMessage(msg1);
+    const msg2 = this.createChatBotMessage("Sure. Please select the date", {
+      widget: "calender",
+    });
+    this.setChatbotMessage(msg2);
+  };
+
+  selectTime = (value) => {
+    const msg1 = this.createChatBotMessage("Sure wait a minite");
+    console.log(value);
+    this.setChatbotMessage(msg1);
+  };
 }
 
 export default ActionProvider;
