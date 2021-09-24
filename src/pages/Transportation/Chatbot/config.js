@@ -3,8 +3,7 @@ import { createChatBotMessage } from "react-chatbot-kit";
 import BotAvatar from "../Components/botAvatar";
 import BotIcon from "../Components/botIcon";
 // import Options from "../components/Options/Options";
-import Doctors from "../Components/Doctors/doctors";
-import CalenderObject from "../Components/Calender/calender";
+import Methods from "../Components/Methods/Methods";
 
 const config = {
   initialMessages: [
@@ -37,23 +36,18 @@ const config = {
   },
   state: {
     currentState: ["normal"],
-    sympthoms: [],
-    doctors: [],
-    channel: [],
-    date: [],
+    from: [],
+    to: [],
+    schedule: [],
+    methods: [],
+    schedules: [],
   },
   widgets: [
-    {
-      widgetName: "doctors",
-      widgetFunc: (props) => <Doctors {...props} />,
-      mapStateToProps: ["doctors"],
-    },
-    {
-      widgetName: "calender",
-      widgetFunc: (props) => <CalenderObject {...props} />,
-    },
+      // {
+      //   widgetName: "options",
+      //   widgetFunc: (props) => <Options {...props} />,
+      // },
   ],
-
   //   widgets: [
   //     {
   //       widgetName: "options",

@@ -1,31 +1,37 @@
 import { useState } from "react";
 import { useHistory } from "react-router";
+import Axios from 'axios';
 
-const FormDetails = () => {
+const FormDetails = ({email, firstName, lastName, phoneNumber, setFirstName, setLastName, setPhoneNumber, setEmail, setChangeDeatils}) => {
 
     // const { profileImage, firstName, lastName, phoneNumber, email } = useFetch('dblink' + id)
-    const [firstName,setFirstName] = useState('First Name');
-    const [lastName,setLastName] = useState('Last Name');
-    const [email,setEmail] = useState('Email');
-    const [phoneNumber,setPhoneNumber] = useState('Phone Number');
+    
     const [isPending, setIsPending] =  useState(false);
     const history = useHistory();
 
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        const profile = { firstName, lastName, email, phoneNumber};
+        console.log(lastName)
 
         setIsPending(true);
-
-        fetch('http://localhost:8000/blogs', {
-            method: 'POST',
-            headers: { "Content-Type": "application/json" },
-            profile: JSON.stringify(profile)
-        }).then(() => {
-            console.log('new blog added');
-            setIsPending(false);
-            history.push('/');
+        // post request to update profile details
+        Axios.post("http://localhost:5000/profile", {
+            params : {
+                user_id:1,   // set the user id by session_id
+                email: email,
+                first_name: firstName,
+                last_name: lastName,
+                phone_number: phoneNumber,
+                
+            }
+          }).then((response) => {
+            console.log(response);
+        }).catch((error) => {
+            console.log(error);
         })
+
+        setChangeDeatils(false);
     }
  
     return (  
@@ -44,14 +50,14 @@ const FormDetails = () => {
                     <input 
                         type="text"
                         required
-                        value = {lastName}
+                        defaultValue = {lastName}
                         onChange = {(e) => setLastName(e.target.value)}
                     />
                     <label>Phone Number</label>
                     <input 
                         type="text"
                         required
-                        value = {phoneNumber}
+                        defaultValue = {phoneNumber}
                         onChange = {(e) => setPhoneNumber(e.target.value)}
                     />
                     <label>Email</label>
@@ -59,7 +65,7 @@ const FormDetails = () => {
                         type="text"
                         required
                         value = {email}
-                        onChange = {(e) => setEmail(e.target.value)}
+                        // onChange = {(e) => setEmail(e.target.value)}
                     />
                     {!isPending && <button>Save Details</button>}
                     {isPending && <button>Saving...</button>}

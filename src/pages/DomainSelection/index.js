@@ -111,7 +111,9 @@ export default function DSelection() {
                 Are you sick? Do you want to channel a doctor?
               </Heading>
               <Text color={"gray.500"}></Text>
-              <Button>Chat now</Button>
+              <a href="/signin">
+                <Button>Chat now</Button>
+              </a>
             </Stack>
           </Card>
           <Card>
