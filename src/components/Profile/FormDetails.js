@@ -1,11 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import Axios from 'axios';
 
 const FormDetails = ({setChangeDeatils}) => {
-
-    // const { profileImage, firstName, lastName, phoneNumber, email } = useFetch('dblink' + id)
-    
+     
     const [isPending, setIsPending] =  useState(false);
     const history = useHistory();
 
@@ -13,45 +11,62 @@ const FormDetails = ({setChangeDeatils}) => {
     const [firstName,setFirstName] = useState('');
     const [lastName,setLastName] = useState('');
     const [phoneNumber,setPhoneNumber] = useState('');
+    const [err, setErr] = useState('Error');
 
-      Axios.get("http://localhost:5000/profile", {
-        params : {
-            user_id:1   // set the user id by session_id
-        }
-      }).then((response) => {
-        //   setUser(response.data)
-          setFirstName(response.data.first_name);
-          setLastName(response.data.last_name);
-          setPhoneNumber(response.data.phone_number);
-          setEmail(response.data.email);
-        
-      }).catch((error) => {
-          console.log(error);
-      })
+    useEffect(()=> {
+        Axios.get("http://localhost:5000/profile", {
+            params : {
+                user_id:1   // set the user id by session_id
+            }
+          }).then((response) => {
+            console.log('Loading Form Details');
+            //   setUser(response.data)
+              setFirstName(response.data.first_name);
+              setLastName(response.data.last_name);
+              setPhoneNumber(response.data.phone_number);
+              setEmail(response.data.email);
+            
+          }).catch((error) => {
+              console.log(error);
+          })
+    }, [])
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(lastName)
+        console.log(firstName)
+        setErr('beforeIF');
+        console.log(err);
 
-        setIsPending(true);
-        // post request to update profile details
-        Axios.post("http://localhost:5000/profile", {
-            params : {
-                user_id:1,   // set the user id by session_id
-                email: email,
-                first_name: firstName,
-                last_name: lastName,
-                phone_number: phoneNumber,
+        if( parseInt(phoneNumber) != phoneNumber ){
+            console.log('Invalid Number');
+            // setErr('Invalid Number');
+            // console.log(err);
+        } else {
+            console.log('No error');
+            setErr('No error');
+        }
+
+        console.log(err);
+
+        // setIsPending(true);
+        // // post request to update profile details
+        // Axios.post("http://localhost:5000/profile", {
+        //     params : {
+        //         user_id:1,   // set the user id by session_id
+        //         email: email,
+        //         first_name: firstName,
+        //         last_name: lastName,
+        //         phone_number: phoneNumber,
                 
-            }
-          }).then((response) => {
-            console.log(response);
-        }).catch((error) => {
-            console.log(error);
-        })
+        //     }
+        //   }).then((response) => {
+        //     console.log(response);
+        // }).catch((error) => {
+        //     console.log(error);
+        // })
 
-        setChangeDeatils(false);
+        // setChangeDeatils(false);
     }
  
     return (  
@@ -63,9 +78,9 @@ const FormDetails = ({setChangeDeatils}) => {
                     <input 
                         type="text"
                         required
-                        value = {firstName}
-                        // onChange = {(e) => setFirstName(e.target.value)}
-                        onChange = {(e) => console.log(e.target.value)}
+                        defaultValue = {firstName}
+                        onChange = {(e) => setFirstName(e.target.value)}
+                        // onChange = {(e) => console.log(e.target.value)}
                     />
                     <label>Last Name</label>
                     <input 
@@ -78,6 +93,8 @@ const FormDetails = ({setChangeDeatils}) => {
                     <input 
                         type="text"
                         required
+                        maxLength = {10}
+                        minLength = {10}
                         value = {phoneNumber}
                         onChange = {(e) => setPhoneNumber(e.target.value)}
                     />
