@@ -24,14 +24,14 @@
 }
 
 .login-content-left {
-  background: linear-gradient(90deg, #1EB39A 40%, white 100%);
+  background: linear-gradient(90deg, #E7F0FA 0%, #E7F0FA 100%);
   border-radius: 10px 0 0 10px;
   position: relative;
 }
 
 .login-img {
-  width: 80%;
-  height: 80%;
+  width: 50%;
+  height: 50%;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -51,13 +51,13 @@
   text-align: center;
   font-size: 24px;
   margin-top: 80px;
-  color: #fff;
+  color: black;
 }
 
 .login-content-right {
   border-radius: 0 10px 10px 0;
   position: relative;
-  background: linear-gradient(90deg, rgb(40, 40, 40) 0%, rgb(17, 17, 17) 100%);
+  background: linear-gradient(90deg, #E7F0FA 0%, #E7F0FA 100%);
 }
 
 .login {
@@ -73,12 +73,12 @@
   align-items: center;
 }
 
-.login h1 {
+.login-h1 {
   font-size: 1rem;
   text-align: start;
   width: 80%;
   margin-bottom: 1rem;
-  color: #fff;
+  color: black;
 }
 
 .login-inputs {
@@ -96,7 +96,7 @@
   display: inline-block;
   font-size: 0.8rem;
   margin-bottom: 6px;
-  color: #fff;
+  color: black;
 }
 
 .login-input {
@@ -144,7 +144,7 @@
 .login-input-login {
   font-size: 0.8rem;
   margin-top: 10px;
-  color: #fff;
+  color: black;
   width: 80%;
   text-align: center;
 }
