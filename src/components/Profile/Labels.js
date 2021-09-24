@@ -1,8 +1,27 @@
 import { useState } from "react";
-const Labels = ({email, firstName, lastName,phoneNumber, setChangeDeatils, setChangePassword, changeImage}) => {
+import Axios from 'axios';
+// const Labels = ({email, firstName, lastName,phoneNumber, setChangeDeatils, setChangePassword, changeImage}) => {
+const Labels = ({setChangeDeatils, setChangePassword, changeImage}) => {
 
-    // const { profileImage, firstName, lastName, phoneNumber, email } = useFetch('dblink' + id)
+    const [email, setEmail] = useState('');
+    const [firstName,setFirstName] = useState('');
+    const [lastName,setLastName] = useState('');
+    const [phoneNumber,setPhoneNumber] = useState('');
 
+      Axios.get("http://localhost:5000/profile", {
+        params : {
+            user_id:1   // set the user id by session_id
+        }
+      }).then((response) => {
+        //   setUser(response.data)
+          setFirstName(response.data.first_name);
+          setLastName(response.data.last_name);
+          setPhoneNumber(response.data.phone_number);
+          setEmail(response.data.email);
+        
+      }).catch((error) => {
+          console.log(error);
+      })
 
     const handleEditDetails = () => {
         setChangeDeatils(true);
