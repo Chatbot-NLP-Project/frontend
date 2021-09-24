@@ -36,7 +36,7 @@ function Chat(props) {
             color="blue.900"
             textAlign={["center", "center", "left", "left"]}
           >
-            XYRON Telecommunication Chatbot
+            XYRON HealthCare Chatbot
           </Heading>
           <Heading
             as="h3"
@@ -47,7 +47,10 @@ function Chat(props) {
             lineHeight={1.5}
             textAlign={["center", "center", "left", "left"]}
           >
-            This chatbot will let your works easy. You can recharge fast. You can select packages whatever you want. Fast Responses.
+            There are 3 chatbots for 3 domains. Telecommunication service,
+            healthcare, and public transport are the 3 services that we provide.
+            Chatbots are built with the latest Artificial Intelligence
+            technologies to give you a better experience. 24/7 Available
           </Heading>
         </Stack>
         <Box>

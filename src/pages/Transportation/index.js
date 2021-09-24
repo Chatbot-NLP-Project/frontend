@@ -27,7 +27,8 @@ function Chat(props) {
         >
           <Box w="500px" mb={{ base: 12, md: 0 }}>
             {/* TODO: Make this change every X secs */}
-            <Image src="../Healthcare/bot.jpg" size="100%" />
+            {/* <Image src="../Healthcare/bot.jpg" size="100%" /> */}
+            <Image src="../Transporation/bot.png" size="100%" />
           </Box>
           <Heading
             as="h1"
@@ -36,7 +37,7 @@ function Chat(props) {
             color="blue.900"
             textAlign={["center", "center", "left", "left"]}
           >
-            XYRON Telecommunication Chatbot
+            XYRON Transport Chatbot
           </Heading>
           <Heading
             as="h3"
@@ -47,7 +48,10 @@ function Chat(props) {
             lineHeight={1.5}
             textAlign={["center", "center", "left", "left"]}
           >
-            This chatbot will let your works easy. You can recharge fast. You can select packages whatever you want. Fast Responses.
+            Chat with XYRON Transport Chatbot and let him know 
+            what you are looking for. He will tell you how to get to places. 
+            He can get you scheduled times of trains. And of course if you have any complaints, 
+            just let him know.
           </Heading>
         </Stack>
         <Box>
