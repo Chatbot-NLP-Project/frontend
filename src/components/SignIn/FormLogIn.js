@@ -16,7 +16,7 @@ function FormLogIn(props) {
   return (
     <div className="login-content-right">
       <form onSubmit={handleSubmit} className="form" noValidate>
-        <h1>
+        <h1 color="black">
           Welcome!!!
           <br />
           Sign in to use our service!
