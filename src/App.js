@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 
 import SignIn from './pages/SignIn/index';
 import SignUp from './pages/SignUp/index';
+// import SellerHome from './pages/Seller/SellerHome';
 // import DomainSelection from './pages/DomainSelection';
 import Telecommunication from './pages/Telecommunication/index';
 
@@ -20,7 +21,8 @@ function App() {
       <Switch >
         {/* Common Routes */}
         <Route path="/signUp" exact component={SignUp}/>
-        <Route path="/signin" exact component={SignIn} exact/>
+        <Route path="/signin" exact exact component={ () => {return <SignIn setSignInClicked={setSignInClicked}/>}} />
+        {/* <Route path="/sellerHome" exact component={SellerHome} /> */}
         {/* <Route path="/domainselection" exact component={DomainSelection} exact/> */}
         {/* <Route path="/telecommunication" exact component={Telecommunication} exact/> */}
       </Switch>

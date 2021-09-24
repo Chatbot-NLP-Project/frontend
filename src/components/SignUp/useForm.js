@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-// import Axios from "axios";
+import Axios from "axios";
 //custom hook
 
 const useForm = (callback, validate) => {
@@ -33,22 +33,22 @@ const useForm = (callback, validate) => {
     setErrors(validate(values));
     setIsSubmitting(true);
 
-    // if (Object.keys(errors).length === 0) {
-    //   Axios.post("http://localhost:5000/customer/register", {
-    //     firstName: firstName,
-    //     lastName: lastName,
-    //     email: email,
-    //     phoneNumber: phoneNumber,
-    //     password: password,
-    //   }).then((response) => {
-    //     if (!response.data.registered) {
-    //       console.log(response.data.message);
-    //       setBackEndErrors({registered: false, error: response.data.message});
-    //     } else {
-    //       setBackEndErrors({registered: true, error: response.data.message});
-    //     }
-    //   });
-    // }
+    if (Object.keys(errors).length === 0) {
+      Axios.post("http://localhost:5000/register", {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        phoneNumber: phoneNumber,
+        password: password,
+      }).then((response) => {
+        if (!response.data.registered) {
+          console.log(response.data.error);
+          setBackEndErrors({registered: false, error: response.data.error});
+        } else {
+          setBackEndErrors({registered: true, error: response.data.error});
+        }
+      });
+    }
   };
 
   useEffect(() => {
