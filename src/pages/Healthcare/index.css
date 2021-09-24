@@ -18,7 +18,7 @@
   overflow-x: hidden;
 }
 .react-chatbot-kit-chat-bot-message {
-  margin-left: 20px;
+  margin-left: 5px;
   color: black;
   width: 40%;
 }
@@ -26,6 +26,7 @@
 .react-chatbot-kit-user-chat-message {
   width: 40%;
   background-color: #e3f6fc;
+  color: black;
 }
 .react-chatbot-kit-chat-btn-send-icon {
   margin-left: 40%;
@@ -41,4 +42,8 @@
 
 .react-chatbot-kit-chat-input {
   margin-bottom: 30px;
+}
+
+.css-q264xw {
+  margin-left: 10%;
 }
