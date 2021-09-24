@@ -13,6 +13,7 @@ function LogIn(props) {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   function submitForm() {
+    console.log("form submitted")
     setIsSubmitted(true);
   }
   return (
@@ -26,7 +27,7 @@ function LogIn(props) {
         {!isSubmitted ? (
           <FormLogIn submitForm={submitForm} setSignInClicked={props.setSignInClicked}/>
         ) : (
-          <Redirect to='/' />
+          <Redirect to='/domain' />
         )}
         {/* <FormLogIn submitForm={submitForm} /> */}
       </div>

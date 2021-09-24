@@ -20,7 +20,7 @@ const FormSuccess = () => {
           </Button>
         </a>
       </h1>
-      <img className="form-img-2" src="img/img-3.svg" alt="success-image" />
+      <img className="form-img-2" src="imgs/success.png" alt="success-image" />
     </div>
   );
 };

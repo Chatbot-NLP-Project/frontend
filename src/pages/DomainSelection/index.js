@@ -96,6 +96,7 @@ export default function DSelection() {
                 w="fit-content"
               />
             </Box>
+            <a href="http://localhost:3000/healthcare">
             <Stack marginTop={10} marginTop={50}>
               <Heading fontSize="20px" color="blue.800">
                 Healthcare
@@ -115,6 +116,7 @@ export default function DSelection() {
                 <Button>Chat now</Button>
               </a>
             </Stack>
+            </a>
           </Card>
           <Card>
             <Box h={"100px"} mt={-6} mx={-6} mb={6} pos={"relative"}>
@@ -137,9 +139,8 @@ export default function DSelection() {
                 </Heading>
 
                 <Text color={"gray.500"}></Text>
-                <a href="http://localhost:3000/telecommunication">
+                
                   <Button>Chat now</Button>
-                </a>
               </Stack>
             </a>
           </Card>
@@ -147,6 +148,7 @@ export default function DSelection() {
             <Box h={"100px"} mt={-6} mx={-6} mb={6} pos={"relative"}>
               <Image src="../Healthcare/d3.png" size="100%" layout={"fill"} />
             </Box>
+            <a href="http://localhost:3000/transport">
             <Stack marginTop={10} marginTop={50}>
               <Heading fontSize="20px" color="blue.800">
                 Public Transport{" "}
@@ -165,6 +167,7 @@ export default function DSelection() {
               <Text color={"gray.500"}></Text>
               <Button>Chat now</Button>
             </Stack>
+            </a>
           </Card>
           <Card>
             <Box
