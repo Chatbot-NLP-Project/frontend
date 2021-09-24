@@ -20,7 +20,7 @@ const Register = () => {
       <div className='form-container'>
 
         <div className='form-content-left'>
-          <img className='form-img' src='imgs/sapiens 1.png' alt='Security' />
+          <img className='form-img' src='imgs/sapiens create.png' alt='Create Account' />
         </div>
         {!isSubmitted ? (
           <FormSignup submitForm={submitForm} />
