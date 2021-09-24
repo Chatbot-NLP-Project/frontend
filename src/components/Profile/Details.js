@@ -12,6 +12,7 @@ const Details = ({id}) => {
     const [changeDetails, setChangeDeatils] = useState(false);
     const [changePassword, setChangePassword] = useState(false);
     const [changeImage, setChangeImage] = useState(false);
+    
 
     return (  
         <div className="details-container">

@@ -26,6 +26,22 @@ const Labels = ({setChangeDeatils, setChangePassword, changeImage}) => {
           })
     }, [])
 
+        //     Axios.get("http://localhost:5000/profile", {
+        //     params : {
+        //         user_id:1   // set the user id by session_id
+        //     }
+        //   }).then((response) => {
+        //       console.log('Loading Labels');
+        //     //   setUser(response.data)
+        //       setFirstName(response.data.first_name);
+        //       setLastName(response.data.last_name);
+        //       setPhoneNumber(response.data.phone_number);
+        //       setEmail(response.data.email);
+            
+        //   }).catch((error) => {
+        //       console.log(error);
+        //   })
+
     const handleEditDetails = () => {
         setChangeDeatils(true);
     }

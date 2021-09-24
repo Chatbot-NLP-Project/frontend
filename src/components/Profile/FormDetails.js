@@ -11,7 +11,8 @@ const FormDetails = ({setChangeDeatils}) => {
     const [firstName,setFirstName] = useState('');
     const [lastName,setLastName] = useState('');
     const [phoneNumber,setPhoneNumber] = useState('');
-    const [err, setErr] = useState('Error');
+    const [refresh, setRefresh] = useState(false);
+    // const [err, setErr] = useState(false);
 
     useEffect(()=> {
         Axios.get("http://localhost:5000/profile", {
@@ -31,23 +32,33 @@ const FormDetails = ({setChangeDeatils}) => {
           })
     }, [])
 
-
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(firstName)
-        setErr('beforeIF');
-        console.log(err);
 
-        if( parseInt(phoneNumber) != phoneNumber ){
-            console.log('Invalid Number');
-            // setErr('Invalid Number');
-            // console.log(err);
-        } else {
-            console.log('No error');
-            setErr('No error');
-        }
 
-        console.log(err);
+        // if( parseInt(phoneNumber) != phoneNumber ){
+        //     setErr(true);
+        // } else {
+        //     setErr(false);
+        // }
+
+        setIsPending(true);
+        // post request to update profile details
+        Axios.post("http://localhost:5000/profile", {
+                user_id:1,   // set the user id by session_id
+                email: email,
+                first_name: firstName,
+                last_name: lastName,
+                phone_number: phoneNumber,
+          }).then((response) => {
+            console.log(response);
+        }).catch((error) => {
+            console.log(error);
+        })
+
+        setChangeDeatils(false);
+        setRefresh(true);
 
         // setIsPending(true);
         // // post request to update profile details
