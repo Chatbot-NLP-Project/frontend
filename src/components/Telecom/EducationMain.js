@@ -30,7 +30,7 @@ function EducationMain() {
       </Flex>
       <Heading as="h1" size="4xl">
         <Text color={colorMode === "light" ? "white" : "white"}>
-          EDUCATION DOMAIN
+          TELECOMMUNICATION DOMAIN
         </Text>
       </Heading>
 
@@ -43,7 +43,7 @@ function EducationMain() {
             color={colorMode === "light" ? "white" : "black"}
           />
         </Center>
-        <a href="/categorypage">
+        <a href="/chattel">
           <Box
             as="button"
             p={4}
@@ -52,7 +52,7 @@ function EducationMain() {
             borderRadius="15px"
             bgGradient={
               colorMode === "light"
-                ? "linear(to-r, black, blue.600)"
+                ? "linear(to-r, black, #00bbcc)"
                 : "linear(to-r, white, blue.600)"
             }
             _hover={{
