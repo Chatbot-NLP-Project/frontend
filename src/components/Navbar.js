@@ -14,7 +14,7 @@ import { HamburgerIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { Link, Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { FiShoppingCart } from "react-icons/fi";
-// import Axios from "axios";
+import Axios from "axios";
 
 function Navbar(props) {
   var his = useHistory();
@@ -37,9 +37,14 @@ function Navbar(props) {
   const { colorMode, toggleColorMode } = useColorMode();
 
   function handleLogOut() {
-    // Axios.get("http://localhost:5000/customer/logout").then((response) => {
-    //   return <Redirect to='/' />
-    // })
+    console.log("handle log out clicked")
+    localStorage.removeItem('user')
+    localStorage.removeItem('access_token')
+    Axios.get("http://localhost:5000/logout").then((response) => {
+      console.log("sadsadsdadds")
+      
+      return <Redirect to='/' />
+    })
   }
 
   return (
@@ -49,13 +54,15 @@ function Navbar(props) {
       justify="space-between"
       wrap="wrap"
       pt="1.0rem"
-      bg={colorMode === "light" ? "#DCE3FA" : "#101522"}
+      bg={colorMode === "light" ? "#F2F5FF" : "#101522"}
+      // DCE3FA
       color="white"
       position="fixed"
       top="0"
       width="100%"
       zIndex="10000"
     >
+      <a href="http://localhost:3000/">
       <Flex align="center" mr={10}>
         <Img ml="1.5rem" src="../logo2.png" alt="logo" h="80px" w="80px" />
         <Text
@@ -67,7 +74,7 @@ function Navbar(props) {
           XYRON
         </Text>
       </Flex>
-
+      </a>
       <IconButton
         display={{ base: "block", md: "none" }}
         variant="outline"
@@ -91,7 +98,7 @@ function Navbar(props) {
         </MenuItems>
         <MenuItems>
           {props.Auth.userID === 1 ? (
-            <Link as={ReactRouterLink} to="/sellerdashboard/1">
+            <Link as={ReactRouterLink} to="/adminDashboard">
               Dashboard
             </Link>
           ) : (
@@ -102,8 +109,8 @@ function Navbar(props) {
         </MenuItems>
         <MenuItems>
           {props.Auth.userID === 1 ? (
-            <Link as={ReactRouterLink} to="/sellerHome">
-              Seller Home
+            <Link as={ReactRouterLink} to="/">
+              About Us
             </Link>
           ) : (
             <Link as={ReactRouterLink} to="/">
@@ -122,19 +129,6 @@ function Navbar(props) {
         display={{ base: show ? "block" : "none", md: "block" }}
         mt={{ base: 4, md: 0 }}
       >
-        {props.Auth.userID === 1 || !props.Auth.isLoggedIn ? null : (
-          <Link as={ReactRouterLink} to="/cart">
-            <IconButton
-              aria-label="Call Segun"
-              size="lg"
-              icon={<Icon as={FiShoppingCart} w={8} h={8} />}
-              mr={{ base: "5px", md: "20px" }}
-              variant="ghost"
-              color={colorMode === "light" ? "cyan.800" : "cyan.100"}
-            />
-          </Link>
-        )}
-
         <IconButton
           aria-label="Call Segun"
           size="md"

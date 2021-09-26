@@ -19,6 +19,7 @@ const useForm = (callback, validate) => {
   const email = values.email;
   const phoneNumber = values.phonenumber;
   const password = values.password;
+  const simType = "";
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,7 +33,6 @@ const useForm = (callback, validate) => {
     e.preventDefault();
     setErrors(validate(values));
     setIsSubmitting(true);
-
     if (Object.keys(errors).length === 0) {
       Axios.post("http://localhost:5000/register", {
         firstName: firstName,
@@ -40,6 +40,7 @@ const useForm = (callback, validate) => {
         email: email,
         phoneNumber: phoneNumber,
         password: password,
+        simType: simType
       }).then((response) => {
         if (!response.data.registered) {
           console.log(response.data.error);

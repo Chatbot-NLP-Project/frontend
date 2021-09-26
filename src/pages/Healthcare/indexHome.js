@@ -1,14 +1,11 @@
 import BottomFooter from "../../components/Footer/BottomFooter";
 import Footer from "../../components/Footer/Footer";
-import EducationMain from "../../components/Chatbot-Telecommunication/EducationMain";
-import ImageSlider from "../../components/Slider/ImageSlider";
-import {SliderData} from "../../components/Slider/SliderData";
+import EducationMain from "../../components/Chatbot-Healthcare/EducationMain";
 
 function Education() {
     return(
         <>
             <EducationMain />
-            <ImageSlider slides = {SliderData} />
             <Footer />
             <BottomFooter botName="XYRON" />
         </>

@@ -43,7 +43,7 @@ function EducationMain() {
             color={colorMode === "light" ? "white" : "black"}
           />
         </Center>
-        <a href="/chattel">
+        <a href="http://localhost:3000/chatbotpt">
           <Box
             as="button"
             p={4}

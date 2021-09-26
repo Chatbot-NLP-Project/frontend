@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
-
+import Axios from "axios";
 import Navbar from "./components/Navbar";
 import SideNav from "./components/SideNav/SideNav";
 
@@ -10,16 +10,61 @@ import SignIn from "./pages/SignIn/index";
 import SignUp from "./pages/SignUp/index";
 // import DomainSelection from './pages/DomainSelection';
 import Telecommunication from "./pages/Telecommunication/indexHome";
+import Healthcare from "./pages/Healthcare/indexHome";
+import Transport from "./pages/Transportation/indexHome";
 import LandingPage from "./pages/Landing/index";
 import DomaineSelection from "./pages/DomainSelection/index";
 import Profile from "./pages/Profile/index";
-import Chat from "./pages/Healthcare/index";
-import Chat3 from "./pages/Transportation/index";
-import Chattel from "./pages/Telecommunication/index";
+import ChatbotHC from "./pages/Healthcare/index";
+import ChatbotPT from "./pages/Transportation/index";
+import ChatbotTC from "./pages/Telecommunication/index";
+import Rating from "./pages/Admin/rating"
+import Admin from "./pages/Admin/index"
+
 function App() {
-  const [auth, setAuth] = useState(false);
+  const [auth, setAuth] = useState({ isLoggedIn: false, userID: 0 });
   const [signInClicked, setSignInClicked] = useState(false);
-  return (
+  // Axios.defaults.withCredentials = true;
+
+  useEffect(() => {
+    // Axios.defaults.withCredentials = true;
+    console.log("check login called")
+    // Axios.get("http://localhost:5000/checkLogin").then((response) => {
+    //   console.log("check login axios")
+      if (!!localStorage.access_token) {
+        setAuth({ isLoggedIn: true, userID: JSON.parse(localStorage.getItem("user"))["user_id"]});
+        console.log(auth)
+      } else {
+        console.log("sssseeee")
+        // console.log(response.data.user)
+        setAuth({ isLoggedIn: false, userID: 0 });
+      }
+    // });
+  }, [!!localStorage.access_token]);
+  
+
+  if(auth.isLoggedIn){
+    return (
+      <ChakraProvider>
+        <Router>
+        <Navbar Auth={auth} />
+          <Switch >
+              {/* Common Routes */}
+              <Route path="/telecommunication" exact component={Telecommunication} exact/>
+              <Route path="/healthcare" exact component={Healthcare} exact/>
+              <Route path="/transport" exact component={Transport} exact/>
+              <Route path="/chatbothc" exact component={ChatbotHC} />
+              <Route path="/chatbotpt" exact component={ChatbotPT} />
+              <Route path="/chatbottc" exact component={ChatbotTC} />
+              {/* <Route path="/profile/:id" exact component={Profile}/> */}
+              <Route path="/profile" exact component={Profile} />
+              <Route path="/" component={DomaineSelection} />
+            </Switch>
+          </Router>
+        </ChakraProvider>
+      );
+  } else {
+    return(
     <ChakraProvider>
       <Router>
         <Navbar Auth={auth} />
@@ -28,20 +73,15 @@ function App() {
         <Switch>
           {/* Common Routes */}
           <Route path="/signUp" exact component={SignUp} />
-          <Route path="/signin" exact component={SignIn} exact />
+          <Route path="/rating" exact component={Rating} />
+          <Route path="/admin" exact component={Admin} />
+          <Route path="/signin" exact component={ () => {return <SignIn setSignInClicked={setSignInClicked}/>}} />
           {/* <Route path="/domainselection" exact component={DomainSelection} exact/> */}
-          <Route path="/telecommunication" exact component={Telecommunication} exact/>
-          <Route path="/" exact component={LandingPage} />
-          <Route path="/domain" exact component={DomaineSelection} />
-          <Route path="/chat" exact component={Chat} />
-          <Route path="/chat3" exact component={Chat3} />
-          <Route path="/chattel" exact component={Chattel} />
-          {/* <Route path="/profile/:id" exact component={Profile}/> */}
-          <Route path="/profile" exact component={Profile} />
+          <Route path="/"  component={LandingPage} />
         </Switch>
       </Router>
     </ChakraProvider>
   );
 }
-
+}
 export default App;

@@ -9,7 +9,7 @@ export const SliderData = [
   },
   {
     image:
-      'imgs/slider3.jpg'
+      'imgs/sapiens create.png'
   },
   {
     image:
