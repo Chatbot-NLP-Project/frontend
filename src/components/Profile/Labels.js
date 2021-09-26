@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import Axios from 'axios';
-// const Labels = ({email, firstName, lastName,phoneNumber, setChangeDeatils, setChangePassword, changeImage}) => {
-const Labels = ({setChangeDeatils, setChangePassword, changeImage}) => {
+const Labels = ({setChangeDeatils, changeDetails, setChangePassword, changeImage}) => {
 
     const [email, setEmail] = useState('');
     const [firstName,setFirstName] = useState('');
@@ -24,7 +23,7 @@ const Labels = ({setChangeDeatils, setChangePassword, changeImage}) => {
           }).catch((error) => {
               console.log(error);
           })
-    }, [])
+    }, [changeDetails])
 
         //     Axios.get("http://localhost:5000/profile", {
         //     params : {

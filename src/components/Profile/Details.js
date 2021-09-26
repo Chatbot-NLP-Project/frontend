@@ -21,7 +21,7 @@ const Details = ({id}) => {
             {(!changeDetails && !changePassword) && (
                 <>
                     <ProfileImage changeImage={changeImage} setChangeImage={setChangeImage} changeDetails={changeDetails}/>
-                    <Labels setChangeDeatils={setChangeDeatils} setChangePassword={setChangePassword} changeImage={changeImage}/>
+                    <Labels setChangeDeatils={setChangeDeatils} changeDetails setChangePassword={setChangePassword} changeImage={changeImage}/>
                 </>
             )}
 

@@ -11,7 +11,6 @@ const FormDetails = ({setChangeDeatils}) => {
     const [firstName,setFirstName] = useState('');
     const [lastName,setLastName] = useState('');
     const [phoneNumber,setPhoneNumber] = useState('');
-    const [refresh, setRefresh] = useState(false);
     // const [err, setErr] = useState(false);
 
     useEffect(()=> {
@@ -58,26 +57,6 @@ const FormDetails = ({setChangeDeatils}) => {
         })
 
         setChangeDeatils(false);
-        setRefresh(true);
-
-        // setIsPending(true);
-        // // post request to update profile details
-        // Axios.post("http://localhost:5000/profile", {
-        //     params : {
-        //         user_id:1,   // set the user id by session_id
-        //         email: email,
-        //         first_name: firstName,
-        //         last_name: lastName,
-        //         phone_number: phoneNumber,
-                
-        //     }
-        //   }).then((response) => {
-        //     console.log(response);
-        // }).catch((error) => {
-        //     console.log(error);
-        // })
-
-        // setChangeDeatils(false);
     }
  
     return (  
