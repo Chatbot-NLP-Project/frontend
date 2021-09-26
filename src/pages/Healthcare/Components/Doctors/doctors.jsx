@@ -72,7 +72,7 @@ const Doctors = (props) => {
     });
   };
 
-  return <Stack ml="10%">{renderDoctor()}}</Stack>;
+  return <Stack ml="10%">{renderDoctor()}</Stack>;
 };
 
 export default Doctors;
