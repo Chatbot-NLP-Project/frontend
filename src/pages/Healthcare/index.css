@@ -18,7 +18,7 @@
   overflow-x: hidden;
 }
 .react-chatbot-kit-chat-bot-message {
-  margin-left: 5px;
+  margin-left: 0.5px;
   color: black;
   width: 40%;
 }

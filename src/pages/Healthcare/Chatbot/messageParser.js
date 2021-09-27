@@ -20,8 +20,11 @@ class MessageParser {
       }
     } else if (this.state.currentState[siz] == "findDoctor") {
       this.actionProvider.findDoctor(message);
+    } else if (this.state.currentState[siz] == "feedback") {
+      this.actionProvider.sendFeedback(message);
     } else if (this.state.currentState[siz] == "channel") {
       const cha = {
+        id: this.state.channel[0].doctorID,
         name: this.state.channel[0].name,
         hospital: this.state.channel[0].hospital,
         date: this.state.date[0],
