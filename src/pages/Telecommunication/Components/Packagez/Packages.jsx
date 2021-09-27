@@ -1,35 +1,30 @@
 import React, { useState, useEffect } from "react";
 
-import "./PackageTypes.css";
+import "./Packages.css";
 
-const PackageTypes = ({ packageTypes, selectedPackageType, provider, setState, actionProvider }) => {
+const Packages = ({packageType, provider, packages, selectedPackage, setState, actionProvider }) => {
   const [displaySelector, toggleDisplaySelector] = useState(true);
   const [packagess, setPackages] = useState([]);
 
-  const packageOptions = packageTypes;
+  const packageOptions = packages;
 
   useEffect(() => {
     setPackages(packageOptions);
-    // setState((state) => ({
-    //   ...state,
-    //   selectedPackageType: packagess[0],
-    // }))
   }, []);
 
   const handleSubmit = (e) => {
-    console.log(packagess)
+    
     setState((state) => ({
       ...state,
-      selectedPackageType: packagess.find(
+      selectedPackage: packagess.find(
         (packg) => packg.id === e.target.value
       ),
     }));
-    
+    console.log(selectedPackage)
   };
 
   const handleConfirm = () => {
-    console.log(selectedPackageType.package_type)
-    actionProvider.selectPackageType(selectedPackageType.package_type, provider);
+    actionProvider.getPackageInfo(selectedPackage.name, packageType, provider);
     toggleDisplaySelector((prevState) => !prevState);
   };
 
@@ -39,7 +34,7 @@ const PackageTypes = ({ packageTypes, selectedPackageType, provider, setState, a
     return packagess.map((item) => {
       return (
         <option key={item.id} value={item.id}>
-          {item.package_type}
+          {item.name}
         </option>
       );
     });
@@ -49,20 +44,20 @@ const PackageTypes = ({ packageTypes, selectedPackageType, provider, setState, a
     <div className="packages-selector-container">
           <>
             {" "}
-            <h2 className="packages-selector-heading">Select Package Type you want to view</h2>
+            <h2 className="packages-selector-heading">Select a Package</h2>
             <select
               className="packages-selector"
-              value={selectedPackageType.id}
+              value={selectedPackage.id}
               onChange={handleSubmit}
             >
               {createPackageOptions()}
             </select>
             <button className="packages-button-confirm" onClick={handleConfirm}>
-              View Packages
+              Find More Info
             </button>
           </>
     </div>
   );
 };
 
-export default PackageTypes;
+export default Packages;

@@ -120,7 +120,7 @@ function Navbar(props) {
         </MenuItems>
         <MenuItems>
           <Link as={ReactRouterLink} to="/">
-            Help
+            {/* Help */}
           </Link>
         </MenuItems>
       </Box>
@@ -169,7 +169,7 @@ function Navbar(props) {
         h="5px"
         b="0px"
         mt="10px"
-        bg={colorMode === "light" ? "blue.900" : "blue"}
+        bg={colorMode === "light" ? "#1A365D" : "blue"}
       />
     </Flex>
   );

@@ -11,7 +11,7 @@ const Profile = () => {
         <>
             <UserProfile />
             <Footer />
-            <BottomFooter />
+            {/* <BottomFooter /> */}
         </>
      );
 }

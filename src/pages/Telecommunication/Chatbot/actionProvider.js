@@ -25,34 +25,17 @@ class ActionProvider {
     }));
   };
 
-  addDisease = (dis) => {
-    this.setState((state) => ({
-      ...state,
-      sympthoms: [...state.sympthoms, dis],
-    }));
-  };
-
-  removeDisease = () => {
-    this.setState((state) => ({
-      ...state,
-      sympthoms: [],
-    }));
-  };
-
-  diseaseHandler = (message) => {
-    this.addDisease(message);
-  };
-
+  //Display internet service providers
   handleDataPackage = () => {
     const message = this.createChatBotMessage(
-      "Select Internet Service Provider",
+      "I have data package details about Mobitel, Dialog, Hutch and Airtel",
       {
         widget: "InternetProvider"
       }
     );
     this.setChatbotMessage(message);
   };
-
+  //Display Package Types
   handleProvider = (type) => {
     Axios.post("http://127.0.0.1:5000/getPackageTypes", {
       provider: type
@@ -63,16 +46,16 @@ class ActionProvider {
         packageTypes: response.data.packageTypes
       }));
       const message = this.createChatBotMessage(
-        "Select Internet Service Provider",
+        `${type} Plans and Rates`,
         {
-          widget: "packageTypes"
+          widget: "packageTypess"
         }
       );
       this.setChatbotMessage(message);
     })
     
   };
-
+  //Display packages of package type
   selectPackageType = (package_type, provider) => {
     Axios.post("http://127.0.0.1:5000/getPackages", {
       provider: provider,
@@ -84,7 +67,7 @@ class ActionProvider {
         packages: response.data.packages
       }));
       const message = this.createChatBotMessage(
-        "Packages",
+        `${package_type}`,
         {
           widget: "packages"
         }
@@ -93,26 +76,65 @@ class ActionProvider {
     })
   };
 
-  selectPackage = (name, package_type) => {
+  //Display package info
+  getPackageInfo = (packageName, packageType, provider) => {
     Axios.post("http://127.0.0.1:5000/getPackage", {
-      packageName: name,
-      packageType: package_type
+      packageName: packageName,
+      packageType: packageType,
+      provider: provider
+    }).then((response) => {
+      console.log(response.data.packageDetails)
+      this.setState((state) => ({
+        ...state,
+        packageDetails : response.data.packageDetails
+      }));
+      const message = this.createChatBotMessage(
+        `${provider} -> ${packageType} -> ${packageName}`,
+        {
+          widget: "packageDetails"
+        }
+      );
+      this.setChatbotMessage(message);
+    })
+  };
+
+  //Display package info
+  activateDataPackage = (packageName, provider) => {
+    console.log("activateDataPackage")
+    console.log(provider)
+    Axios.post("http://127.0.0.1:5000/activateDataPackage", {
+      packageName: packageName,
+      provider: provider,
+      userID: JSON.parse(localStorage.getItem("user"))["user_id"]
+    }).then((response) => {
+      const message = this.createChatBotMessage(
+        `${response.data.res}`
+      );
+      this.setChatbotMessage(message);
+    })
+  };
+
+  //Display current balance
+  getCurrentBalance = () => {
+    console.log("getCurrentBalance")
+    Axios.post("http://127.0.0.1:5000/getCurrentBalance", {
+      userID: JSON.parse(localStorage.getItem("user"))["user_id"]
     }).then((response) => {
       this.setState((state) => ({
         ...state,
-        packageType : package_type,
-        packages: response.data.packages
+        user : response.data.user
       }));
       const message = this.createChatBotMessage(
-        "Packages",
+        ``,
         {
-          widget: "packages"
+          widget: "balance"
         }
       );
       this.setChatbotMessage(message);
     })
-  };
+  }
 
+  //Normal chatbot message handler
   helloHandler = (message) => {
     var msg;
     Axios.post("http://127.0.0.1:5000/reply", { msg: message }).then(

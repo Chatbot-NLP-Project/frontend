@@ -121,7 +121,7 @@ function Sidebar2(props) {
                 boxShadow="dark-lg"
                 colorScheme="gray.600"
               >
-                Change Password
+               
               </Button>
 
               <Divider orientation="horizontal" />

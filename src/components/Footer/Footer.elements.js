@@ -33,7 +33,7 @@ export const FooterSubHeading = styled.p`
 export const FooterSubText = styled.p`
   margin-bottom: 24px;
   font-size: 20px;
-  color: black;
+  color: #1A365D;
 `;
 
 export const Form = styled.form`
@@ -94,7 +94,7 @@ export const FooterLinkItems = styled.div`
   text-align: left;
   width: 160px;
   box-sizing: border-box;
-  color: black;
+  color: #1A365D;
 
   @media screen and (max-width: 420px) {
     margin: 0;
@@ -106,14 +106,14 @@ export const FooterLinkItems = styled.div`
 export const FooterLinkTitle = styled.h2`
   margin-bottom: 16px;
   font-size: 20px;
-  
+  color: #1A365D;
 `;
 
 export const FooterLink = styled(Link)`
   color: #fff;
   text-decoration: none;
   margin-bottom: 0.5rem;
-  color: black;
+  color: #1A365D;
   &:hover {
     color: #0467fb;
     transition: 0.3s ease-out;

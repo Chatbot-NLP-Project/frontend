@@ -8,6 +8,7 @@ import {
   FaTwitter,
   FaRobot,
 } from "react-icons/fa";
+import BottomFooter from "../Footer/BottomFooter";
 
 const MenuItem = ({ children, isLast, to = "/", ...rest }) => {
   return (
@@ -27,6 +28,7 @@ const Footer = (props) => {
   const toggleMenu = () => setShow(!show);
 
   return (
+    <>
     <Flex
       align="center"
       justify="space-between"
@@ -109,13 +111,15 @@ const Footer = (props) => {
             px="4"
             lineHeight="1"
             size="md"
+            mb={6}
           >
             Learn More
           </Button>
         </Link>
       </Stack>
-      <Flex
-        backgroundColor="blue.900"
+      
+      {/* <Flex
+        backgroundColor="red.900"
         justifyContent="center"
         alignItems="center"
         width="100%"
@@ -146,8 +150,11 @@ const Footer = (props) => {
         <Box fontSize="3xl" color="white" mr="20px">
           <FaTwitter />
         </Box>
-      </Flex>
+      </Flex> */}
+      
     </Flex>
+    <BottomFooter botName="XYRON"/>
+    </>
   );
 };
 

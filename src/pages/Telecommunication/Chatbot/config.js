@@ -2,13 +2,12 @@ import { Flex, Heading } from "@chakra-ui/react";
 import { createChatBotMessage } from "react-chatbot-kit";
 import BotAvatar from "../Components/botAvatar";
 import BotIcon from "../Components/botIcon";
-import Doctors from "../Components/Doctors/doctors";
-// import CalenderObject from "../Components/Calender/calender";
 import GeneralOptions from "../Components/GeneralOptions/GeneralOptions";
 import InternetProvider from "../Components/InternetProvider/InternetProvider";
-import PackageTypes from "../Components/PackageTypes/packageTypes";
-import Packages from "../Components/Packages/Packages";
-import Airport from "../Components/AirportSelector/AirportSelector";
+import PackageDetails from "../Components/PackageDetails/PackageDetails";
+import PackageTypes from "../Components/PackageTypes/PackageTypes";
+import Packages from "../Components/Packagez/Packages";
+import Balance from "../Components/Balance/Balance";
 // Widgets are components that create you own and then you register them in the config
 // because we want the widget to be decorated with some things that only the chatbot can give us
 
@@ -51,7 +50,11 @@ const config = {
     packageTypes: [],
     packageType: "",
     packages: [],
-    package: ""
+    package: "",
+    selectedPackage: "",
+    selectedPackageType: "",
+    packageDetails: [],
+    user: [] //Get full user
 
   },
 // widgetName - defines the name of the widget
@@ -68,18 +71,24 @@ const config = {
       widgetFunc: (props) => <InternetProvider {...props} />,
     },
     {
-      widgetName: "packageTypes",
+      widgetName: "packageTypess",
       widgetFunc: (props) => <PackageTypes {...props} />,
-      mapStateToProps: ["packageTypes", "provider"]
+      mapStateToProps: ["packageTypes", "provider", "selectedPackageType"]
     },
     {
       widgetName: "packages",
       widgetFunc: (props) => <Packages {...props} />,
-      mapStateToProps: ["packages", "packageType"]
+      mapStateToProps: ["selectedPackage", "packages", "provider", "packageType"]
     },
     {
-      widgetName: "airport",
-      widgetFunc: (props) => <Airport {...props} />,
+      widgetName: "packageDetails",
+      widgetFunc: (props) => <PackageDetails {...props} />,
+      mapStateToProps: ["packageDetails", "selectedPackage", "provider"]
+    },
+    {
+      widgetName: "balance",
+      widgetFunc: (props) => <Balance {...props} />,
+      mapStateToProps: ["user"]
     },
 
     
