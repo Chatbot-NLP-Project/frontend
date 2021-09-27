@@ -15,9 +15,8 @@ function FormLogIn(props) {
 
   return (
     <div className="login-content-right">
-      <form onSubmit={handleSubmit} className="form" noValidate>
-        <h1>
-          Welcome!!!
+      <form onSubmit={handleSubmit} className="form-signin" noValidate>
+        <h1 color="black"className="form-signin-h1" >
           <br />
           Sign in to use our service!
           <br />
@@ -67,7 +66,7 @@ function FormLogIn(props) {
           </Box>
         )}
         <button className="login-input-btn" type="submit">
-          Sign In
+          Continue
         </button>
         <span className="login-input-login">
           Don't have an account? Sign up <a href="signup">here</a>

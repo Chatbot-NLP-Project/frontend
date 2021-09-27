@@ -12,7 +12,7 @@ import {
   Text,
   Button,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link } from "@chakra-ui/react";
 import Header from "../../components/Sections/Header";
 
 export const Container = styled.div`
@@ -96,6 +96,7 @@ export default function DSelection() {
                 w="fit-content"
               />
             </Box>
+            <a href="http://localhost:3000/healthcare">
             <Stack marginTop={10} marginTop={50}>
               <Heading fontSize="20px" color="blue.800">
                 Healthcare
@@ -115,34 +116,39 @@ export default function DSelection() {
                 <Button>Chat now</Button>
               </a>
             </Stack>
+            </a>
           </Card>
           <Card>
             <Box h={"100px"} mt={-6} mx={-6} mb={6} pos={"relative"}>
               <Image src="../Healthcare/d2.png" size="100%" layout={"fill"} />
             </Box>
-            <Stack marginTop={10} marginTop={50}>
-              <Heading fontSize="20px" color="blue.800">
-                Telecommuncation{" "}
-              </Heading>
-              <Heading
-                as="h3"
-                size="sm"
-                color="primary.800"
-                opacity="0.8"
-                fontWeight="normal"
-                lineHeight={1.5}
-              >
-                Do you want to view and buy a data package?{" "}
-              </Heading>
+            <a href="http://localhost:3000/telecommunication">
+              <Stack marginTop={10} marginTop={50}>
+                <Heading fontSize="20px" color="blue.800">
+                  Telecommuncation{" "}
+                </Heading>
+                <Heading
+                  as="h3"
+                  size="sm"
+                  color="primary.800"
+                  opacity="0.8"
+                  fontWeight="normal"
+                  lineHeight={1.5}
+                >
+                  Do you want to view and buy a data package?{" "}
+                </Heading>
 
-              <Text color={"gray.500"}></Text>
-              <Button>Chat now</Button>
-            </Stack>
+                <Text color={"gray.500"}></Text>
+                
+                  <Button>Chat now</Button>
+              </Stack>
+            </a>
           </Card>
           <Card>
             <Box h={"100px"} mt={-6} mx={-6} mb={6} pos={"relative"}>
               <Image src="../Healthcare/d3.png" size="100%" layout={"fill"} />
             </Box>
+            <a href="http://localhost:3000/transport">
             <Stack marginTop={10} marginTop={50}>
               <Heading fontSize="20px" color="blue.800">
                 Public Transport{" "}
@@ -161,6 +167,7 @@ export default function DSelection() {
               <Text color={"gray.500"}></Text>
               <Button>Chat now</Button>
             </Stack>
+            </a>
           </Card>
           <Card>
             <Box

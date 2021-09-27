@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-// import Axios from "axios";
+import Axios from "axios";
+import { Redirect } from "react-router";
 //custom hook
 
 const useForm = (callback, validate, setSignInClicked) => {
@@ -26,20 +27,22 @@ const useForm = (callback, validate, setSignInClicked) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors(validate(values));
-    // if (Object.keys(errors).length === 0) {
-    //   Axios.post("http://localhost:5000/customer/login", {
-    //     email: email,
-    //     password: password,
-    //   }).then((response) => {
-    //     if (!response.data.auth) {
-    //       setBackEndErrors(response.data.message);
-    //     } else {
-    //       localStorage.setItem("token", response.data.token);
-    //       setSignInClicked(true);
-    //       setIsSubmitting(true);
-    //     }
-    //   });
-    // }
+    if (Object.keys(errors).length === 0) {
+      Axios.post("http://localhost:5000/login", {
+        email: email,
+        password: password
+      }).then((response) => {
+        if (!response.data.auth) {
+          console.log("error")
+          setBackEndErrors(response.data.msg);
+        } else {
+          localStorage.setItem("access_token", response.data.access_token);
+          localStorage.setItem("user", JSON.stringify(response.data.user));
+          setSignInClicked(true);
+          setIsSubmitting(true);
+        }
+      });
+    }
   };
 
 

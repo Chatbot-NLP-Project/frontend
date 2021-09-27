@@ -1,6 +1,6 @@
 import BottomFooter from "../../components/Footer/BottomFooter";
 import Footer from "../../components/Footer/Footer";
-import Details from "../../components/Profile/Details";
+import UserProfile from "../../components/Profile/UserProfile";
 import { useParams } from "react-router";
 
 const Profile = () => {
@@ -9,7 +9,7 @@ const Profile = () => {
 
     return ( 
         <>
-            <Details id={ id } />
+            <UserProfile />
             <Footer />
             <BottomFooter />
         </>

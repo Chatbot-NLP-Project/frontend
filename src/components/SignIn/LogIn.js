@@ -13,6 +13,7 @@ function LogIn(props) {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   function submitForm() {
+    console.log("form submitted")
     setIsSubmitted(true);
   }
   return (
@@ -21,12 +22,12 @@ function LogIn(props) {
     background-size: cover !important; <Redirect to='/' />*/}
       <div className="login-container">
         <div className="login-content-left">
-          <img className="login-img" src="imgs/svg-4.svg" alt="Security" />
+          <img className="login-img" src="imgs/sapiens login.png" alt="Security" />
         </div>
         {!isSubmitted ? (
           <FormLogIn submitForm={submitForm} setSignInClicked={props.setSignInClicked}/>
         ) : (
-          <Redirect to='/' />
+          <Redirect to='/domain' />
         )}
         {/* <FormLogIn submitForm={submitForm} /> */}
       </div>
