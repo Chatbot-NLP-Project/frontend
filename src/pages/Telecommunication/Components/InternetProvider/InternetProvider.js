@@ -6,6 +6,15 @@ const GeneralOptions = (props) => {
   const mobitel = () => {
     props.actionProvider.handleProvider("Mobitel");
   }
+  const dialog = () => {
+    props.actionProvider.handleProvider("Dialog");
+  }
+  const hutch = () => {
+    props.actionProvider.handleProvider("Hutch");
+  }
+  const airtel = () => {
+    props.actionProvider.handleProvider("Airtel");
+  }
   const options = [
     {
       name: "Mobitel",
@@ -14,21 +23,21 @@ const GeneralOptions = (props) => {
     },
     {
         name: "Dialog",
-        handler: () => {},
+        handler: dialog,
         id: 2,
       },
     {
       name: "Airtel",
-      handler: () => {},
+      handler: airtel,
       id: 3,
     },
     {
       name: "Hutch",
-      handler: () => {},
+      handler: hutch,
       id: 4,
     },
   ];
-  return <Options options={options} title="Service Provider" {...props} />;
+  return <Options options={options} title="Select Internet Service Provider" {...props} />;
 };
 
 export default GeneralOptions;

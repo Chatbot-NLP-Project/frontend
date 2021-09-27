@@ -1,18 +1,19 @@
-.airport-selector-container {
+.packages-selector-container {
   background-color: #2898ec;
   color: #fff;
   padding: 10px;
+  width: 50%;
   border-radius: 5px;
   margin: -5px 0px;
   font-size: 0.9rem;
 }
 
-.airport-selector-heading {
+.packages-selector-heading {
   font-size: 1rem;
   margin: 0 0 8px 0;
 }
 
-.airport-button-confirm {
+.packages-button-confirm {
   display: block;
   margin: 12px auto;
   background-color: #fff;
@@ -24,7 +25,7 @@
   border: none;
 }
 
-.airport-selector {
+.packages-selector {
   background: #fff;
   color: #2898ec;
   font-weight: bold;

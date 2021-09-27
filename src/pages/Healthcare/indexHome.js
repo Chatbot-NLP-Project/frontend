@@ -1,5 +1,5 @@
 import BottomFooter from "../../components/Footer/BottomFooter";
-import Footer from "../../components/Footer/Footer";
+import Footer from "../../components/Sections/Footer";
 import EducationMain from "../../components/Chatbot-Healthcare/EducationMain";
 
 function Education() {
@@ -7,7 +7,7 @@ function Education() {
         <>
             <EducationMain />
             <Footer />
-            <BottomFooter botName="XYRON" />
+            {/* <BottomFooter botName="XYRON" /> */}
         </>
     );
 }

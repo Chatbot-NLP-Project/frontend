@@ -14,6 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "@chakra-ui/react";
 import Header from "../../components/Sections/Header";
+import "./index.css";
 
 export const Container = styled.div`
   display: flex;
@@ -80,7 +81,7 @@ export default function DSelection() {
           </Heading>
         </Box>
         <Container>
-          <Card>
+          <Card className="domain-link">
             <Box
               h={"100px"}
               mt={-6}
@@ -96,7 +97,7 @@ export default function DSelection() {
                 w="fit-content"
               />
             </Box>
-            <a href="http://localhost:3000/healthcare">
+            <a className="domain-link" href="http://localhost:3000/healthcare">
             <Stack marginTop={10} marginTop={50}>
               <Heading fontSize="20px" color="blue.800">
                 Healthcare
@@ -109,12 +110,12 @@ export default function DSelection() {
                 fontWeight="normal"
                 lineHeight={1.5}
               >
-                Are you sick? Do you want to channel a doctor?
+                Do you want to channel a doctor?
               </Heading>
               <Text color={"gray.500"}></Text>
-              <a href="/signin">
+     
                 <Button>Chat now</Button>
-              </a>
+   
             </Stack>
             </a>
           </Card>
@@ -185,6 +186,8 @@ export default function DSelection() {
                 // alignItems="center"
               />
             </Box>
+            <a href="http://localhost:3000/profile">
+
             <Stack marginTop={10} marginTop={50}>
               <Heading fontSize="20px" color="blue.800">
                 Dashboard
@@ -203,6 +206,7 @@ export default function DSelection() {
               <Text color={"gray.500"}></Text>
               <Button>Chat now</Button>
             </Stack>
+            </a>
           </Card>
         </Container>
       </Flex>

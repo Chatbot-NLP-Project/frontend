@@ -12,7 +12,7 @@ const GeneralOptions = props => {
     { name: "Complaints", handler: () => {}, id: 2 },
     {
       name: "Current Balance",
-      handler: () => {},
+      handler: props.actionProvider.getCurrentBalance,
       id: 3
     }
   ];

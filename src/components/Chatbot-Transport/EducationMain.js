@@ -30,7 +30,7 @@ function EducationMain() {
       </Flex>
       <Heading as="h1" size="4xl">
         <Text color={colorMode === "light" ? "white" : "white"}>
-          TELECOMMUNICATION DOMAIN
+          PUBLIC TRANSPORTATION DOMAIN
         </Text>
       </Heading>
 
