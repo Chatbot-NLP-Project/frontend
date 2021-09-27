@@ -16,8 +16,8 @@ const Doctors = (props) => {
   const renderDoctor = () => {
     return props.doctors.map((doctor) => {
       function selectDate() {
-        props.actionProvider.selectDoctor(doctor.doctorID);
-        // console.log(doctor.doctorID);
+        props.actionProvider.selectDoctor(props.doctors.indexOf(doctor));
+        console.log(props);
       }
       return (
         <StackItem key={doctor.doctorID}>
@@ -26,7 +26,7 @@ const Doctors = (props) => {
             bg="#f2fcfc"
             width="40%"
             borderWidth="1px"
-            borderRadius="lg"
+            borderRadius="5px"
             padding="10px"
             // mr={40}
             mb={1}

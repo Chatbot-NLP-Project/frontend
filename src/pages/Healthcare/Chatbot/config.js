@@ -5,6 +5,10 @@ import BotIcon from "../Components/botIcon";
 // import Options from "../components/Options/Options";
 import Doctors from "../Components/Doctors/doctors";
 import CalenderObject from "../Components/Calender/calender";
+import CovidLocalCurrent from "../Components/Corona/local";
+import CovidLocalToday from "../Components/Corona/localToday";
+import CovidGlobalCurrent from "../Components/Corona/global";
+import Rating from "../Components/Rating/rating";
 
 const config = {
   initialMessages: [
@@ -41,6 +45,9 @@ const config = {
     doctors: [],
     channel: [],
     date: [],
+    covidLocalCurrent: [],
+    covidLocalToday: [],
+    covidGlobalCurrent: [],
   },
   widgets: [
     {
@@ -51,6 +58,25 @@ const config = {
     {
       widgetName: "calender",
       widgetFunc: (props) => <CalenderObject {...props} />,
+    },
+    {
+      widgetName: "covidLocalCurrent",
+      widgetFunc: (props) => <CovidLocalCurrent {...props} />,
+      mapStateToProps: ["covidLocalCurrent"],
+    },
+    {
+      widgetName: "covidLocalToday",
+      widgetFunc: (props) => <CovidLocalToday {...props} />,
+      mapStateToProps: ["covidLocalToday"],
+    },
+    {
+      widgetName: "covidGlobalCurrent",
+      widgetFunc: (props) => <CovidGlobalCurrent {...props} />,
+      mapStateToProps: ["covidGlobalCurrent"],
+    },
+    {
+      widgetName: "rating",
+      widgetFunc: (props) => <Rating {...props} />,
     },
   ],
 
