@@ -38,6 +38,7 @@ const config = {
     currentState: ["normal"],
     from: [],
     to: [],
+    mode: [],
     schedule: [],
     methods: [],
     schedules: [],

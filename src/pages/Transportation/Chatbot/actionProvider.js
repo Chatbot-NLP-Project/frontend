@@ -65,17 +65,17 @@ class ActionProvider {
     }));
   };
 
-  addMethod = (method) => {
+  addMode = (mode) => {
     this.setState((state) => ({
       ...state,
-      to: [...state.to, method],
+      mode: [...state.mode, mode],
     }));
   };
 
-  removeMethod = () => {
+  removeMode = () => {
     this.setState((state) => ({
       ...state,
-      method: [],
+      mode: [],
     }));
   };
 
@@ -98,8 +98,9 @@ class ActionProvider {
   // Transportation Only
 
 
-  methodHandler = (to, from) => {
-    // Axios.post("http://127.0.0.1:5000/travel", { to: to, from: from, }).then(
+  methodHandler = (to, from, mode) => {
+    console.log(to, from , mode);
+    // Axios.post("http://127.0.0.1:5000/travel", { to: to, from: from, mode: mode, }).then(
     //   (response) => {
     //     console.log(response);
     //     msg = this.createChatBotMessage(response.data.members);
@@ -107,11 +108,24 @@ class ActionProvider {
     //     console.log(response.data.members);
     //   }
     // );
+
+
+    // clear current state, from to and method
   };
 
-  fromHandler = (message) => {
-    // check if from, to set
-    // call methodHandler
+  fromHandler = (message, state) => {
+    var msg;
+    console.log(message);
+    console.log(state.from.length);
+    if (state.from.length != 0) {
+      this.methodHandler(state.to[0], state.from[0], message.toLowerCase())
+    } else {
+      console.log('came to else');
+      this.addMode(message)
+      this.setChatbotState("travelFrom")
+      msg = this.createChatBotMessage('What are you starting the journey from? ');
+      this.setChatbotMessage(msg);
+    }
   }
 
   stationHandler = (message) => {
@@ -140,7 +154,6 @@ class ActionProvider {
           console.log(response.data.members);
           this.setChatbotState("travel");
           this.stationHandler(message);
-          console.log(state.from);
           // if from is not set, ask to set from
           // if (!from) {
           //   msg = this.createChatBotMessage("What is the starting point?");
@@ -148,7 +161,7 @@ class ActionProvider {
           // call database and get available options
           // this.methodHandler(to, from);
           // display options
-          msg = this.createChatBotMessage('Not yet finished');
+          msg = this.createChatBotMessage('What\'s your preferred method? bus or train? ');
         } else {
           msg = this.createChatBotMessage(response.data.members);
         }

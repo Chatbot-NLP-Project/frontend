@@ -9,10 +9,9 @@ class MessageParser {
   parse(message) {
     var siz = this.state.currentState.length - 1;
     if ( this.state.currentState[siz] == "travel"){
-      this.actionProvider.fromHandler(message);
+      this.actionProvider.fromHandler(message, this.state);
     }
     else{
-    this.actionProvider.stationHandler(message);
     this.actionProvider.messageHandler(message, this.state);
     }
 
