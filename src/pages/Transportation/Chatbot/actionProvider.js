@@ -99,15 +99,24 @@ class ActionProvider {
 
 
   methodHandler = (to, from, mode) => {
+    var msg;
     console.log(to, from , mode);
-    // Axios.post("http://127.0.0.1:5000/travel", { to: to, from: from, mode: mode, }).then(
-    //   (response) => {
-    //     console.log(response);
-    //     msg = this.createChatBotMessage(response.data.members);
-    //     this.setChatbotMessage(msg);
-    //     console.log(response.data.members);
-    //   }
-    // );
+    Axios.post("http://127.0.0.1:5000/travel", { to: to, from: from, mode: mode, }).then(
+      (response) => {
+        if (response.data.er == 1) {
+          msg = this.createChatBotMessage("Sorry. Entered locations could not be found. Try with different locations.");
+          this.setChatbotMessage(msg);
+          // clear state
+        } else {
+          console.log(response.data.methods);
+          this.setState((state) => ({ ...state, methods: response.data.methods }));
+          this.setChatbotState("normal");
+          // msg = this.createChatBotMessage("Ok sure");
+          msg = this.createChatBotMessage("Ok here's what i have found.", { widget: "methods" });
+          this.setChatbotMessage(msg);
+        }
+      }
+    );
 
 
     // clear current state, from to and method
@@ -115,16 +124,26 @@ class ActionProvider {
 
   fromHandler = (message, state) => {
     var msg;
-    console.log(message);
-    console.log(state.from.length);
     if (state.from.length != 0) {
-      this.methodHandler(state.to[0], state.from[0], message.toLowerCase())
+      if (message.toLowerCase() == 'bus' || message.toLowerCase() == 'train'){
+          this.methodHandler(state.to[0], state.from[0], message.toLowerCase())
+      } else {
+        msg = this.createChatBotMessage('Sorry I didn\'t get that. Please eneter bus or train. ');
+        this.setChatbotMessage(msg);
+      }
+    }
+    else if (state.mode.length != 0) {
+      this.methodHandler(state.to[0], message.toLowerCase(), state.mode[0])
     } else {
-      console.log('came to else');
-      this.addMode(message)
-      this.setChatbotState("travelFrom")
-      msg = this.createChatBotMessage('What are you starting the journey from? ');
-      this.setChatbotMessage(msg);
+        if (message.toLowerCase() == 'bus' || message.toLowerCase() == 'train'){
+            this.addMode(message)
+            this.setChatbotState("travelFrom")
+            msg = this.createChatBotMessage('Where are you starting the journey from? ');
+            this.setChatbotMessage(msg);
+        } else {
+          msg = this.createChatBotMessage('Sorry I didn\'t get that. Please eneter bus or train. ');
+          this.setChatbotMessage(msg);
+        }
     }
   }
 
@@ -154,13 +173,6 @@ class ActionProvider {
           console.log(response.data.members);
           this.setChatbotState("travel");
           this.stationHandler(message);
-          // if from is not set, ask to set from
-          // if (!from) {
-          //   msg = this.createChatBotMessage("What is the starting point?");
-          // }
-          // call database and get available options
-          // this.methodHandler(to, from);
-          // display options
           msg = this.createChatBotMessage('What\'s your preferred method? bus or train? ');
         } else {
           msg = this.createChatBotMessage(response.data.members);

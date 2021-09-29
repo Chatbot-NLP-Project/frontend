@@ -42,6 +42,7 @@ const useForm = (callback, validate) => {
         password: password,
         simType: simType
       }).then((response) => {
+        console.log(response);
         if (!response.data.registered) {
           console.log(response.data.error);
           setBackEndErrors({registered: false, error: response.data.error});
