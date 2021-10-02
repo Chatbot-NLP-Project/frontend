@@ -5,7 +5,7 @@ import BotIcon from "../Components/botIcon";
 import GeneralOptions from "../Components/GeneralOptions/GeneralOptions";
 import InternetProvider from "../Components/InternetProvider/InternetProvider";
 import PackageDetails from "../Components/PackageDetails/PackageDetails";
-import PackageTypes from "../Components/PackageTypes/PackageTypes";
+import PackageTypes from "../Components/PackageTypes/packageTypes";
 import Packages from "../Components/Packagez/Packages";
 import Balance from "../Components/Balance/Balance";
 // Widgets are components that create you own and then you register them in the config
