@@ -109,11 +109,11 @@ function Navbar(props) {
         </MenuItems>
         <MenuItems>
           {props.Auth.userID === 1 ? (
-            <Link as={ReactRouterLink} to="/">
+            <Link as={ReactRouterLink} to="/aboutus">
               About Us
             </Link>
           ) : (
-            <Link as={ReactRouterLink} to="/">
+            <Link as={ReactRouterLink} to="/aboutus">
               About Us
             </Link>
           )}

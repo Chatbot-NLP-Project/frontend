@@ -14,6 +14,12 @@ class MessageParser {
     else if ( this.state.currentState[siz] == "travelFrom"){
       this.actionProvider.fromHandler(message, this.state);
     }
+    else if ( this.state.currentState[siz] == "travelTo"){
+      this.actionProvider.toHandler(message, this.state);
+    }
+    else if ( this.state.currentState[siz] == "complaint"){
+      this.actionProvider.complaintHandler(message, this.state);
+    }
     else{
     this.actionProvider.messageHandler(message, this.state);
     }

@@ -23,20 +23,6 @@ class ActionProvider {
     }));
   };
 
-  addDisease = (dis) => {
-    this.setState((state) => ({
-      ...state,
-      sympthoms: [...state.sympthoms, dis],
-    }));
-  };
-
-  removeDisease = () => {
-    this.setState((state) => ({
-      ...state,
-      sympthoms: [],
-    }));
-  };
-
   addFrom = (station) => {
     this.setState((state) => ({
       ...state,
@@ -79,64 +65,169 @@ class ActionProvider {
     }));
   };
 
-  diseaseHandler = (message) => {
-    this.addDisease(message);
+  addModeDescription = (modeDescription) => {
+    this.setState((state) => ({
+      ...state,
+      modeDescription: [...state.mode, modeDescription],
+    }));
   };
 
-  predictHandler = (message) => {
-    var msg;
-    Axios.post("http://127.0.0.1:5000/predict", { diseases: message }).then(
-      (response) => {
-        console.log(message);
-        msg = this.createChatBotMessage(response.data.members);
-        this.setChatbotMessage(msg);
-        console.log(response.data.members);
-      }
-    );
+  removeModeDescription = () => {
+    this.setState((state) => ({
+      ...state,
+      modeDescription: [],
+    }));
   };
+
+  addComplaintDetails = (complaintDetails) => {
+    this.setState((state) => ({
+      ...state,
+      complaintDetails: [...state.mode, complaintDetails],
+    }));
+  };
+
+  removeComplaintDetails = () => {
+    this.setState((state) => ({
+      ...state,
+      complaintDetails: [],
+    }));
+  };
+
+  clearStates = () => {
+    this.removeFrom();
+    this.removeTo();
+    this.removeMode();
+    this.removeModeDescription();
+    this.removeComplaintDetails();
+  }
 
   // Transportation Only
 
+  sendComplaint = (mode, description, details) => {
+    var body;
+    
+
+  }
+
+  complaintHandler = (message, state) => {
+    var msg;
+    var reply  = this.replyFilter(message);
+      if (reply == 'yes'){
+        if (state.mode.length != 0){
+          if (state.mode == 'bus'){
+            msg = this.createChatBotMessage("What is the bus registration plate's number? Route number and route name? Tell me as you know in a single message.");
+          } else if (state.mode == 'train') {
+            msg = this.createChatBotMessage("What train is this?");
+          } 
+        } else {
+          this.addMode('unidentified');
+          msg = this.createChatBotMessage("Tell me some details about the transportation method you're using in a single message.");
+        }
+        // this.setChatbotState("normal");
+        this.setChatbotMessage(msg);
+      } else if (reply == 'no') {
+        msg = this.createChatBotMessage('I\'m sorry about the bad experience. 🙁');
+        this.setChatbotMessage(msg);
+        this.setChatbotState("normal");
+      } else if (state.mode[0] != '' && state.modeDescription.length == 0) {
+        this.addModeDescription(message);
+        msg = this.createChatBotMessage('Please briefly explain your experience in a single message.');
+        this.setChatbotMessage(msg);
+      } else {
+        if (message != ''){
+          this.addComplaintDetails(message);
+          // this.sendComplaint(state.mode[0], state.modeDescription[0], message);
+          msg = this.createChatBotMessage('Okay, your situation will be looked into. Thank you for informing us.');
+          this.setChatbotMessage(msg);
+          this.clearStates();
+          this.setChatbotState("normal");
+        }
+      }
+  }
+
+
+
+
+  replyFilter = (reply) => {
+    const yes = ['yes','yeah','yep','aye','alright','sure','indeed','absolutely', 'of course', 'by all means'];
+    const no = ['no', 'nope', 'not at all', 'never', 'of course not','nah']
+    var wrds = reply.split(' ').map(v => v.toLowerCase());
+
+    if (wrds.includes('to')){
+      wrds.shift();
+      return wrds[0];
+    }
+    else if (wrds.includes('from')){
+      wrds.shift();
+      return wrds[0];
+    }
+    else if (wrds.includes('by')){
+      wrds.shift();
+      return wrds[0];
+    }
+    else if (reply in yes){
+      return 'yes';
+    }
+    else if (reply in no){
+      return 'no';
+    }
+    else {
+      return reply.toLowerCase();
+    }
+  }
 
   methodHandler = (to, from, mode) => {
     var msg;
-    console.log(to, from , mode);
     Axios.post("http://127.0.0.1:5000/travel", { to: to, from: from, mode: mode, }).then(
       (response) => {
         if (response.data.er == 1) {
+          this.setChatbotState("normal");
           msg = this.createChatBotMessage("Sorry. Entered locations could not be found. Try with different locations.");
           this.setChatbotMessage(msg);
-          // clear state
+          this.clearStates();
         } else {
           console.log(response.data.methods);
           this.setState((state) => ({ ...state, methods: response.data.methods }));
           this.setChatbotState("normal");
-          // msg = this.createChatBotMessage("Ok sure");
           msg = this.createChatBotMessage("Ok here's what i have found.", { widget: "methods" });
           this.setChatbotMessage(msg);
+          this.clearStates();
         }
       }
     );
-
-
-    // clear current state, from to and method
   };
 
   fromHandler = (message, state) => {
+    var reply = this.replyFilter(message)
     var msg;
     if (state.from.length != 0) {
-      if (message.toLowerCase() == 'bus' || message.toLowerCase() == 'train'){
-          this.methodHandler(state.to[0], state.from[0], message.toLowerCase())
+      if (reply == 'bus' || reply == 'train'){
+      // if (message.toLowerCase() == 'bus' || message.toLowerCase() == 'train'){
+          this.addMode(reply);
+          if(state.to.length != 0) {
+            this.methodHandler(state.to[0], state.from[0], reply)
+          } else {
+            this.setChatbotState('travelTo');
+            msg = this.createChatBotMessage('Where do you want to go to?');
+            this.setChatbotMessage(msg);
+          }
       } else {
         msg = this.createChatBotMessage('Sorry I didn\'t get that. Please eneter bus or train. ');
         this.setChatbotMessage(msg);
       }
     }
     else if (state.mode.length != 0) {
-      this.methodHandler(state.to[0], message.toLowerCase(), state.mode[0])
+      this.addFrom(reply);
+      if(state.to.length != 0){
+        this.methodHandler(state.to[0], reply, state.mode[0])
+      } else {
+        this.setChatbotState('travelTo');
+        msg = this.createChatBotMessage('Where do you want to go to?');
+        this.setChatbotMessage(msg);
+      }
     } else {
-        if (message.toLowerCase() == 'bus' || message.toLowerCase() == 'train'){
-            this.addMode(message)
+        if (reply == 'bus' || reply == 'train'){
+            this.addMode(reply)
             this.setChatbotState("travelFrom")
             msg = this.createChatBotMessage('Where are you starting the journey from? ');
             this.setChatbotMessage(msg);
@@ -145,6 +236,20 @@ class ActionProvider {
           this.setChatbotMessage(msg);
         }
     }
+  }
+
+  toHandler = (message, state) => {
+    var msg;
+    var reply = this.replyFilter(message);
+    console.log(reply);
+    console.log(state);
+    if (reply != '') {
+      this.addTo(reply);
+      this.methodHandler(reply, state.from[0], state.mode[0]);
+    } else {
+      msg = this.createChatBotMessage('Sorry I didn\'t get that. Please enter the destination point again ');
+      this.setChatbotMessage(msg);
+    }   
   }
 
   stationHandler = (message) => {
@@ -163,6 +268,12 @@ class ActionProvider {
     if ( wrds.includes('to') ) {
       this.addTo(wrds[wrds.indexOf('to') + 1]) ;
     }
+    if ( wrds.includes('bus') ) {
+      this.addMode('bus') ;
+    }
+    if ( wrds.includes('train') ) {
+      this.addMode('train') ;
+    }
   };
 
   messageHandler = (message, state) => {
@@ -170,28 +281,21 @@ class ActionProvider {
     Axios.post("http://127.0.0.1:5000/reply", { msg: message }).then(
       (response) => {
         if (response.data.members == "travel") {
-          console.log(response.data.members);
           this.setChatbotState("travel");
           this.stationHandler(message);
           msg = this.createChatBotMessage('What\'s your preferred method? bus or train? ');
-        } else {
+        } else if (response.data.members == "complaint"){
+          this.setChatbotState("complaint");
+          this.stationHandler(message);
+          msg = this.createChatBotMessage('Do you want to make a complaint? ');
+        }
+        else {
           msg = this.createChatBotMessage(response.data.members);
         }
         this.setChatbotMessage(msg);
       }
     );
   };
-
-  // Axios.get("http://127.0.0.1:5000/chat").then((response) => {
-  //   console.log(response.data.members[0]);
-  //   msg = this.createChatBotMessage(response.data.members[1]);
-  //   this.setChatbotMessage(msg);
-  // });
-  // var n = msg.toString();
-  // handleJavascriptQuiz = () => {
-  //   const msg = this.createChatBotMessage("Please Enter three symptom");
-  //   this.setChatbotMessage(msg);
-  // };
 }
   
 export default ActionProvider;
