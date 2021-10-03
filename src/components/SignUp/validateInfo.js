@@ -1,3 +1,7 @@
+
+import React, { useState } from "react";
+import validator from 'validator'
+
 export default function validateInfo(values) {
   let errors = {};
 
@@ -29,8 +33,21 @@ export default function validateInfo(values) {
     errors.password = "Password is required";
   } else if (values.password.length < 8) {
     errors.password = "Password needs to be 8 characters or more";
+  } 
+  else if (values.password.toLowerCase() === values.password) {
+    errors.password = "Password must contain an uppercase letter";
   }
+  else if (values.password.toUpperCase() === values.password) {
+    errors.password = "Password must contain a lowercase letter";
+  }
+  // else if (/\d/.test(values.password)) {
+  //   errors.password = "Password must contain a number";
+  // }
+  // else if (/[ `!@#$%^&*()_+\-=\]{};':"\\|,.<>?~]/.test(values.password)) {
+  //   errors.password = "Password must contain a special character  ";
+  // }
 
+  // ^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$
   if (!values.password2) {
     errors.password2 = "Confirmation password is required";
   } else if (values.password2 !== values.password) {

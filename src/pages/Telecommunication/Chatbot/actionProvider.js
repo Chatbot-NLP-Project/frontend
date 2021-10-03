@@ -1,14 +1,14 @@
 import Axios from "axios";
 import MessageParser from "./messageParser";
 //this is used to update internal state of the chatbot
-//The actionprovider controls what kind of action that the chatbot is going to 
-//perform. The actionprovider is given the createChatBotMessage and createClientMessage 
+//The actionprovider controls what kind of action that the chatbot is going to
+//perform. The actionprovider is given the createChatBotMessage and createClientMessage
 //functions in the constructor, which you can use to create a new responses.
 class ActionProvider {
   constructor(createChatBotMessage, setStateFunc, createClientMessage) {
     this.createChatBotMessage = createChatBotMessage;
     this.setState = setStateFunc;
-    this.createClientMessage = createClientMessage
+    this.createClientMessage = createClientMessage;
   }
 
   setChatbotMessage = (message) => {
@@ -30,7 +30,7 @@ class ActionProvider {
     const message = this.createChatBotMessage(
       "I have data package details about Mobitel, Dialog, Hutch and Airtel",
       {
-        widget: "InternetProvider"
+        widget: "InternetProvider",
       }
     );
     this.setChatbotMessage(message);
@@ -38,42 +38,35 @@ class ActionProvider {
   //Display Package Types
   handleProvider = (type) => {
     Axios.post("http://127.0.0.1:5000/getPackageTypes", {
-      provider: type
+      provider: type,
     }).then((response) => {
       this.setState((state) => ({
         ...state,
-        provider : type,
-        packageTypes: response.data.packageTypes
+        provider: type,
+        packageTypes: response.data.packageTypes,
       }));
-      const message = this.createChatBotMessage(
-        `${type} Plans and Rates`,
-        {
-          widget: "packageTypess"
-        }
-      );
+      const message = this.createChatBotMessage(`${type} Plans and Rates`, {
+        widget: "packageTypess",
+      });
       this.setChatbotMessage(message);
-    })
-    
+    });
   };
   //Display packages of package type
   selectPackageType = (package_type, provider) => {
     Axios.post("http://127.0.0.1:5000/getPackages", {
       provider: provider,
-      packageType: package_type
+      packageType: package_type,
     }).then((response) => {
       this.setState((state) => ({
         ...state,
-        packageType : package_type,
-        packages: response.data.packages
+        packageType: package_type,
+        packages: response.data.packages,
       }));
-      const message = this.createChatBotMessage(
-        `${package_type}`,
-        {
-          widget: "packages"
-        }
-      );
+      const message = this.createChatBotMessage(`${package_type}`, {
+        widget: "packages",
+      });
       this.setChatbotMessage(message);
-    })
+    });
   };
 
   //Display package info
@@ -81,58 +74,259 @@ class ActionProvider {
     Axios.post("http://127.0.0.1:5000/getPackage", {
       packageName: packageName,
       packageType: packageType,
-      provider: provider
+      provider: provider,
     }).then((response) => {
-      console.log(response.data.packageDetails)
+      // console.log(response.data.packageDetails)
       this.setState((state) => ({
         ...state,
-        packageDetails : response.data.packageDetails
+        packageDetails: response.data.packageDetails,
       }));
       const message = this.createChatBotMessage(
         `${provider} -> ${packageType} -> ${packageName}`,
         {
-          widget: "packageDetails"
+          widget: "packageDetails",
         }
       );
       this.setChatbotMessage(message);
-    })
+    });
   };
 
   //Display package info
   activateDataPackage = (packageName, provider) => {
-    console.log("activateDataPackage")
-    console.log(provider)
+    // console.log("activateDataPackage")
+    // console.log(provider)
     Axios.post("http://127.0.0.1:5000/activateDataPackage", {
       packageName: packageName,
       provider: provider,
-      userID: JSON.parse(localStorage.getItem("user"))["user_id"]
+      userID: JSON.parse(localStorage.getItem("user"))["user_id"],
     }).then((response) => {
-      const message = this.createChatBotMessage(
-        `${response.data.res}`
-      );
+      const message = this.createChatBotMessage(`${response.data.res}`);
       this.setChatbotMessage(message);
-    })
+    });
   };
 
   //Display current balance
   getCurrentBalance = () => {
-    console.log("getCurrentBalance")
+    // console.log("getCurrentBalance")
     Axios.post("http://127.0.0.1:5000/getCurrentBalance", {
-      userID: JSON.parse(localStorage.getItem("user"))["user_id"]
+      userID: JSON.parse(localStorage.getItem("user"))["user_id"],
     }).then((response) => {
       this.setState((state) => ({
         ...state,
-        user : response.data.user
+        user: response.data.user,
+      }));
+      const message = this.createChatBotMessage(``, {
+        widget: "balance",
+      });
+      this.setChatbotMessage(message);
+    });
+  };
+
+  //Handle complaints
+  handleComplaint = (provider) => {
+    this.setState((state) => ({
+      ...state,
+      currentState: "complaint",
+    }));
+    const message = this.createChatBotMessage(
+      `Your internet service provider is ${provider}. We will send your complaint as an email to the relevant authorities`
+    );
+    this.setChatbotMessage(message);
+    const message2 = this.createChatBotMessage(`Enter the complaint subject`);
+    this.setChatbotMessage(message2);
+  };
+
+  //Handle subject of complaint
+  handleSubject = (msg) => {
+    this.setState((state) => ({
+      ...state,
+      currentState: "subject",
+      subject: msg,
+    }));
+    const message = this.createChatBotMessage(
+      `Enter the complaint email body. Enter whatever issue you have about your internet connection`
+    );
+    this.setChatbotMessage(message);
+  };
+
+  //Display current balance
+  makeComplaint = (msg, subject) => {
+    Axios.post("http://127.0.0.1:5000/makeComplaint", {
+      subject: subject,
+      body: msg,
+      userID: JSON.parse(localStorage.getItem("user"))["user_id"],
+    }).then((response) => {
+      this.setState((state) => ({
+        ...state,
+        currentState: "normal",
+        subject: "",
+      }));
+      const message = this.createChatBotMessage(`${response.data.res}`);
+      this.setChatbotMessage(message);
+    });
+  };
+
+  //View all activated packages
+  viewActivatedPackages = () => {
+    Axios.post("http://127.0.0.1:5000/viewActivatedPackages", {
+      userID: JSON.parse(localStorage.getItem("user"))["user_id"],
+    }).then((response) => {
+      if (response.data.Null == 0) {
+        this.setState((state) => ({
+          ...state,
+          activatedPackages: response.data.activatedPackages,
+        }));
+        const message = this.createChatBotMessage(
+          `Here are the activated packages`,
+          {
+            widget: "activatedPackages",
+          }
+        );
+        this.setChatbotMessage(message);
+      } else {
+        const message = this.createChatBotMessage(
+          `There are no activated packages`
+        );
+        this.setChatbotMessage(message);
+      }
+    });
+  };
+
+  //Display date to select to display data packages
+  displayCalendarForPackages = (msg, subject) => {
+    this.setState((state) => ({
+      ...state,
+      currentState: "dateSelection",
+    }));
+    const message = this.createChatBotMessage(`Select a date`, {
+      widget: "calendar",
+    });
+    this.setChatbotMessage(message);
+  };
+
+  //View all activated packages by date
+  viewDataPackagesByDate = (value) => {
+    var month =
+      parseInt(value.getMonth() + 1) >= 10
+        ? "-" + (value.getMonth() + 1)
+        : "-0" + (value.getMonth() + 1);
+    var day =
+      parseInt(value.getDate()) >= 10
+        ? "-" + value.getDate()
+        : "-0" + value.getDate();
+    var date = value.getFullYear() + month + day;
+    Axios.post("http://127.0.0.1:5000/viewActivatedPackagesByDate", {
+      userID: JSON.parse(localStorage.getItem("user"))["user_id"],
+      date: date,
+    }).then((response) => {
+      console.log(response.data);
+      if (response.data.Null == 0) {
+        this.setState((state) => ({
+          ...state,
+          activatedPackages: response.data.activatedPackages,
+        }));
+        const message = this.createChatBotMessage(
+          `Here are the activated packages for ${date}`,
+          {
+            widget: "activatedPackages",
+          }
+        );
+        this.setChatbotMessage(message);
+      } else {
+        const message = this.createChatBotMessage(
+          `There are no activated packages`
+        );
+        this.setChatbotMessage(message);
+      }
+    });
+  };
+
+  //View LKR Price per USD
+  viewLKRValue = () => {
+    Axios.post("http://127.0.0.1:5000/getMoneyValue")
+    .then((response) => {
+      console.log("viewLKRValue")
+      console.log(response.data)
+      this.setState((state) => ({
+        ...state,
+        pricesLKR: response.data.prices,
       }));
       const message = this.createChatBotMessage(
         ``,
         {
-          widget: "balance"
+          widget: "LKRValue",
         }
       );
       this.setChatbotMessage(message);
-    })
-  }
+    });
+  };
+
+    //View Currency values per USD
+    viewCurrencyValues = () => {
+      Axios.post("http://127.0.0.1:5000/getMoneyValue")
+      .then((response) => {
+        this.setState((state) => ({
+          ...state,
+          pricesCurrency: response.data.prices,
+        }));
+        const message = this.createChatBotMessage(
+          ``,
+          {
+            widget: "currencyValues",
+          }
+        );
+        this.setChatbotMessage(message);
+      });
+    };
+
+      //View CryptoCurrency Values
+      viewCryptoCurrencyPrice = () => {
+        Axios.post("http://127.0.0.1:5000/getCryptoPrice")
+        .then((response) => {
+          this.setState((state) => ({
+            ...state,
+            pricesCrypto: response.data.prices,
+          }));
+          const message = this.createChatBotMessage(
+            ``,
+            {
+              widget: "cryptoPrice",
+            }
+          );
+          this.setChatbotMessage(message);
+        });
+      };
+
+
+      
+  //View CryptoCurrency Values
+  viewCryptoCurrencyPriceInLKR = () => {
+    Axios.post("http://127.0.0.1:5000/getCryptoPriceLKR")
+    .then((response) => {
+      this.setState((state) => ({
+        ...state,
+        prices: response.data.prices,
+      }));
+      const message = this.createChatBotMessage(
+        ``,
+        {
+          widget: "cryptoPriceLKR",
+        }
+      );
+      this.setChatbotMessage(message);
+    });
+  };
+
+//View General Options
+viewGeneralOptions = () => {
+    const message = this.createChatBotMessage('',
+      {
+        widget: "options",
+      }
+    );
+    this.setChatbotMessage(message);
+
+};
 
   //Normal chatbot message handler
   helloHandler = (message) => {
@@ -141,10 +335,17 @@ class ActionProvider {
       (response) => {
         console.log("Hello Handler called, Response :");
         console.log(response.data.reply);
-        if (response.data.reply == "predict") {
-          this.setChatbotState("predict");
-          msg = this.createChatBotMessage("Please Enter 4 symptoms");
-          this.removeDisease();
+        if (response.data.reply == "balance") {
+          console.log("balance if");
+          msg = "";
+          this.getCurrentBalance();
+        } else if (response.data.reply == "package") {
+          msg = this.createChatBotMessage("Select package");
+          this.handleDataPackage();
+        } else if (response.data.reply == "complaint") {
+          this.handleComplaint(
+            JSON.parse(localStorage.getItem("user"))["sim_type"]
+          );
         } else {
           msg = this.createChatBotMessage(response.data.reply);
         }
@@ -152,96 +353,6 @@ class ActionProvider {
       }
     );
   };
-
-
 }
 
 export default ActionProvider;
-
-// findDoctor = (message) => {
-//   var msg;
-//   Axios.post("http://127.0.0.1:5000/getDoc", { specialist: message }).then(
-//     (response) => {
-//       console.log(message);
-//       // msg = this.createChatBotMessage(response.data.members);
-//       // this.setChatbotMessage(msg);
-//       if (response.data.er == 1) {
-//         msg = this.createChatBotMessage("Please re-enter the specialty");
-//         this.setChatbotMessage(msg);
-//       } else {
-//         console.log(response.data.doc);
-//         this.setState((state) => ({ ...state, doctors: response.data.doc }));
-//         this.setChatbotState("normal");
-//         msg = this.createChatBotMessage("Ok sure", { widget: "doctors" });
-//         this.setChatbotMessage(msg);
-//       }
-//     }
-//   );
-// };
-
-// channelDoctor = (message, chObject) => {
-//   const msg2 = this.createChatBotMessage("Thank You");
-//   // this.setChatbotState("channel");
-//   this.setChatbotState("normal");
-//   console.log(chObject);
-
-//   this.setChatbotMessage(msg2);
-// };
-
-// predictHandler = (message) => {
-//   var msg;
-//   Axios.post("http://127.0.0.1:5000/predict", { diseases: message }).then(
-//     (response) => {
-//       console.log(message);
-//       msg = this.createChatBotMessage(response.data.members);
-//       this.setChatbotMessage(msg);
-//       console.log(response.data.members);
-//     }
-//   );
-// };
-
-
-  // Axios.get("http://127.0.0.1:5000/chat").then((response) => {
-  //   console.log(response.data.members[0]);
-  //   msg = this.createChatBotMessage(response.data.members[1]);
-  //   this.setChatbotMessage(msg);
-  // });
-  // var n = msg.toString();
-  // handleJavascriptQuiz = () => {
-  //   const msg = this.createChatBotMessage("Please Enter three symptom");
-  //   this.setChatbotMessage(msg);
-  // };
-
-  // selectDoctor = (docID) => {
-  //   // const msg1 = this.createChatBotMessage("Sure wait a minite");
-  //   // this.setChatbotMessage(msg1);
-  //   this.setState((state) => ({
-  //     ...state,
-  //     channel: [state.doctors[docID - 1]],
-  //   }));
-  //   const msg2 = this.createChatBotMessage("Sure. Please select the date", {
-  //     widget: "calender",
-  //   });
-  //   this.setChatbotState("channel");
-  //   this.setChatbotMessage(msg2);
-  // };
-
-  // selectTime = (value) => {
-  //   const msg1 = this.createChatBotMessage(
-  //     "Sure wait a minite and please enter time (9.00 AM - 4.00 PM)"
-  //   );
-  //   var date =
-  //     value.getFullYear() +
-  //     "-" +
-  //     (value.getMonth() + 1) +
-  //     "-" +
-  //     value.getDate();
-
-  //   console.log(date);
-  //   this.setState((state) => ({
-  //     ...state,
-  //     date: [date],
-  //   }));
-
-  //   this.setChatbotMessage(msg1);
-  // };

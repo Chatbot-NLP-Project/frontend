@@ -14,7 +14,7 @@ const Mid = () => {
     useEffect(()=> {
         Axios.get("http://localhost:5000/profile", {
             params : {
-                user_id:1   // set the user id by session_id
+                user_id:JSON.parse(localStorage.getItem("user"))["user_id"]   // set the user id by session_id
             }
           }).then((response) => {
               setFirstName(response.data.first_name);
@@ -35,7 +35,7 @@ const Mid = () => {
 
         setIsPending(true);
         Axios.post("http://localhost:5000/profile", {
-                user_id:1,   // set the user id by session_id
+                user_id:JSON.parse(localStorage.getItem("user"))["user_id"],   // set the user id by session_id
                 email: email,
                 first_name: firstName,
                 last_name: lastName,

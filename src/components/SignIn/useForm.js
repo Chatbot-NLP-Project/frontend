@@ -27,7 +27,7 @@ const useForm = (callback, validate, setSignInClicked) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors(validate(values));
-    if (Object.keys(errors).length === 0) {
+    if (Object.keys(errors).length === 0 && Object.keys(JSON.stringify(validate(values))).length === 2) {
       Axios.post("http://localhost:5000/login", {
         email: email,
         password: password

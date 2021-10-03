@@ -9,44 +9,38 @@ import {
     TableCaption,
     Box
   } from "@chakra-ui/react"
-import React from "react";
+import Axios from "axios";
 
-function Tables() {
+import React, { useEffect } from "react";
+
+
+function Tables(result) {
+  
+  
+
   return (
     <div>
     <Box
     >
       <Table variant="striped" colorScheme="teal" size="lg" mt="-400px">
-        <TableCaption>Chatbot ratings</TableCaption>
+        <TableCaption>Feedbacks for chatbots</TableCaption>
         <Thead>
           <Tr>
-            <Th isNumeric>Number</Th>
-            <Th isNumeric>Rating</Th>
-            <Th >Message</Th>
+            <Th >Number</Th>
+            <Th >UserID</Th>
+            <Th >Rating</Th>
+            <Th >Feedback</Th>
           </Tr>
         </Thead>
         <Tbody>
-          <Tr>
-            <Td isNumeric>1</Td>
-            <Td isNumeric>4</Td>
-            <Td >Good chatbot</Td>
-          </Tr>
-          <Tr>
-            <Td isNumeric>2</Td>
-            <Td isNumeric>3</Td>
-            <Td >Need improvements. Overall a good chatbot</Td>
-          </Tr>
-          <Tr>
-            <Td isNumeric>3</Td>
-            <Td isNumeric>2</Td>
-            <Td >Good product</Td>
-          </Tr>
+          {result}
         </Tbody>
         <Tfoot>
           <Tr>
-            <Th isNumeric>Number</Th>
-            <Th isNumeric>Rating</Th>
-            <Th >Message</Th>
+          <Th >Number</Th>
+            <Th >UserID</Th>
+            <Th >Rating</Th>
+            <Th >Feedback</Th>
           </Tr>
         </Tfoot>
       </Table>

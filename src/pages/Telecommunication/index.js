@@ -6,8 +6,12 @@ import ActionProvider from "./Chatbot/actionProvider";
 import Chatbot from "react-chatbot-kit";
 import "./index1.css";
 import styled from "styled-components";
+import { useColorMode } from "@chakra-ui/color-mode";
+
 
 function Chat(props) {
+  const { colorMode, toggleColorMode } = useColorMode();
+
   return (
     <>
       <Box
@@ -24,8 +28,8 @@ function Chat(props) {
           as="h1"
           size="xl"
           fontWeight="bold"
-          color="blue.900"
           textAlign={["center", "center", "left", "left"]}
+          color = {colorMode === "light" ? "blue.900" : "white"}
         >
           XYRON Telecommunication Chatbot
         </Heading>

@@ -1,19 +1,23 @@
 import BottomFooter from "../../components/Footer/BottomFooter";
 import Footer from "../../components/Sections/Footer";
-import UserProfile from "../../components/Profile/UserProfile";
+import WeAre from "../../components/AboutUs/WeAre";
+import WhatWeDo from "../../components/AboutUs/WhatWeDo";
+import ContactUs from "../../components/AboutUs/ContactUs";
 import { useParams } from "react-router";
 
-const Profile = () => {
+const AboutUs = () => {
     
     const { id } = useParams(); 
 
     return ( 
         <>
-            <UserProfile />
+            <WeAre />
+            {/* <WhatWeDo /> */}
+            <ContactUs />
             <Footer />
             {/* <BottomFooter /> */}
         </>
      );
 }
  
-export default Profile;
+export default AboutUs;

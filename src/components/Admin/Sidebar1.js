@@ -42,7 +42,7 @@ function Sidebar2(props) {
           h="100%"
           bg="#363740"
         >
-          <Center mb="5px" mt="30px" paddingTop="30px">
+          <Center mb="5px" mt="30px" paddingTop="40px">
             <Avatar bg="blue.500">
               <AvatarBadge boxSize="1.25em" bg="green.500" />
             </Avatar>

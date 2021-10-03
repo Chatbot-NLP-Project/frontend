@@ -6,11 +6,11 @@ import { FaAngrycreative, FaBeer, FaMarker, FaTelegram } from "react-icons/fa";
 import "./PackageDetails.css";
 
 const PackageDetails = ({ selectedPackage, provider, setState, packageDetails, actionProvider }) => {
-  console.log(packageDetails[0]);
+  // console.log(packageDetails[0]);
 
   const activatePackage = () => {
-    console.log("provider")
-    console.log(provider)
+    // console.log("provider")
+    // console.log(provider)
 
       actionProvider.activateDataPackage(selectedPackage.name, provider);
   }  

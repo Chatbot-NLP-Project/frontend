@@ -17,9 +17,19 @@ import React from "react";
 import Sidebar2 from "./Sidebar1";
 import Table from "./Table";
 import "./Overview.css";
+import { useColorMode } from "@chakra-ui/color-mode";
+import { Td, Tr } from "@chakra-ui/table";
+import Axios from "axios";
+
 // import { Link } from "react-router-dom";
 
 function Rating() {
+  const { colorMode, toggleColorMode } = useColorMode();
+  Axios.get("http://127.0.0.1:5000/getFeedbacks").then((response) => {
+    localStorage.setItem("feedbacks", JSON.stringify(response.data.feedbacks));
+    
+    // localStorage.setItem("feedbacks2", JSON.stringify(result));
+  });
   return (
     <>
       <Box
@@ -59,7 +69,7 @@ function Rating() {
                 <Text fontSize="3xl" color="#999A9F">Number of Users</Text>
               </Center>
               <Center mt="10px">
-                <Text fontSize="3xl" color="">18</Text>
+                <Text fontSize="3xl" color="" color = {colorMode === "light" ? "#1A365D" : "black"}>18</Text>
               </Center>
             </Box>
             <Box
@@ -76,7 +86,7 @@ function Rating() {
                 <Text fontSize="3xl" color="#999A9F">Your Name</Text>
               </Center>
               <Center mt="10px">
-                <Text fontSize="3xl" color="">Chalindu</Text>
+                <Text fontSize="3xl" color = {colorMode === "light" ? "#1A365D" : "black"} >{JSON.parse(localStorage.getItem("user"))["first_name"]}</Text>
               </Center>
             </Box>
           </Grid>
