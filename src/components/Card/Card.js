@@ -111,7 +111,7 @@ function Card(props) {
                   </PricingCardFeature>
                   <PricingCardFeature>Trending Questions</PricingCardFeature>
                 </PricingCardFeatures>
-                <Button primary>Enter</Button>
+                <Button primary data-testid='Enter1'>Enter</Button>
               </PricingCardInfo>
             </PricingCard>
 
@@ -130,7 +130,7 @@ function Card(props) {
                   <PricingCardFeature>Fast Responses</PricingCardFeature>
                   <PricingCardFeature>24/7</PricingCardFeature>
                 </PricingCardFeatures>
-                <Button primary>Enter</Button>
+                <Button primary data-testid='Enter2'>Enter</Button>
               </PricingCardInfo>
             </PricingCard>
 
@@ -149,7 +149,7 @@ function Card(props) {
                   <PricingCardFeature>Newest Technologies</PricingCardFeature>
                   <PricingCardFeature>24/7 Support</PricingCardFeature>
                 </PricingCardFeatures>
-                <Button primary>Enter</Button>
+                <Button primary data-testid='Enter3'>Enter</Button>
               </PricingCardInfo>
             </PricingCard>
           </PricingContainer>

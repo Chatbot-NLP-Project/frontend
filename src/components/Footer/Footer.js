@@ -29,7 +29,7 @@ function Footer() {
        
       <FooterContainer>
         <FooterSubscription>
-          <FooterSubHeading>
+          <FooterSubHeading data-testid='heading-1'>
             We will provide necessary informations that you want!!!
           </FooterSubHeading>
           <FooterSubText>24/7 Service and fast responses</FooterSubText>
