@@ -12,6 +12,7 @@
 /build
 
 myFiles.js
+.myFiles.js
 
 # misc
 .DS_Store
