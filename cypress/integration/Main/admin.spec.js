@@ -10,6 +10,9 @@ describe("Admin User", () => {
         }).click();
         cy.scrollTo('top')
         cy.contains("your name", { matchCase: false })
+        cy.findByText(/online/i)
+        cy.findByText(/overview/i).click()
+        cy.findByRole('img', {  name: /avatar/i})
         cy.setCookie('feedbacks', '[]')
         cy.findByRole('button', {  name: /overview/i}).click()
 

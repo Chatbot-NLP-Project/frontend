@@ -21,5 +21,13 @@ describe("telecom chatbot", () => {
 
         cy.findByText(/data packages/i, {delay:100}).click()
         // cy.get('h1').contains('Select Internet Service Provider')
+        cy.findByRole('heading', {  name: /xyron telecommunication chatbot/i}).should('be.visible')
+        // cy.findByText(/view activated packages/i, {delay:100}).first().click()
+        cy.findByText(/current balance/i, {delay:100}).click()
+        // cy.findByText(/view crypto price/i, {delay:100}).click()
+        cy.findByText(/view crypto price in LKR/i, {delay:100}).click()
+        cy.findByText(/1 usdt = lkr?/i, {delay:100}).click()
+        cy.findByText(/view currency values/i, {delay:100}).click()
+
     })
 })

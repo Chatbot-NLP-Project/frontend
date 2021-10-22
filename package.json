@@ -39,6 +39,9 @@
     "dev": "start-test 3000 cy:open",
     "eject": "react-scripts eject"
   },
+    "nyc": {
+      "exclude": ["src/components/SideNav/SideNav.js"]
+    },
   "eslintConfig": {
     "extends": [
       "react-app",
