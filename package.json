@@ -52,6 +52,18 @@
       "react-app/jest"
     ]
   },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/src/index.js",
+      "<rootDir>/src/reportWebVitals.js",
+      "<rootDir>/src/ColorModeSwitcher.js",
+      "<rootDir>/src/components/Chatbot-Healthcare/",
+      "<rootDir>/src/components/Chatbot-Telecommunication/",
+      "<rootDir>/src/components/Chatbot-Transport/",
+      "<rootDir>/src/components/Slider/"
+    ]
+  },
   "browserslist": {
     "production": [
       ">0.2%",

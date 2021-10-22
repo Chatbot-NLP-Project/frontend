@@ -25,11 +25,11 @@ import Axios from "axios";
 
 function Rating() {
   const { colorMode, toggleColorMode } = useColorMode();
-  Axios.get("http://127.0.0.1:5000/getFeedbacks").then((response) => {
-    localStorage.setItem("feedbacks", JSON.stringify(response.data.feedbacks));
+  // Axios.get("http://127.0.0.1:5000/getFeedbacks").then((response) => {
+  //   localStorage.setItem("feedbacks", JSON.stringify(response.data.feedbacks));
     
-    // localStorage.setItem("feedbacks2", JSON.stringify(result));
-  });
+  //   // localStorage.setItem("feedbacks2", JSON.stringify(result));
+  // });
   return (
     <>
       <Box
@@ -86,7 +86,7 @@ function Rating() {
                 <Text fontSize="3xl" color="#999A9F">Your Name</Text>
               </Center>
               <Center mt="10px">
-                <Text fontSize="3xl" color = {colorMode === "light" ? "#1A365D" : "black"} >{JSON.parse(localStorage.getItem("user"))["first_name"]}</Text>
+                {/* <Text fontSize="3xl" color = {colorMode === "light" ? "#1A365D" : "black"} >{JSON.parse(localStorage.getItem("user"))["first_name"]}</Text> */}
               </Center>
             </Box>
           </Grid>

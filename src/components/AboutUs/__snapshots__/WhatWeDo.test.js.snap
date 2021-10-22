@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="css-18bmoo6"
+>
+  <h1
+    className="css-nl1e90"
+  >
+    What is our company doing?
+  </h1>
+  <div
+    className="css-4heqjq"
+  >
+    <div
+      className="chakra-stat css-1xqa3co"
+    >
+      <dl>
+        <dt
+          className="chakra-stat__label css-6kldd7"
+        >
+          We serve
+        </dt>
+        <dd
+          className="chakra-stat__number css-1xg45d8"
+        >
+          50,000 people
+        </dd>
+      </dl>
+    </div>
+    <div
+      className="chakra-stat css-1xqa3co"
+    >
+      <dl>
+        <dt
+          className="chakra-stat__label css-6kldd7"
+        >
+          In
+        </dt>
+        <dd
+          className="chakra-stat__number css-1xg45d8"
+        >
+          30 different countries
+        </dd>
+      </dl>
+    </div>
+    <div
+      className="chakra-stat css-1xqa3co"
+    >
+      <dl>
+        <dt
+          className="chakra-stat__label css-6kldd7"
+        >
+          Who speak
+        </dt>
+        <dd
+          className="chakra-stat__number css-1xg45d8"
+        >
+          100 different languages
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+`;
