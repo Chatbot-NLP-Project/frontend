@@ -17,30 +17,28 @@ class MessageParser {
     var siz = this.state.currentState.length - 1;
     console.log("Message Parser called");
     console.log(this.state);
-    console.log(this.state.packageTypes[0]);
+    // console.log(this.state.packageTypes[0]);
     const lowercase = message.toLowerCase();
-    if (lowercase.includes("javascript") || lowercase.includes("js")) {
-      this.actionProvider.handleJavascriptQuiz();
+    // if (lowercase.includes("ssss") || lowercase.includes("js")) {
+      
+    // } else 
+    if(lowercase.includes("complaint")) {
+      this.actionProvider.handleComplaint(JSON.parse(localStorage.getItem("user"))["sim_type"])
+
+    } else if (lowercase.includes("options")){
+      this.actionProvider.viewGeneralOptions();
+
+    // } 
+    // else if (lowercase.includes("packages") || lowercase.includes("package")){
+    //   this.actionProvider.handleDataPackage();
+
+    } else if (this.state.currentState == "complaint"){
+      this.actionProvider.handleSubject(message);
+
+    }else if (this.state.currentState == "subject"){
+      this.actionProvider.makeComplaint(message, this.state.subject);
     }
-    else if (
-      this.state.currentState[siz] == "predict" &&
-      this.state.sympthoms.length < 4
-    ) {
-      this.actionProvider.addDisease(message);
-      if (this.state.sympthoms.length == 3) {
-        this.actionProvider.predictHandler(this.state.sympthoms);
-      }
-    } else if (this.state.currentState[siz] == "findDoctor") {
-      this.actionProvider.findDoctor(message);
-    } else if (this.state.currentState[siz] == "channel") {
-      const cha = {
-        name: this.state.channel[0].name,
-        hospital: this.state.channel[0].hospital,
-        date: this.state.date[0],
-        time: message,
-      };
-      this.actionProvider.channelDoctor(message, cha);
-    } else {
+    else {
       this.actionProvider.helloHandler(message);
     }
   }
