@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="chakra-container css-1warnjx"
+>
+  <div
+    className="css-1t9jxx5"
+  >
+    <div
+      className="chakra-stack css-17kdbol"
+    >
+      <p
+        className="chakra-text css-1mjdp3d"
+      >
+        About Us
+      </p>
+      <h2
+        className="chakra-heading css-0"
+      >
+        A Social Inquiry Chatbot
+      </h2>
+      <p
+        className="chakra-text css-1s5v44g"
+      >
+        Xyron is a NLP based social inquiry chatbot. It was developed by three undergradutes at University of Moratuwa, Sri Lanka. Xyron can understand your questions regarding the following three public service domains and help you get answers.
+      </p>
+      <div
+        className="chakra-stack css-j7qwjs"
+      >
+        <div
+          className="chakra-stack css-84zodg"
+        >
+          <div
+            className="css-5gyvrg"
+          >
+            <svg
+              className="chakra-icon css-1qxtpyr"
+              fill="currentColor"
+              focusable={false}
+              height="1em"
+              stroke="currentColor"
+              strokeWidth="0"
+              style={
+                Object {
+                  "color": undefined,
+                }
+              }
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M196 16a30 30 0 0 0-30 30v120H46a30 30 0 0 0-30 30v120a30 30 0 0 0 30 30h120v120a30 30 0 0 0 30 30h120a30 30 0 0 0 30-30V346h120a30 30 0 0 0 30-30V196a30 30 0 0 0-30-30H346V46a30 30 0 0 0-30-30H196z"
+              />
+            </svg>
+          </div>
+          <p
+            className="chakra-text css-35ezg3"
+          >
+            Healthcare 
+          </p>
+        </div>
+        <div
+          className="chakra-stack__divider css-23imcn"
+        />
+        <div
+          className="chakra-stack css-84zodg"
+        >
+          <div
+            className="css-18soxao"
+          >
+            <svg
+              className="chakra-icon css-2ox2nl"
+              fill="currentColor"
+              focusable={false}
+              height="1em"
+              stroke="currentColor"
+              strokeWidth="0"
+              style={
+                Object {
+                  "color": undefined,
+                }
+              }
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M189.1 18l14.5 14.47 14.1-14.11-.4-.36zm54.3 0l-.3.31 21.3 21.26 17-16.99-4.6-4.58zm-73.8 6.01l-11.7 11.67 14.2 28.28 18.7-18.72zm60.8 7.06l-14.1 14.11 21.2 21.25 14.1-14.1zm-26.9 26.89l-18.7 18.73 28.3 14.16 11.7-11.66zM163.2 72.8L147 89l12.8 12.8L176 85.52zm-50.1 7.77L80.61 113.1l58.79 58.8h32.5v-32.6zm101.7 52.03c-1.4 19.6-11.8 39.7-27.2 55-15.3 15.4-35.4 25.8-55 27.2l3.5 17.8c24.1-2.3 46.8-14.8 64.3-32.2 17.4-17.5 29.9-40.2 32.2-64.3zm47.5 9.5c-6.4 63.8-56.4 113.7-120.2 120.2l3.5 17.7c70.6-8 126.4-63.8 134.4-134.4zM89.03 147l-16.22 16.2L85.54 176l16.26-16.3zM340 157.6c-7.4 37.9-28.2 78.8-58.7 112.3-32.2 35.5-74.9 62.6-123.6 70.6l3.5 17.7c53.1-8.9 99.1-38.4 133.5-76.1 32.5-35.9 55-79.2 63-121zm-304.21.3l-11.66 11.7 21.23 21.2 18.71-18.7zM434 176.4C422.9 231.5 393.8 285 353.7 329l16 9.2c40.7-45.7 70.5-100.7 82-158.3zm-357.2 8.4l-18.73 18.7 21.22 21.3 11.66-11.7zM18 189v28.2l.46.5 14.13-14.1zm27.3 27.3l-14.11 14.1 21.26 21.2 14.09-14.1zm-26.88 26.8l-.42.4v33.2l4.7 4.7 16.99-17zm418.38 95.4l-98.3 98.3c11.4 6.5 30.5 12.6 49.5 14.8 24.1 2.6 47.8-1.7 54.8-8.8 7.1-7 11.4-30.7 8.8-54.8-2.2-19-8.3-38.1-14.8-49.5zm-92.4 5.9l22.3 38.8 16.5-16.5zm-15.4 9.2c-44 40.2-97.5 69.3-152.6 80.4l3.5 17.7c57.6-11.5 112.6-41.3 158.3-82zM469.4 425c-1.8 12.1-6.1 22.8-13.8 30.6-7.8 7.7-18.5 12-30.6 13.8V487h62v-62z"
+              />
+            </svg>
+          </div>
+          <p
+            className="chakra-text css-35ezg3"
+          >
+            Telecommunication
+          </p>
+        </div>
+        <div
+          className="chakra-stack__divider css-23imcn"
+        />
+        <div
+          className="chakra-stack css-84zodg"
+        >
+          <div
+            className="css-11so1ss"
+          >
+            <svg
+              className="chakra-icon css-10p8aua"
+              fill="currentColor"
+              focusable={false}
+              height="1em"
+              stroke="currentColor"
+              strokeWidth="0"
+              style={
+                Object {
+                  "color": undefined,
+                }
+              }
+              viewBox="0 0 24 24"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 2c-4.42 0-8 .5-8 4v9.5C4 17.43 5.57 19 7.5 19L6 20.5v.5h12v-.5L16.5 19c1.93 0 3.5-1.57 3.5-3.5V6c0-3.5-3.58-4-8-4zM7.5 17c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm3.5-6H6V6h5v5zm5.5 6c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-6h-5V6h5v5z"
+              />
+            </svg>
+          </div>
+          <p
+            className="chakra-text css-35ezg3"
+          >
+            Public Transportation
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      className="css-k008qs"
+    >
+      <img
+        alt="feature image"
+        className="chakra-image__placeholder css-1sskla7"
+      />
+    </div>
+  </div>
+</div>
+`;

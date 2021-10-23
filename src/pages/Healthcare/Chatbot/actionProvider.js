@@ -94,7 +94,7 @@ class ActionProvider {
   };
   findDoctor = (message) => {
     var msg;
-    Axios.post("http://127.0.0.1:5000/getDoc", { specialist: message }).then(
+    Axios.post("https://xyronchatbot.azurewebsites.net/getDoc", { specialist: message }).then(
       (response) => {
         console.log(message);
         // msg = this.createChatBotMessage(response.data.members);
@@ -115,7 +115,7 @@ class ActionProvider {
 
   helloHandler = (message) => {
     var msg;
-    Axios.post("http://127.0.0.1:5000/reply", { msg: message }).then(
+    Axios.post("https://xyronchatbot.azurewebsites.net/reply", { msg: message }).then(
       (response) => {
         console.log(response.data.members);
         if (response.data.members == "predict") {

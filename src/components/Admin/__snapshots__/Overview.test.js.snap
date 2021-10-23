@@ -1,0 +1,185 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="css-1yg7d4n"
+>
+  <div
+    className="css-5k1z7r"
+  >
+    <div
+      className="css-qw3rnw"
+    >
+      <span
+        className="chakra-avatar css-332l87"
+      >
+        <svg
+          aria-label=" avatar"
+          className="chakra-avatar__svg css-16ite8i"
+          role="img"
+          viewBox="0 0 128 128"
+        >
+          <path
+            d="M103,102.1388 C93.094,111.92 79.3504,118 64.1638,118 C48.8056,118 34.9294,111.768 25,101.7892 L25,95.2 C25,86.8096 31.981,80 40.6,80 L87.4,80 C96.019,80 103,86.8096 103,95.2 L103,102.1388 Z"
+            fill="currentColor"
+          />
+          <path
+            d="M63.9961647,24 C51.2938136,24 41,34.2938136 41,46.9961647 C41,59.7061864 51.2938136,70 63.9961647,70 C76.6985159,70 87,59.7061864 87,46.9961647 C87,34.2938136 76.6985159,24 63.9961647,24"
+            fill="currentColor"
+          />
+        </svg>
+        <div
+          className="chakra-avatar__badge css-11dmlz9"
+        />
+      </span>
+    </div>
+    <div
+      className="css-1rul54"
+    >
+      <div
+        className="css-gmuwbf"
+      >
+        <p
+          className="chakra-text css-0"
+          style={
+            Object {
+              "textTransform": "uppercase",
+            }
+          }
+        />
+      </div>
+      <div
+        className="css-9jza75"
+      >
+        <div
+          aria-valuemax={100}
+          aria-valuemin={0}
+          className="css-1demtxk"
+          data-indeterminate=""
+          role="progressbar"
+          style={
+            Object {
+              "width": "0%",
+            }
+          }
+        />
+      </div>
+      <div
+        className="css-sc5c3h"
+      >
+        <span
+          className="chakra-badge css-ifsvay"
+        >
+          Online
+        </span>
+      </div>
+    </div>
+    <div
+      className="css-fmwd1"
+    >
+      <div
+        className="chakra-stack css-zsoya5"
+      >
+        <button
+          className="chakra-button css-nc3dwe"
+          type="button"
+        >
+          <div
+            className="css-gmuwbf"
+          >
+            Overview
+          </div>
+        </button>
+        <div
+          className="chakra-stack__divider css-17dgary"
+        />
+        <a
+          href="http://localhost:3000/rating"
+        >
+          <button
+            className="chakra-button css-lb3dvl"
+            type="button"
+          >
+            Ratings
+          </button>
+        </a>
+        <div
+          className="chakra-stack__divider css-17dgary"
+        />
+        <button
+          className="chakra-button css-lb3dvl"
+          type="button"
+        />
+        <div
+          className="chakra-stack__divider css-17dgary"
+        />
+        <hr
+          aria-orientation="horizontal"
+          className="chakra-divider css-1upb9tn"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="css-1j25r50"
+  >
+    <img
+      alt="Create Account"
+      className="overview"
+      src="overview.png"
+    />
+    <div
+      className="css-1250pax"
+    >
+      <div
+        className="css-1f5tsw6"
+      >
+        <div
+          className="css-1rkqaw3"
+        >
+          <p
+            className="chakra-text css-1pij0cy"
+          >
+            Number of Users
+          </p>
+        </div>
+        <div
+          className="css-1yfye7s"
+        >
+          <p
+            className="chakra-text css-1qnpcq4"
+          >
+            18
+          </p>
+        </div>
+      </div>
+      <div
+        className="css-81u7ca"
+      >
+        <div
+          className="css-1rkqaw3"
+        >
+          <p
+            className="chakra-text css-1pij0cy"
+          >
+            Your Name
+          </p>
+        </div>
+        <div
+          className="css-1yfye7s"
+        />
+      </div>
+    </div>
+    <img
+      alt="Overview"
+      className="form-img"
+      src="main1.png"
+    />
+    <img
+      alt="Overview"
+      className="rectangle"
+      src="rectangle.png"
+    />
+  </div>
+</div>
+`;

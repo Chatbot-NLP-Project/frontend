@@ -1,0 +1,5 @@
+{
+    "pageTitle": "HTML Report for MyApp",
+    "outputPath": "ut-report/index.html",
+    "includeFailureMsg": true
+}
