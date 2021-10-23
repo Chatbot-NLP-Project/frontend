@@ -43,7 +43,7 @@ function EducationMain() {
             color={colorMode === "light" ? "white" : "black"}
           />
         </Center>
-        <a href="https://xyronchatbot.azurewebsites.net/chatbothc">
+        <a href="https://xyronchatbot.herokuapp.com/chatbothc">
           <Box
             as="button"
             p={4}
