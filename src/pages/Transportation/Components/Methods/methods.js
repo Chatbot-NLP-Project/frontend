@@ -51,7 +51,7 @@ const Methods = (props) => {
             </Flex>
             <Flex mb="8px">
               <Heading as="h4" size="xs" color="#186273" ml={3}>
-                Fare: {method.fee}
+                Fare: {method.fee}.00 LKR
               </Heading>
             </Flex>
             {/* <Link to="/home">

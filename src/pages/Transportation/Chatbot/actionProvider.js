@@ -104,9 +104,30 @@ class ActionProvider {
   // Transportation Only
 
   sendComplaint = (mode, description, details) => {
-    var body;
-    
+    let body = 'The following complaint has been made by an passenger. \n ';
+    body += '\n\"' + details + '\"\n';
+    body += '\nUser has described the transportation method he\'s reffering to as followed. \n'
+    body += '\n\"' + description + '\"\n';
 
+    let email = "gkkpathirana@gmail.com";
+    let subject = "User Complaint"
+
+    if(mode == 'bus'){
+      // email = "info@ntc.gov.lk"
+      email = "gkkpathirana@gmail.com";
+    } else if (mode == 'train'){
+      // email = "gmr@railway.gov.lk"
+      email = "gkkpathirana@gmail.com";
+    }
+
+    let msg;
+    Axios.post("http://127.0.0.1:5000/sendEmail", { email: email, subject: subject, message: body, }).then(
+      (response) => {
+        console.log(response);
+      }
+    ).catch((error) => {
+      console.log(error);
+    });
   }
 
   complaintHandler = (message, state) => {
@@ -136,7 +157,7 @@ class ActionProvider {
       } else {
         if (message != ''){
           this.addComplaintDetails(message);
-          // this.sendComplaint(state.mode[0], state.modeDescription[0], message);
+          this.sendComplaint(state.mode[0], state.modeDescription[1], message);
           msg = this.createChatBotMessage('Okay, your situation will be looked into. Thank you for informing us.');
           this.setChatbotMessage(msg);
           this.clearStates();
@@ -144,9 +165,6 @@ class ActionProvider {
         }
       }
   }
-
-
-
 
   replyFilter = (reply) => {
     const yes = ['yes','yeah','yep','aye','alright','sure','indeed','absolutely', 'of course', 'by all means'];
@@ -278,7 +296,7 @@ class ActionProvider {
 
   messageHandler = (message, state) => {
     var msg;
-    Axios.post("http://127.0.0.1:5000/reply", { msg: message }).then(
+    Axios.post("https://xyronchatbot.azurewebsites.net/reply", { msg: message }).then(
       (response) => {
         if (response.data.members == "travel") {
           this.setChatbotState("travel");
