@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="login-content-right"
+>
+  <form
+    className="form-signin"
+    noValidate={true}
+    onSubmit={[Function]}
+  >
+    <h1
+      className="form-signin-h1"
+      color="black"
+    >
+      <br />
+      Sign in to use our service!
+      <br />
+    </h1>
+    
+    <div
+      className="login-inputs"
+    >
+      <label
+        className="login-label"
+      >
+        Email
+      </label>
+      <input
+        className="login-input"
+        name="email"
+        onChange={[Function]}
+        placeholder="Enter your email"
+        type="email"
+        value=""
+      />
+    </div>
+    <div
+      className="login-inputs"
+    >
+      <label
+        className="login-label"
+      >
+        Password
+      </label>
+      <input
+        className="login-input"
+        name="password"
+        onChange={[Function]}
+        placeholder="Enter your password"
+        type="password"
+        value=""
+      />
+    </div>
+    
+    <button
+      className="login-input-btn"
+      type="submit"
+    >
+      Continue
+    </button>
+    <span
+      className="login-input-login"
+    >
+      Don't have an account? Sign up 
+      <a
+        href="signup"
+      >
+        here
+      </a>
+    </span>
+  </form>
+</div>
+`;
