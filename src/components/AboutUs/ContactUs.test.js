@@ -1,3 +1,4 @@
+
 // import dependencies
 import React from 'react';
 // import react dom
@@ -12,6 +13,7 @@ import renderer from 'react-test-renderer';
 // import the component for testing
 import { MemoryRouter } from 'react-router-dom';
 import ContactUs from "./ContactUs";
+
 
 afterEach(cleanup);
 

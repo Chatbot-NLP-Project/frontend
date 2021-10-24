@@ -15,6 +15,7 @@
     "@wojtekmaj/react-timerange-picker": "^3.4.0",
     "axios": "^0.21.4",
     "framer-motion": "^4.1.17",
+    "jest-html-reporter": "^3.4.1",
     "react": "^17.0.2",
     "react-calendar": "^3.4.0",
     "react-chatbot-kit": "^1.1.20",
@@ -40,7 +41,6 @@
     "eject": "react-scripts eject",
     "test:CI": "set CI=true &&react-scripts test --env=jsdom --testResultsProcessor=./node_modules/jest-html-reporter"
   },
-  
   "nyc": {
     "exclude": [
       "src/components/SideNav/SideNav.js"
@@ -89,7 +89,6 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "cypress": "^8.6.0",
     "istanbul-lib-coverage": "^3.2.0",
-    "jest-html-reporter": "^3.4.1",
     "nyc": "^15.1.0",
     "start-server-and-test": "^1.14.0"
   }

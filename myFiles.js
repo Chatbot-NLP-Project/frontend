@@ -92,7 +92,23 @@
 // npm run test:CI
 
 //To get the stats of you test coverage, you can run below command which will generate the coverage report inside “coverage/lcov-report/index.html” of project root folder
-// npm run test -- --coverage
+// npm run test -- --coverage --watchAll
 //            or
 // npm run test:CI -- --coverage
 
+// "jest": {
+//     ...,
+//     "reporters": [
+//       "default",
+//       "jest-html-reporters"
+//     ],
+//     ...
+//   }
+
+// npm test coverage
+
+//babelrc
+
+// ///**
+//  * @jest-environment jsdom
+// */
