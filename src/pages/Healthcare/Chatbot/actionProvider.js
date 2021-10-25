@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import Axios from "axios";
 import MessageParser from "./messageParser";
 
@@ -54,7 +55,7 @@ class ActionProvider {
       );
       this.setChatbotState("feedback");
     } else {
-      msg = this.createChatBotMessage("excellent");
+      msg = this.createChatBotMessage("Thank You.");
       this.setChatbotState("normal");
     }
     this.setChatbotMessage(msg);
@@ -62,12 +63,17 @@ class ActionProvider {
 
   sendFeedback = (message) => {
     var msg;
-    Axios.post("http://127.0.0.1:5000/sendFeedback", {
-      feedback: message,
+    var feedback = {
+      userID: JSON.parse(localStorage.getItem("user"))["user_id"],
+      msg: message,
+    };
+    Axios.post("https://xyronchatbot.azurewebsites.net/sendFeedback", {
+      feedback: feedback,
     }).then((response) => {
       console.log(response.data);
-      msg = this.createChatBotMessage("Thank you for feedback");
+      msg = this.createChatBotMessage("Thank you for feedback.");
       this.setChatbotMessage(msg);
+      this.setChatbotState("normal");
     });
   };
 
@@ -76,84 +82,153 @@ class ActionProvider {
     Axios.post("http://127.0.0.1:5000/predict", { diseases: message }).then(
       (response) => {
         console.log(message);
-        if (response.data.members == 0) {
+        if (response.data.disease == 0) {
           msg = this.createChatBotMessage(
-            "Please re-enter 4 symptoms or change the order of symptoms"
+            "Sorry I can't make any predictions. Please re-enter 4 symptoms or change the order of symptoms."
           );
           // this.setChatbotState("predict");
           this.removeDisease();
         } else {
-          msg = this.createChatBotMessage(response.data.members);
+          if (response.data.Precaution_1 == 0) {
+            msg = this.createChatBotMessage(response.data.disease);
+          } else {
+            msg = this.createChatBotMessage(response.data.disease, {
+              widget: "moreinfo",
+            });
+            this.setState((state) => ({
+              ...state,
+              disease: [
+                response.data.disease,
+                response.data.description,
+                response.data.Precaution_1,
+                response.data.Precaution_2,
+                response.data.Precaution_3,
+              ],
+            }));
+          }
+
           this.setChatbotState("normal");
           this.removeDisease();
         }
-        console.log(response.data.members);
+        console.log(response.data);
         this.setChatbotMessage(msg);
       }
     );
   };
   findDoctor = (message) => {
     var msg;
-    Axios.post("https://xyronchatbot.azurewebsites.net/getDoc", { specialist: message }).then(
-      (response) => {
-        console.log(message);
-        // msg = this.createChatBotMessage(response.data.members);
-        // this.setChatbotMessage(msg);
-        if (response.data.er == 1) {
-          msg = this.createChatBotMessage("Please re-enter the specialty");
-          this.setChatbotMessage(msg);
-        } else {
-          console.log(response.data.doc);
-          this.setState((state) => ({ ...state, doctors: response.data.doc }));
-          this.setChatbotState("normal");
-          msg = this.createChatBotMessage("Ok sure", { widget: "doctors" });
-          this.setChatbotMessage(msg);
-        }
+    Axios.post("https://xyronhealthcarebot.azurewebsites.net/getDoc", {
+      specialist: message,
+    }).then((response) => {
+      console.log(message);
+      // msg = this.createChatBotMessage(response.data.members);
+      // this.setChatbotMessage(msg);
+      if (response.data.er == 1) {
+        msg = this.createChatBotMessage("Please re-enter the speciality");
+        this.setChatbotMessage(msg);
+      } else {
+        console.log(response.data.doc);
+        this.setState((state) => ({ ...state, doctors: response.data.doc }));
+        this.setChatbotState("normal");
+        msg = this.createChatBotMessage("Ok sure.", { widget: "doctors" });
+        this.setChatbotMessage(msg);
       }
-    );
+    });
   };
-
+  getNationalClinic = (clinic) => {
+    var msg;
+    Axios.post("https://xyronhealthcarebot.azurewebsites.net/getClinic", {
+      clinicType: clinic,
+    }).then((response) => {
+      console.log(clinic);
+      // msg = this.createChatBotMessage(response.data.members);
+      // this.setChatbotMessage(msg);
+      if (response.data.er == 1) {
+        msg = this.createChatBotMessage("No data available in this time");
+        this.setChatbotMessage(msg);
+      } else {
+        console.log(response.data.clinic);
+        this.setState((state) => ({
+          ...state,
+          clinic: response.data.clinic,
+        }));
+        msg = this.createChatBotMessage("Ok sure.", { widget: "clinic" });
+        this.setChatbotMessage(msg);
+      }
+      this.setChatbotState("normal");
+    });
+  };
+  getEyeClinic = (clinic) => {
+    var msg;
+    Axios.post("https://xyronhealthcarebot.azurewebsites.net/getEyeClinic", {
+      clinicType: clinic,
+    }).then((response) => {
+      console.log(clinic);
+      // msg = this.createChatBotMessage(response.data.members);
+      // this.setChatbotMessage(msg);
+      if (response.data.er == 1) {
+        msg = this.createChatBotMessage("No data available in this time");
+        this.setChatbotMessage(msg);
+      } else {
+        console.log(response.data.clinic);
+        this.setState((state) => ({
+          ...state,
+          clinic: response.data.clinic,
+        }));
+        msg = this.createChatBotMessage("Ok sure.", { widget: "clinic" });
+        this.setChatbotMessage(msg);
+      }
+      this.setChatbotState("normal");
+    });
+  };
   helloHandler = (message) => {
     var msg;
-    Axios.post("https://xyronchatbot.azurewebsites.net/reply", { msg: message }).then(
-      (response) => {
-        console.log(response.data.members);
-        if (response.data.members == "predict") {
-          this.setChatbotState("predict");
-          msg = this.createChatBotMessage("Please Enter 4 symptoms");
-          this.setChatbotMessage(msg);
-        } else if (response.data.members == "findDoctor") {
-          this.setChatbotState("findDoctor");
-          msg = this.createChatBotMessage("Please enter the specialist ?");
-          this.setChatbotMessage(msg);
-        } else if (response.data.members == "covidLocalCurrent") {
-          this.setChatbotState("covidLocalCurrent");
-          console.log("covidLocalCurrent");
-          this.getCovidData("covidLocalCurrent");
-        } else if (response.data.members == "covidLocalToday") {
-          this.setChatbotState("covidLocalToday");
-          console.log("covidLocalToday");
-          this.getCovidData("covidLocalToday");
-        } else if (response.data.members == "covidGlobalCurrent") {
-          this.setChatbotState("covidGlobalCurrent");
-          console.log("covidGlobalCurrent");
-          this.getCovidData("covidGlobalCurrent");
-        } else if (response.data.members == "thanks") {
-          this.setChatbotState("thanks");
-          console.log("thanks");
-          msg = this.createChatBotMessage(
-            "You are welcome ! If you are satisfied with our service please rate us",
-            {
-              widget: "rating",
-            }
-          );
-          this.setChatbotMessage(msg);
-        } else {
-          msg = this.createChatBotMessage(response.data.members);
-          this.setChatbotMessage(msg);
-        }
+    Axios.post("https://xyronhealthcarebot.azurewebsites.net/reply", {
+      msg: message,
+    }).then((response) => {
+      console.log(response.data.members);
+      if (response.data.members == "predict") {
+        this.setChatbotState("predict");
+        msg = this.createChatBotMessage("Please Enter 4 symptoms");
+        this.setChatbotMessage(msg);
+      } else if (response.data.members == "findDoctor") {
+        this.setChatbotState("findDoctor");
+        msg = this.createChatBotMessage("Please enter the speciality ?");
+        this.setChatbotMessage(msg);
+      } else if (response.data.members == "covidLocalCurrent") {
+        this.setChatbotState("covidLocalCurrent");
+        console.log("covidLocalCurrent");
+        this.getCovidData("covidLocalCurrent");
+      } else if (response.data.members == "covidLocalToday") {
+        this.setChatbotState("covidLocalToday");
+        console.log("covidLocalToday");
+        this.getCovidData("covidLocalToday");
+      } else if (response.data.members == "covidGlobalCurrent") {
+        this.setChatbotState("covidGlobalCurrent");
+        console.log("covidGlobalCurrent");
+        this.getCovidData("covidGlobalCurrent");
+      } else if (response.data.members == "clinic") {
+        this.setChatbotState("clinic");
+        console.log("clinic");
+        msg = this.createChatBotMessage("Please select the Hospital.", {
+          widget: "hospital",
+        });
+        this.setChatbotMessage(msg);
+      } else if (response.data.members == "thanks") {
+        this.setChatbotState("thanks");
+        console.log("thanks");
+        msg = this.createChatBotMessage(
+          "You are welcome ! If you are satisfied with our service please rate us.",
+          {
+            widget: "rating",
+          }
+        );
+        this.setChatbotMessage(msg);
+      } else {
+        msg = this.createChatBotMessage(response.data.members);
+        this.setChatbotMessage(msg);
       }
-    );
+    });
   };
 
   // Axios.get("http://127.0.0.1:5000/chat").then((response) => {
@@ -173,7 +248,7 @@ class ActionProvider {
       ...state,
       channel: [state.doctors[docID]],
     }));
-    const msg2 = this.createChatBotMessage("Sure. Please select the date", {
+    const msg2 = this.createChatBotMessage("Sure. Please select the date.", {
       widget: "calender",
     });
     this.setChatbotState("channel");
@@ -182,11 +257,12 @@ class ActionProvider {
 
   selectTime = (value) => {
     const msg1 = this.createChatBotMessage(
-      "Sure wait a minite and please enter time (9.00 AM - 4.00 PM)"
+      "Please enter time between 9.00 AM - 4.00 PM.",
+      { widget: "time" }
     );
     var date =
       value.getFullYear() +
-      "-0" +
+      "-" +
       (value.getMonth() + 1) +
       "-" +
       value.getDate();
@@ -196,29 +272,31 @@ class ActionProvider {
       ...state,
       date: [date],
     }));
+    this.setChatbotState("time");
 
     this.setChatbotMessage(msg1);
   };
-  channelDoctor = (message, chObject) => {
+  channelDoctor = (chObject) => {
     var msg;
-    Axios.post("http://127.0.0.1:5000/channelDoc", { channel: chObject }).then(
-      (response) => {
-        console.log(message);
-        if (response.data.er == 1) {
-          msg = this.createChatBotMessage(
-            "Please can you select a another time"
-          );
-          this.setChatbotMessage(msg);
-        } else {
-          console.log(response.data);
-          this.setChatbotState("normal");
-          msg = this.createChatBotMessage(
-            "Your channel details have been recorded..."
-          );
-          this.setChatbotMessage(msg);
-        }
+    Axios.post("https://xyronhealthcarebot.azurewebsites.net/channelDoc", {
+      channel: chObject,
+    }).then((response) => {
+      // console.log(message);
+      if (response.data.er == 1) {
+        msg = this.createChatBotMessage(
+          "Please can you select a another time.",
+          { widget: "time" }
+        );
+        this.setChatbotMessage(msg);
+      } else {
+        console.log(response.data);
+        this.setChatbotState("normal");
+        msg = this.createChatBotMessage(
+          "Your channel details have been recorded..."
+        );
+        this.setChatbotMessage(msg);
       }
-    );
+    });
   };
   getCovidData = (message) => {
     var msg;
@@ -241,7 +319,7 @@ class ActionProvider {
             ],
           }));
           msg = this.createChatBotMessage(
-            "Here is the current situation of Sri Lanka",
+            "Here is the current situation of Sri Lanka.",
             { widget: "covidLocalCurrent" }
           );
           this.setChatbotMessage(msg);
@@ -256,7 +334,7 @@ class ActionProvider {
             ],
           }));
           msg = this.createChatBotMessage(
-            "Here is the today situation of Sri Lanka",
+            "Here is the today situation of Sri Lanka.",
             { widget: "covidLocalToday" }
           );
           this.setChatbotMessage(msg);
@@ -274,7 +352,7 @@ class ActionProvider {
             ],
           }));
           msg = this.createChatBotMessage(
-            "Here is the today situation in global",
+            "Here is the today situation in global.",
             { widget: "covidGlobalCurrent" }
           );
           this.setChatbotMessage(msg);

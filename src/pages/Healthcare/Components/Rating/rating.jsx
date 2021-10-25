@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Rating } from "react-simple-star-rating";
 
-import { Box } from "@chakra-ui/react";
+import { Box, Button } from "@chakra-ui/react";
 export default function MyComponent(props) {
   const [rating, setRating] = useState(0);
   // initial rating value
@@ -15,14 +15,20 @@ export default function MyComponent(props) {
 
   return (
     <Box
-      ml="10%"
+      ml="11%"
       boxShadow="0 0 2px 2px #ceddeb"
       bg="#f2fcfc"
       width="33%"
       borderWidth="1px"
       borderRadius="5px"
     >
-      <Rating onClick={handleRating} ratingValue={rating} /* Rating Props */ />
+      <Button width="100%" isDisabled={rating > 0}>
+        <Rating
+          onClick={handleRating}
+          size={30}
+          ratingValue={rating} /* Rating Props */
+        />
+      </Button>
     </Box>
   );
 }
