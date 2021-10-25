@@ -335,12 +335,14 @@ viewGeneralOptions = () => {
       (response) => {
         console.log("Hello Handler called, Response :");
         console.log(response.data.reply);
-        if (response.data.reply == "balance") {
+        if (message == "2 or more providers called") {
+          msg = this.createChatBotMessage("I couldn't understand it, it is beyond my understandings");
+        } else if (response.data.reply == "balance") {
           console.log("balance if");
           msg = "";
           this.getCurrentBalance();
         } else if (response.data.reply == "package") {
-          msg = this.createChatBotMessage("Select package");
+          msg = this.createChatBotMessage("Select provider");
           this.handleDataPackage();
         } else if (response.data.reply == "complaint") {
           this.handleComplaint(
