@@ -24,7 +24,7 @@ describe("logout a user", () => {
         cy.contains("Phone Number")
         cy.scrollTo('top')
 
-        cy.findByPlaceholderText(/Enter your email/i).type("chali4@gmail.com", { delay: 10 })
+        cy.findByPlaceholderText(/Enter your email/i).type("chali5@gmail.com", { delay: 10 })
         cy.contains("Email")
         cy.scrollTo('top')
 

@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="details-content-mid"
+>
+  <div
+    className="details-content-right"
+  >
+    <div
+      id="profile-details"
+    >
+      <h3>
+        Profile Details
+      </h3>
+      <button
+        id="edit-details-btn"
+        onClick={[Function]}
+        type="submit"
+      >
+        Edit Details
+      </button>
+      <ul>
+        <li>
+          First Name : 
+          <span>
+            
+          </span>
+        </li>
+        <li>
+          Last Name : 
+          <span>
+            
+          </span>
+        </li>
+        <li>
+          Phone Number : 
+          <span>
+            
+          </span>
+        </li>
+        <li>
+          Email :  
+          <span>
+            
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;

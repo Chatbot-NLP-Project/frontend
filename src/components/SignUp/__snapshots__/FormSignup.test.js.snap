@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="form-content-right"
+>
+  <form
+    className="form"
+    noValidate={true}
+    onSubmit={[Function]}
+  >
+    <h1>
+      Register to get service through an intelligent chatbot!!!
+      <br />
+      Create your account by filling out the information below.
+    </h1>
+    
+    <div
+      className="form-inputs"
+    >
+      <label
+        className="form-label"
+      >
+        First Name
+      </label>
+      <input
+        className="form-input"
+        name="firstname"
+        onChange={[Function]}
+        placeholder="Enter your first name"
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="form-inputs"
+    >
+      <label
+        className="form-label"
+      >
+        Last Name
+      </label>
+      <input
+        className="form-input"
+        name="lastname"
+        onChange={[Function]}
+        placeholder="Enter your last name"
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="form-inputs"
+    >
+      <label
+        className="form-label"
+      >
+        Phone Number
+      </label>
+      <input
+        className="form-input"
+        name="phonenumber"
+        onChange={[Function]}
+        placeholder="Enter your phone number"
+        type="tel"
+        value=""
+      />
+    </div>
+    <div
+      className="form-inputs"
+    >
+      <label
+        className="form-label"
+      >
+        Email
+      </label>
+      <input
+        className="form-input"
+        name="email"
+        onChange={[Function]}
+        placeholder="Enter your email"
+        type="email"
+        value=""
+      />
+    </div>
+    <div
+      className="form-inputs"
+    >
+      <label
+        className="form-label"
+      >
+        Password
+      </label>
+      <input
+        className="form-input"
+        name="password"
+        onChange={[Function]}
+        placeholder="Enter your password"
+        type="password"
+        value=""
+      />
+    </div>
+    <div
+      className="form-inputs"
+    >
+      <label
+        className="form-label"
+      >
+        Confirm Password
+      </label>
+      <input
+        className="form-input"
+        name="password2"
+        onChange={[Function]}
+        placeholder="Confirm your password"
+        type="password"
+        value=""
+      />
+    </div>
+    
+    <button
+      className="form-input-btn"
+      type="submit"
+    >
+      Continue
+    </button>
+    <span
+      className="form-input-login"
+    >
+      Already have an account? Login 
+      <a
+        href="signin"
+      >
+        here
+      </a>
+    </span>
+  </form>
+</div>
+`;
