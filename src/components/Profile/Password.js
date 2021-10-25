@@ -159,7 +159,9 @@ const Password = () => {
               onChange={(e) => handleConfirm(e.target.value)}
             />
           </label> */}
+
           {misMatch && <p id="err">{misMatch}</p>}
+
           {/* <input type="submit" value="Update Password"><Button
           leftIcon={<FaUserEdit />}
           onClick={handleClick}
@@ -182,4 +184,6 @@ const Password = () => {
   );
 };
 
+
 export default Password;
+
