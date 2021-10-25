@@ -10,6 +10,11 @@ const Packages = ({packageType, provider, packages, selectedPackage, setState, a
 
   useEffect(() => {
     setPackages(packageOptions);
+    setState((state) => ({
+      ...state,
+      selectedPackage: packageOptions[0],
+    }))
+    console.log(packageOptions)
   }, []);
 
   const handleSubmit = (e) => {

@@ -10,14 +10,14 @@ const PackageTypes = ({ packageTypes, selectedPackageType, provider, setState, a
 
   useEffect(() => {
     setPackages(packageOptions);
-    // setState((state) => ({
-    //   ...state,
-    //   selectedPackageType: packagess[0],
-    // }))
+    setState((state) => ({
+      ...state,
+      selectedPackageType: packageOptions[0],
+    }))
   }, []);
 
   const handleSubmit = (e) => {
-    console.log(packagess)
+    // console.log(packagess)
     setState((state) => ({
       ...state,
       selectedPackageType: packagess.find(
@@ -28,7 +28,7 @@ const PackageTypes = ({ packageTypes, selectedPackageType, provider, setState, a
   };
 
   const handleConfirm = () => {
-    console.log(selectedPackageType.package_type)
+    // console.log(selectedPackageType.package_type)
     actionProvider.selectPackageType(selectedPackageType.package_type, provider);
     toggleDisplaySelector((prevState) => !prevState);
   };

@@ -1,0 +1,192 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div>
+  <div
+    className="sc-dlfnuX bETmxX"
+  >
+    <section
+      className="sc-hKgJUU foZyjC"
+    >
+      <p
+        className="sc-eCstlR dvdzPb"
+        data-testid="heading-1"
+      >
+        We will provide necessary informations that you want!!!
+      </p>
+      <p
+        className="sc-jSgvzq iyjGHW"
+      >
+        24/7 Service and fast responses
+      </p>
+    </section>
+    <div
+      className="sc-fubCzh cCRMya"
+    >
+      <div
+        className="sc-pGacB eIQCmV"
+      >
+        <div
+          className="sc-jrAFXE cCRQpb"
+        >
+          <h2
+            className="sc-kEjbQP eAKMj"
+          >
+            About Us
+          </h2>
+          <a
+            className="sc-iqHYmW hdnFpw"
+            href="/sign-up"
+            onClick={[Function]}
+          >
+            How it works
+          </a>
+          <a
+            className="sc-iqHYmW hdnFpw"
+            href="/"
+            onClick={[Function]}
+          >
+            Testimonials
+          </a>
+          <a
+            className="sc-iqHYmW hdnFpw"
+            href="/"
+            onClick={[Function]}
+          >
+            Careers
+          </a>
+          <a
+            className="sc-iqHYmW hdnFpw"
+            href="/"
+            onClick={[Function]}
+          >
+            Investors
+          </a>
+          <a
+            className="sc-iqHYmW hdnFpw"
+            href="/"
+            onClick={[Function]}
+          >
+            Terms of Service
+          </a>
+        </div>
+        <div
+          className="sc-jrAFXE cCRQpb"
+        >
+          <h2
+            className="sc-kEjbQP eAKMj"
+          >
+            Contact Us
+          </h2>
+          <a
+            className="sc-iqHYmW hdnFpw"
+            href="/"
+            onClick={[Function]}
+          >
+            Contact
+          </a>
+          <a
+            className="sc-iqHYmW hdnFpw"
+            href="/"
+            onClick={[Function]}
+          >
+            Support
+          </a>
+          <a
+            className="sc-iqHYmW hdnFpw"
+            href="/"
+            onClick={[Function]}
+          >
+            Destinations
+          </a>
+          <a
+            className="sc-iqHYmW hdnFpw"
+            href="/"
+            onClick={[Function]}
+          >
+            Sponsorships
+          </a>
+        </div>
+      </div>
+      <div
+        className="sc-pGacB eIQCmV"
+      >
+        <div
+          className="sc-jrAFXE cCRQpb"
+        >
+          <h2
+            className="sc-kEjbQP eAKMj"
+          >
+            Videos
+          </h2>
+          <a
+            className="sc-iqHYmW hdnFpw"
+            href="/"
+            onClick={[Function]}
+          >
+            Submit Video
+          </a>
+          <a
+            className="sc-iqHYmW hdnFpw"
+            href="/"
+            onClick={[Function]}
+          >
+            Ambassadors
+          </a>
+          <a
+            className="sc-iqHYmW hdnFpw"
+            href="/"
+            onClick={[Function]}
+          >
+            Agency
+          </a>
+          <a
+            className="sc-iqHYmW hdnFpw"
+            href="/"
+            onClick={[Function]}
+          >
+            Influencer
+          </a>
+        </div>
+        <div
+          className="sc-jrAFXE cCRQpb"
+        >
+          <h2
+            className="sc-kEjbQP eAKMj"
+          >
+            Social Media
+          </h2>
+          <a
+            className="sc-iqHYmW hdnFpw"
+            href="/"
+            onClick={[Function]}
+          >
+            Instagram
+          </a>
+          <a
+            className="sc-iqHYmW hdnFpw"
+            href="/"
+            onClick={[Function]}
+          >
+            Facebook
+          </a>
+          <a
+            className="sc-iqHYmW hdnFpw"
+            href="/"
+            onClick={[Function]}
+          >
+            Youtube
+          </a>
+          <a
+            className="sc-iqHYmW hdnFpw"
+            href="/"
+            onClick={[Function]}
+          >
+            Twitter
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

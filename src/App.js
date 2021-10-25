@@ -93,6 +93,8 @@ import ChatbotPT from "./pages/Transportation/index";
 import ChatbotTC from "./pages/Telecommunication/index";
 import Rating from "./pages/Admin/rating";
 import Admin from "./pages/Admin/index";
+import AboutUs from "./pages/AboutUs/index";
+// import Location from "./pages/Location/CurrentLocation";
 
 function App() {
   const [auth, setAuth] = useState({ isLoggedIn: false, userID: 0 });
@@ -101,7 +103,7 @@ function App() {
 
   useEffect(() => {
     // Axios.defaults.withCredentials = true;
-    console.log("check login called");
+    // console.log("check login called")
     // Axios.get("http://localhost:5000/checkLogin").then((response) => {
     //   console.log("check login axios")
     if (!!localStorage.access_token) {
@@ -126,6 +128,7 @@ function App() {
             <Switch>
               {/* Common Routes */}
               <Route path="/rating" exact component={Rating} />
+              <Route path="/aboutus" exact component={AboutUs} />
               <Route path="/" component={Admin} />
             </Switch>
           </Router>
@@ -153,6 +156,9 @@ function App() {
               <Route path="/profile" exact component={Profile} />
               <Route path="/rating" exact component={Rating} />
               <Route path="/admin" exact component={Admin} />
+              <Route path="/aboutus" exact component={AboutUs} />
+              {/* <Route path="/location" exact component={Location} /> */}
+
               <Route path="/" component={DomaineSelection} />
             </Switch>
           </Router>
@@ -177,6 +183,7 @@ function App() {
               }}
             />
             {/* <Route path="/domainselection" exact component={DomainSelection} exact/> */}
+            <Route path="/aboutus" exact component={AboutUs} />
             <Route path="/" component={LandingPage} />
           </Switch>
         </Router>

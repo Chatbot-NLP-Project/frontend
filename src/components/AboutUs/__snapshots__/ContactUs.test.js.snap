@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="css-18308nr"
+>
+  <div
+    className="chakra-stack css-5xzwgh"
+  >
+    <h2
+      className="chakra-heading css-4jcj9n"
+    >
+      How Can We Help You?
+    </h2>
+    <div
+      className="chakra-form-control css-0"
+      role="group"
+    >
+      <label
+        className="chakra-form__label css-uvho5g"
+        htmlFor="email"
+        id="email-label"
+      >
+        Email Address
+        <span
+          aria-hidden={true}
+          className="chakra-form__required-indicator css-0"
+          role="presentation"
+        >
+          *
+        </span>
+      </label>
+      <input
+        aria-required={true}
+        className="chakra-input css-3q4iok"
+        disabled={false}
+        id="email"
+        onBlur={[Function]}
+        onFocus={[Function]}
+        placeholder="your-email@example.com"
+        readOnly={false}
+        required={true}
+        type="email"
+      />
+    </div>
+    <div
+      className="chakra-form-control css-0"
+      role="group"
+    >
+      <label
+        className="chakra-form__label css-uvho5g"
+        htmlFor="password"
+        id="password-label"
+      >
+        Message
+        <span
+          aria-hidden={true}
+          className="chakra-form__required-indicator css-0"
+          role="presentation"
+        >
+          *
+        </span>
+      </label>
+      <input
+        aria-required={true}
+        className="chakra-input css-0"
+        disabled={false}
+        id="password"
+        onBlur={[Function]}
+        onFocus={[Function]}
+        readOnly={false}
+        required={true}
+        type="text"
+      />
+    </div>
+    <div
+      className="chakra-stack css-16voevi"
+    >
+      <button
+        className="chakra-button css-18dry65"
+        type="button"
+      >
+        Submit
+      </button>
+    </div>
+  </div>
+</div>
+`;
