@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="details-content-left"
+>
+  <img
+    alt="Security"
+    className="profile-img"
+    src="imgs/svg-9.svg"
+  />
+  <button
+    id="edit-pic-btn"
+    onClick={[Function]}
+    type="submit"
+  >
+    <img
+      alt=""
+      id="edit-pic-btn-icon"
+      src="imgs/icon1.png"
+    />
+  </button>
+</div>
+`;

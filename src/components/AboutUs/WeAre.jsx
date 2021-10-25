@@ -91,8 +91,8 @@ import {
               rounded={'md'}
               alt={'feature image'}
               src={
-                '../AboutUs/aboutus.jpg'
-                // 'https://spectrm.io/wp-content/uploads/2020/08/chatbot-marketing-illustration.jpg'
+                // '../aboutUs.jpg'
+                'https://spectrm.io/wp-content/uploads/2020/08/chatbot-marketing-illustration.jpg'
               }
               objectFit={'cover'}
             />

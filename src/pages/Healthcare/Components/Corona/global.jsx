@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Box, Heading, Text } from "@chakra-ui/react";
+import { Flex, Box, Heading, Text, Divider } from "@chakra-ui/react";
 import "./local.css";
 function local(props) {
   var date = props.covidGlobalCurrent[0];
@@ -17,21 +17,24 @@ function local(props) {
       borderRadius={5}
       padding="4px"
       width="60%"
-      height="48%"
+      height="auto"
       fontSize="10px"
+      bg="#fcf8e6"
     >
       <Flex mb="9px">
-        <Box>
+        <Box width="80%">
           <Heading size="xs" color="#00004d" ml={2}>
-            In Sri Lanka
+            In World
           </Heading>
         </Box>
-        <Box ml="30%" bg="#fcde8b" borderWidth="1px" borderRadius={5}>
+        <Box bg="#fcde8b" borderWidth="1px" borderRadius={5}>
           <Heading as="h3" size="xs" color="black" padding="2px" margin="2px">
             Up to {date}
           </Heading>
         </Box>
       </Flex>
+      <Divider colorScheme="Black" orientation="horizontal" />
+
       <Flex padding="2px">
         <Box>
           <Box
@@ -40,7 +43,7 @@ function local(props) {
             borderWidth="1px"
             borderRadius={5}
             // padding="5px"
-            margin="3px"
+            margin="2px"
           >
             <Box>
               <Heading as="h3" size="xs" color="white" ml={2}>
@@ -61,7 +64,7 @@ function local(props) {
             borderRadius={5}
             // padding="5px"
             // height="100px"
-            margin="3px"
+            margin="2px"
           >
             <Box>
               <Heading as="h3" size="xs" color="white" ml={2}>
@@ -84,7 +87,7 @@ function local(props) {
             borderWidth="1px"
             borderRadius={5}
             // padding="5px"
-            margin="3px"
+            margin="2px"
           >
             <Box>
               <Heading as="h3" size="xs" color="white" ml={2}>
@@ -104,8 +107,8 @@ function local(props) {
             borderWidth="1px"
             borderRadius={5}
             // padding="5px"
-            // height="100px"
-            margin="3px"
+            height="60%"
+            margin="2px"
           >
             <Box>
               <Heading as="h3" size="xs" color="white" ml={2}>
@@ -127,7 +130,7 @@ function local(props) {
           borderRadius={5}
           padding="4px"
           width="40%"
-          margin="3px"
+          margin="2px"
         >
           <Box mr="4px">
             <Heading size="xs" color="white" ml={2}>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Axios from "axios";
 //custom hook
 
@@ -20,7 +20,6 @@ const useForm = (callback, validate) => {
   const phoneNumber = values.phonenumber;
   const password = values.password;
   const simType = "";
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setValues({
@@ -32,9 +31,14 @@ const useForm = (callback, validate) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors(validate(values));
+    console.log(JSON.stringify(validate(values)))
+    console.log(Object.keys(JSON.stringify(validate(values))).length)
     setIsSubmitting(true);
-    if (Object.keys(errors).length === 0) {
-      Axios.post("http://localhost:5000/register", {
+    if (Object.keys(errors).length === 0 && Object.keys(JSON.stringify(validate(values))).length === 2) {
+      console.log(errors)
+      console.log("registered called")
+
+      Axios.post("https://xyronchatbot.azurewebsites.net/register", {
         firstName: firstName,
         lastName: lastName,
         email: email,
