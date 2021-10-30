@@ -60,7 +60,7 @@ const GeneralOptions = props => {
       id: 9
     }
   ];
-  return <Options options={options} title="General Options" {...props} />;
+  return <Options options={options} title="General Options" extra = "Click an option only once and wait for the answer. Some answers require some time to generate" {...props} />;
 };
 
 export default GeneralOptions;

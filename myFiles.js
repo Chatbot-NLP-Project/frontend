@@ -112,3 +112,13 @@
 // ///**
 //  * @jest-environment jsdom
 // */
+
+// "scripts": {
+//     "start": "react-scripts -r @cypress/instrument-cra start",
+//     "build": "react-scripts build",
+//     "test": "react-scripts test",
+//     "cy:open": "cypress open",
+//     "dev": "start-test 3000 cy:open",
+//     "eject": "react-scripts eject",
+//     "test:CI": "set CI=true &&react-scripts test --env=jsdom --testResultsProcessor=./node_modules/jest-html-reporter"
+//   },

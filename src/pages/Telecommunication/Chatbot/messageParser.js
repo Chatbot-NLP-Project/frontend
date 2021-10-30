@@ -52,8 +52,14 @@ class MessageParser {
     } else if (this.state.currentState == "complaint"){
       this.actionProvider.handleSubject(message);
 
+     }else if (this.state.currentState == "feedback"){
+      this.actionProvider.sendFeedback(message, this.state.rating);
+
     } else if (this.state.currentState == "subject"){
       this.actionProvider.makeComplaint(message, this.state.subject);
+
+    } else if (lowercase.includes("thanks")){
+      this.actionProvider.helloHandler("feedback");
     }
     else {
       this.actionProvider.helloHandler(message);

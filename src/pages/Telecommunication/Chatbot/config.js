@@ -14,6 +14,8 @@ import LKRValue from "../Components/LKRValue/LKRValue";
 import CurrencyValues from "../Components/CurrencyValues/CurrencyValues";
 import CryptoPrice from "../Components/CryptoPrice/CryptoPrice";
 import CryptoPriceLKR from "../Components/CryptoPriceLKR/CryptoPriceLKR";
+import Rating from "../Components/Rating/rating";
+
 // Widgets are components that create you own and then you register them in the config
 // because we want the widget to be decorated with some things that only the chatbot can give us
 
@@ -67,6 +69,7 @@ const config = {
     pricesCurrency: [],
     pricesCrypto: [],
     prices: [],
+    rating: ''
 
   },
 // widgetName - defines the name of the widget
@@ -132,6 +135,11 @@ const config = {
       widgetName: "cryptoPriceLKR",
       widgetFunc: (props) => <CryptoPriceLKR {...props} />,
       mapStateToProps: ["prices"]
+    },
+    
+    {
+      widgetName: "rating",
+      widgetFunc: (props) => <Rating {...props} />,
     },
     
     // {

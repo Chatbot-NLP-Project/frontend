@@ -29,7 +29,7 @@ import Sidebar2 from "./Sidebar2";
 // import { Link } from "react-router-dom";
 
 function Rating() {
-  // var feedbacks = JSON.parse(localStorage.getItem("feedbacks"));
+  var feedbacks = JSON.parse(localStorage.getItem("feedbacks"));
   var feedbacks = []
   var result = feedbacks.map((feedback, i) => {
     return (

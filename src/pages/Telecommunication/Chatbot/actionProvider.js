@@ -11,6 +11,7 @@ class ActionProvider {
     this.createClientMessage = createClientMessage;
   }
 
+  // Set chatbot Message
   setChatbotMessage = (message) => {
     this.setState((state) => ({
       ...state,
@@ -18,6 +19,7 @@ class ActionProvider {
     }));
   };
 
+  // Change chatbot State
   setChatbotState = (s) => {
     this.setState((state) => ({
       ...state,
@@ -124,6 +126,7 @@ class ActionProvider {
 
   //Handle complaints
   handleComplaint = (provider) => {
+    console.log("complaint")
     this.setState((state) => ({
       ...state,
       currentState: "complaint",
@@ -168,6 +171,7 @@ class ActionProvider {
 
   //View all activated packages
   viewActivatedPackages = () => {
+    console.log("view activated packages")
     Axios.post("http://127.0.0.1:5000/viewActivatedPackages", {
       userID: JSON.parse(localStorage.getItem("user"))["user_id"],
     }).then((response) => {
@@ -198,6 +202,7 @@ class ActionProvider {
       ...state,
       currentState: "dateSelection",
     }));
+    console.log("clicked calender")
     const message = this.createChatBotMessage(`Select a date`, {
       widget: "calendar",
     });
@@ -328,33 +333,81 @@ viewGeneralOptions = () => {
 
 };
 
+sendFeedback = (message, rating) => {
+  var msg;
+  Axios.post("http://127.0.0.1:5000/sendFeedback", {
+    userID: JSON.parse(localStorage.getItem("user"))["user_id"],
+    feedback: message,
+    rating: rating
+  }).then((response) => {
+    msg = this.createChatBotMessage("Thank you for your feedback");
+    this.setChatbotMessage(msg);
+  });
+};
+rateHandle = (message) => {
+  var msg;
+  if (message <= 3) {
+    msg = this.createChatBotMessage(
+      "Hmm... I want to improve. Please can you give me a feedback?"
+    );
+    this.setState((state) => ({
+      ...state,
+      currentState: "feedback",
+      rating: message
+    }));
+  } else {
+    msg = this.createChatBotMessage("Excellent");
+    this.setState((state) => ({
+      ...state,
+      currentState: "normal",
+    }));
+  }
+  this.setChatbotMessage(msg);
+};
   //Normal chatbot message handler
-  helloHandler = (message) => {
-    var msg;
-    Axios.post("http://127.0.0.1:5000/reply", { msg: message }).then(
-      (response) => {
-        console.log("Hello Handler called, Response :");
-        console.log(response.data.reply);
-        if (message == "2 or more providers called") {
-          msg = this.createChatBotMessage("I couldn't understand it, it is beyond my understandings");
-        } else if (response.data.reply == "balance") {
-          console.log("balance if");
-          msg = "";
-          this.getCurrentBalance();
-        } else if (response.data.reply == "package") {
-          msg = this.createChatBotMessage("Select provider");
-          this.handleDataPackage();
-        } else if (response.data.reply == "complaint") {
-          this.handleComplaint(
-            JSON.parse(localStorage.getItem("user"))["sim_type"]
-          );
-        } else {
-          msg = this.createChatBotMessage(response.data.reply);
-        }
-        this.setChatbotMessage(msg);
+helloHandler = (message) => {
+  var msg;
+  if (message == "feedback") {
+    msg = this.createChatBotMessage(
+      "You are welcome ! If you are satisfied with our service please rate us",
+      {
+        widget: "rating",
       }
     );
-  };
+    this.setChatbotMessage(msg);
+    
+  } else { 
+    Axios.post("http://127.0.0.1:5000/reply", { msg: message }).then(
+    (response) => {
+      console.log("Hello Handler called, Response :");
+      console.log(response.data.reply);
+
+      if (message == "2 or more providers called") {
+        msg = this.createChatBotMessage("I couldn't understand it, it is beyond my understandings");
+
+      } else if (response.data.reply == "balance") {
+        console.log("balance if");
+        msg = "";
+        this.getCurrentBalance();
+
+      } else if (response.data.reply == "package") {
+        msg = this.createChatBotMessage("Select provider");
+        this.handleDataPackage();
+
+      } else if (response.data.reply == "complaint") {
+        this.handleComplaint(
+          JSON.parse(localStorage.getItem("user"))["sim_type"]
+        );
+
+      } else {
+        msg = this.createChatBotMessage(response.data.reply);
+      }
+
+      this.setChatbotMessage(msg);
+      }
+    );
+    }
+  }
 }
 
 export default ActionProvider;

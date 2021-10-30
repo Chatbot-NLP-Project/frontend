@@ -37,7 +37,7 @@ const GeneralOptions = (props) => {
       id: 4,
     },
   ];
-  return <Options options={options} title="Select Internet Service Provider" {...props} />;
+  return <Options options={options} title="Select Internet Service Provider" extra = "Click an option only once and wait for the answer. Some answers require some time to generate" {...props} />;
 };
 
 export default GeneralOptions;
