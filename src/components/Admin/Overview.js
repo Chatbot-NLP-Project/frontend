@@ -20,16 +20,24 @@ import "./Overview.css";
 import { useColorMode } from "@chakra-ui/color-mode";
 import { Td, Tr } from "@chakra-ui/table";
 import Axios from "axios";
-
+import { useEffect } from "react";
 // import { Link } from "react-router-dom";
 
 function Rating() {
   const { colorMode, toggleColorMode } = useColorMode();
   Axios.get("http://127.0.0.1:5000/getFeedbacks").then((response) => {
     localStorage.setItem("feedbacks", JSON.stringify(response.data.feedbacks));
-    
+
     // localStorage.setItem("feedbacks2", JSON.stringify(result));
   });
+  useEffect(() => {
+    Axios.get("http://127.0.0.1:5000/getNumberOfUsers").then((response) => {
+      localStorage.setItem(
+        "numberOfUsers",
+        JSON.stringify(response.data.numberOfUsers)
+      );
+    });
+  }, []);
   return (
     <>
       <Box
@@ -52,12 +60,22 @@ function Rating() {
           position="relative"
           mt="-895px"
           bg="#F0F0F0"
+          // w={{ base: "70%", md: "60%" }}
+          // justify={{ base: "center", md: "space-around", xl: "space-between" }}
+          // direction={{ base: "column-reverse", md: "row" }}
         >
-        <img className="overview" src="overview.png" alt="Create Account" />
-          <Grid templateColumns="repeat(2, 0fr)" gap={9} mt ="20px">
+          <img className="overview" src="overview.png" alt="Create Account" />
+          <Grid
+            templateColumns={["repeat(0, 1fr)", "repeat(2, 1fr)", "repeat(2, 1fr)"]}
+            templateRows={["repeat(2, 1fr)", "repeat(0, 1fr)"]}
+            gap={9}
+            mt="20px"
+            // justify={{ base: "center", md: "space-around", xl: "space-between" }}
+            // direction={{ base: "column-reverse", md: "row" }}
+          >
             <Box
               width="300px"
-              ml="55%"
+              ml="140px"
               borderStyle="solid"
               borderColor="#F0F0F0"
               borderWidth="2px"
@@ -65,28 +83,47 @@ function Rating() {
               rounded="15px"
               bg={colorMode === "light" ? "white" : "#363740"}
             >
-              <Center mt= "20px">
-                <Text fontSize="3xl" color={colorMode === "light" ? "#999A9F" : "#999A9F"}>Number of Users</Text>
+              <Center mt="20px">
+                <Text
+                  fontSize="3xl"
+                  color={colorMode === "light" ? "#999A9F" : "#999A9F"}
+                >
+                  Number of Users
+                </Text>
               </Center>
               <Center mt="10px">
-                <Text fontSize="3xl" color="" color = {colorMode === "light" ? "#1A365D" : "white"}>18</Text>
+                <Text
+                  fontSize="3xl"
+                  color=""
+                  color={colorMode === "light" ? "#1A365D" : "white"}
+                >
+                  {JSON.parse(localStorage.getItem("numberOfUsers"))}
+                </Text>
               </Center>
             </Box>
             <Box
               width="300px"
-              ml="70%"
+              ml="60px"
               borderStyle="solid"
               borderColor="#F0F0F0"
               borderWidth="2px"
               h="150px"
+              mt={["-40", "0", "0"]}
               rounded="15px"
               bg={colorMode === "light" ? "white" : "#363740"}
             >
-              <Center mt= "20px">
-                <Text fontSize="3xl" color="#999A9F">Your Name</Text>
+              <Center mt="20px">
+                <Text fontSize="3xl" color="#999A9F">
+                  Your Name
+                </Text>
               </Center>
               <Center mt="10px">
-                <Text fontSize="3xl" color = {colorMode === "light" ? "#1A365D" : "white"} >{JSON.parse(localStorage.getItem("user"))["first_name"]}</Text>
+                <Text
+                  fontSize="3xl"
+                  color={colorMode === "light" ? "#1A365D" : "white"}
+                >
+                  {JSON.parse(localStorage.getItem("user"))["first_name"]}
+                </Text>
               </Center>
             </Box>
           </Grid>

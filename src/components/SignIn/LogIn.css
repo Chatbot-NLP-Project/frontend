@@ -30,11 +30,11 @@
 }
 
 .login-img {
-  width: 58%;
-  height: 70%;
+  width: 75% !important;
+  height: 88% !important;
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 58% !important;
   transform: translate(-50%, -50%);
 }
 .form-signin {

@@ -32,12 +32,12 @@
 }
 
 .form-img {
-  width: 68%;
-  height: 45%;
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 98% !important;
+  height: 60% !important;
+  position: absolute !important;
+  top: 40% !important;
+  left: 60% !important;
+  transform: translate(-50%, -50%) !important;
 }
 
 .form-img-2 {
