@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import {
   Box,
@@ -12,21 +12,18 @@ import {
 // import { FaHospital, BsPersonFill } from "react-icons/fa";
 // import { IoPersonCircle } from "react-icons/fa";
 
-const Doctors = (props) => {
-  const [disable, setDisable] = useState(false);
-
-  const renderDoctor = () => {
-    return props.doctors.map((doctor) => {
-      function selectDate() {
-        props.actionProvider.selectDoctor(props.doctors.indexOf(doctor));
-        console.log(props);
-        setDisable(true);
-      }
+const Methods = (props) => {
+  const renderMethod = () => {
+    return props.methods.map((method) => {
+      // function selectDate() {
+      //   props.actionProvider.selectDoctor(props.methods.indexOf(method));
+      //   console.log(props);
+      // }
       return (
-        <StackItem key={doctor.doctorID}>
+        <StackItem key={method.methodID}>
           <Box
             boxShadow="0 0 2px 2px #ceddeb"
-            bg="#f2fcfc"
+            bg="#f0f4f5"
             width="40%"
             borderWidth="1px"
             borderRadius="5px"
@@ -35,24 +32,29 @@ const Doctors = (props) => {
             mb={1}
           >
             <Flex>
-              <Heading as="h3" size="sm" color="#00004d" ml={3}>
-                {doctor.name}
+              <Heading as="h3" size="sm" color="#0a1a30" ml={3}>
+                {method.routeName}
               </Heading>
             </Flex>
-            <Heading as="h4" size="xs" color="#00004d" ml={3}>
-              {doctor.specialty}
+            <Heading as="h4" size="xs" color="#186273" ml={3}>
+              Route No: {method.routeNo}
             </Heading>
             <Flex>
-              <Heading as="h4" size="xs" color="#00004d" ml={3}>
-                {doctor.hospital}
+              <Heading as="h4" size="xs" color="#186273" ml={3}>
+                From: {method.from}
+              </Heading>
+            </Flex>
+            <Flex>
+              <Heading as="h4" size="xs" color="#186273" ml={3}>
+                To: {method.to}
               </Heading>
             </Flex>
             <Flex mb="8px">
-              <Heading as="h4" size="xs" color="#00004d" ml={3}>
-                {doctor.contact}
+              <Heading as="h4" size="xs" color="#186273" ml={3}>
+                Fare: {method.fee}.00 LKR
               </Heading>
             </Flex>
-            <Link to="/home">
+            {/* <Link to="/home">
               <Button
                 width="100%"
                 colorScheme="blue"
@@ -64,19 +66,18 @@ const Doctors = (props) => {
                 size="md"
                 // ml={3}
                 mr={3}
-                isDisabled={disable}
                 onClick={selectDate}
               >
                 Channel
               </Button>
-            </Link>
+            </Link> */}
           </Box>
         </StackItem>
       );
     });
   };
 
-  return <Stack ml="10%">{renderDoctor()}</Stack>;
+  return <Stack ml="10%">{renderMethod()}</Stack>;
 };
 
-export default Doctors;
+export default Methods;

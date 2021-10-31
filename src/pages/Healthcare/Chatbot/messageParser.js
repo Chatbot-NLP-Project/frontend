@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 class MessageParser {
   constructor(actionProvider, state) {
     this.actionProvider = actionProvider;
@@ -23,15 +24,25 @@ class MessageParser {
     } else if (this.state.currentState[siz] == "feedback") {
       this.actionProvider.sendFeedback(message);
     } else if (this.state.currentState[siz] == "channel") {
-      const cha = {
-        id: this.state.channel[0].doctorID,
-        name: this.state.channel[0].name,
-        hospital: this.state.channel[0].hospital,
-        date: this.state.date[0],
-        time: message,
-      };
-      // console.log(cha);
-      this.actionProvider.channelDoctor(message, cha);
+      const msg = this.actionProvider.createChatBotMessage(
+        "Please select the date."
+      ); // console.log(cha);
+      this.actionProvider.setChatbotMessage(msg);
+
+      // this.actionProvider.channelDoctor(cha);
+    } else if (this.state.currentState[siz] == "time") {
+      const msg = this.actionProvider.createChatBotMessage(
+        "Please select the time."
+      ); // console.log(cha);
+      this.actionProvider.setChatbotMessage(msg);
+
+      // this.actionProvider.channelDoctor(cha);
+    } else if (message == "") {
+      const msg =
+        this.actionProvider.createChatBotMessage("I cant understand."); // console.log(cha);
+      this.actionProvider.setChatbotMessage(msg);
+
+      // this.actionProvider.channelDoctor(cha);
     } else {
       this.actionProvider.helloHandler(message);
     }

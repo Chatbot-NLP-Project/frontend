@@ -5,7 +5,7 @@ import BotIcon from "../Components/botIcon";
 import GeneralOptions from "../Components/GeneralOptions/GeneralOptions";
 import InternetProvider from "../Components/InternetProvider/InternetProvider";
 import PackageDetails from "../Components/PackageDetails/PackageDetails";
-import PackageTypes from "../Components/PackageTypes/PackageTypes";
+import PackageTypes from "../Components/PackageTypes/packageTypes";
 import Packages from "../Components/Packagez/Packages";
 import Balance from "../Components/Balance/Balance";
 import ActivatedPackages from "../Components/ActivatedPackages/ActivatedPackages";
@@ -20,18 +20,21 @@ import ViewComplaints from "../Components/Complaint/Complaints";
 // Widgets are components that create you own and then you register them in the config
 // because we want the widget to be decorated with some things that only the chatbot can give us
 
+<<<<<<< HEAD
 ////////////////////////////////
 //// Initial Config
 ///////////////////////////////
+=======
+>>>>>>> 252d174a3b2ed68332d4c62d4d5e954a973c7612
 const config = {
   initialMessages: [
     createChatBotMessage("Hey there 👋👋👋👋"),
     createChatBotMessage(
       `I am XYRON. I'm here to guide you. Thanks for your interest in XYRON.
   Here are some options.`,
-      { 
+      {
         widget: "options",
-        delay: 500, 
+        delay: 500,
       }
     ),
   ],
@@ -69,7 +72,13 @@ const config = {
     selectedPackageType: "",
     packageDetails: [], 
     user: [], //Get full user
+<<<<<<< HEAD
     subject: "", // Subject of the email
+=======
+<<<<<<< HEAD
+=======
+    subject: "",
+>>>>>>> 252d174a3b2ed68332d4c62d4d5e954a973c7612
     activatedPackages: [],
     pricesLKR: [],
     pricesCurrency: [],
@@ -78,11 +87,12 @@ const config = {
     rating: '',
     complaints: [] // Complaints that got from the database
 
+>>>>>>> dd40130beddee0bd002ab19a18b18d01d627ed58
   },
-// widgetName - defines the name of the widget
-// widgetFunc - define a function that returns the component. The function must take props and spread it into the component.
-// mapStateToProps - defines which state properties you defined in config should be injected into the widget component.
-// props - option array of props you want to pass to your component.
+  // widgetName - defines the name of the widget
+  // widgetFunc - define a function that returns the component. The function must take props and spread it into the component.
+  // mapStateToProps - defines which state properties you defined in config should be injected into the widget component.
+  // props - option array of props you want to pass to your component.
   widgets: [
     {
       widgetName: "options",
@@ -96,23 +106,31 @@ const config = {
     {
       widgetName: "packageTypess",
       widgetFunc: (props) => <PackageTypes {...props} />,
-      mapStateToProps: ["packageTypes", "provider", "selectedPackageType"]
+      mapStateToProps: ["packageTypes", "provider", "selectedPackageType"],
     },
     {
       widgetName: "packages",
       widgetFunc: (props) => <Packages {...props} />,
-      mapStateToProps: ["selectedPackage", "packages", "provider", "packageType"]
+      mapStateToProps: [
+        "selectedPackage",
+        "packages",
+        "provider",
+        "packageType",
+      ],
     },
     {
       widgetName: "packageDetails",
       widgetFunc: (props) => <PackageDetails {...props} />,
-      mapStateToProps: ["packageDetails", "selectedPackage", "provider"]
+      mapStateToProps: ["packageDetails", "selectedPackage", "provider"],
     },
     {
       widgetName: "balance",
       widgetFunc: (props) => <Balance {...props} />,
-      mapStateToProps: ["user"]
+      mapStateToProps: ["user"],
     },
+<<<<<<< HEAD
+
+=======
     {
       widgetName: "activatedPackages",
       widgetFunc: (props) => <ActivatedPackages {...props} />,
@@ -144,6 +162,7 @@ const config = {
       mapStateToProps: ["prices"]
     },
     
+<<<<<<< HEAD
     {
       widgetName: "rating",
       widgetFunc: (props) => <Rating {...props} />,
@@ -154,12 +173,14 @@ const config = {
       mapStateToProps: ["complaints"]
     },
     
+=======
+>>>>>>> dd40130beddee0bd002ab19a18b18d01d627ed58
+>>>>>>> 252d174a3b2ed68332d4c62d4d5e954a973c7612
     // {
     //   widgetName: "doctors", //Name that we give to refer to it
-    //   widgetFunc: (props) => <Doctors {...props} />, //returns the component that we created 
+    //   widgetFunc: (props) => <Doctors {...props} />, //returns the component that we created
     //   mapStateToProps: ["doctors"], //tells to chatbot which state we want to give to this component
     // }
-    
   ],
 
   customStyles: {

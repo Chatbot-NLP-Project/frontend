@@ -30,10 +30,10 @@ const useForm = (callback, validate, setSignInClicked) => {
     if (Object.keys(errors).length === 0 && Object.keys(JSON.stringify(validate(values))).length === 2) {
       Axios.post("http://localhost:5000/login", {
         email: email,
-        password: password
+        password: password,
       }).then((response) => {
         if (!response.data.auth) {
-          console.log("error")
+          console.log("error");
           setBackEndErrors(response.data.msg);
         } else {
           localStorage.setItem("access_token", response.data.access_token);
@@ -45,11 +45,10 @@ const useForm = (callback, validate, setSignInClicked) => {
     }
   };
 
-
   useEffect(() => {
     if (Object.keys(errors).length === 0 && isSubmitting) {
       callback();
-     }
+    }
   }, [errors]);
 
   return { handleChange, handleSubmit, values, errors, backEndErrors };

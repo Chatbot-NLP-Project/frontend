@@ -32,7 +32,7 @@ import AboutUs from "./pages/AboutUs/index";
 
 function App() {
   const [auth, setAuth] = useState({ isLoggedIn: false, userID: 0 });
-  const [signInClicked, setSignInClicked] = useState(false);
+  const [setSignInClicked] = useState(false);
   // Axios.defaults.withCredentials = true;
 
   useEffect(() => {

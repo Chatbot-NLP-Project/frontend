@@ -165,3 +165,7 @@
   background: -webkit-linear-gradient(bottom, #aadddd 0%, #77aaaa 100%);
   color:teal;
 }
+
+#err {
+  color: red;
+}
