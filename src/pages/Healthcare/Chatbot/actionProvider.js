@@ -117,23 +117,6 @@ class ActionProvider {
   };
   findDoctor = (message) => {
     var msg;
-<<<<<<< HEAD
-    Axios.post("https://xyronhealthcarebot.azurewebsites.net/getDoc", { specialist: message }).then(
-      (response) => {
-        console.log(message);
-        // msg = this.createChatBotMessage(response.data.members);
-        // this.setChatbotMessage(msg);
-        if (response.data.er == 1) {
-          msg = this.createChatBotMessage("Please re-enter the specialty");
-          this.setChatbotMessage(msg);
-        } else {
-          console.log(response.data.doc);
-          this.setState((state) => ({ ...state, doctors: response.data.doc }));
-          this.setChatbotState("normal");
-          msg = this.createChatBotMessage("Ok sure", { widget: "doctors" });
-          this.setChatbotMessage(msg);
-        }
-=======
     Axios.post("https://xyronhealthcarebot.azurewebsites.net/getDoc", {
       specialist: message,
     }).then((response) => {
@@ -149,7 +132,6 @@ class ActionProvider {
         this.setChatbotState("normal");
         msg = this.createChatBotMessage("Ok sure.", { widget: "doctors" });
         this.setChatbotMessage(msg);
->>>>>>> 252d174a3b2ed68332d4c62d4d5e954a973c7612
       }
     });
   };
@@ -201,45 +183,6 @@ class ActionProvider {
   };
   helloHandler = (message) => {
     var msg;
-<<<<<<< HEAD
-    Axios.post("https://xyronhealthcarebot.azurewebsites.net/reply", { msg: message }).then(
-      (response) => {
-        console.log(response.data.members);
-        if (response.data.members == "predict") {
-          this.setChatbotState("predict");
-          msg = this.createChatBotMessage("Please Enter 4 symptoms");
-          this.setChatbotMessage(msg);
-        } else if (response.data.members == "findDoctor") {
-          this.setChatbotState("findDoctor");
-          msg = this.createChatBotMessage("Please enter the specialist ?");
-          this.setChatbotMessage(msg);
-        } else if (response.data.members == "covidLocalCurrent") {
-          this.setChatbotState("covidLocalCurrent");
-          console.log("covidLocalCurrent");
-          this.getCovidData("covidLocalCurrent");
-        } else if (response.data.members == "covidLocalToday") {
-          this.setChatbotState("covidLocalToday");
-          console.log("covidLocalToday");
-          this.getCovidData("covidLocalToday");
-        } else if (response.data.members == "covidGlobalCurrent") {
-          this.setChatbotState("covidGlobalCurrent");
-          console.log("covidGlobalCurrent");
-          this.getCovidData("covidGlobalCurrent");
-        } else if (response.data.members == "thanks") {
-          this.setChatbotState("thanks");
-          console.log("thanks");
-          msg = this.createChatBotMessage(
-            "You are welcome ! If you are satisfied with our service please rate us",
-            {
-              widget: "rating",
-            }
-          );
-          this.setChatbotMessage(msg);
-        } else {
-          msg = this.createChatBotMessage(response.data.members);
-          this.setChatbotMessage(msg);
-        }
-=======
     Axios.post("https://xyronhealthcarebot.azurewebsites.net/reply", {
       msg: message,
     }).then((response) => {
@@ -284,7 +227,6 @@ class ActionProvider {
       } else {
         msg = this.createChatBotMessage(response.data.members);
         this.setChatbotMessage(msg);
->>>>>>> 252d174a3b2ed68332d4c62d4d5e954a973c7612
       }
     });
   };
