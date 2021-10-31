@@ -54,39 +54,39 @@ function Rating() {
           bg="#F0F0F0"
         >
         <img className="overview" src="overview.png" alt="Create Account" />
-          <Grid templateColumns="repeat(2, 0fr)" gap={6} mt ="20px">
+          <Grid templateColumns="repeat(2, 0fr)" gap={9} mt ="20px">
             <Box
               width="300px"
-              ml="40%"
+              ml="55%"
               borderStyle="solid"
               borderColor="#F0F0F0"
               borderWidth="2px"
               h="150px"
               rounded="15px"
-              bg="white"
+              bg={colorMode === "light" ? "white" : "#363740"}
             >
               <Center mt= "20px">
-                <Text fontSize="3xl" color="#999A9F">Number of Users</Text>
+                <Text fontSize="3xl" color={colorMode === "light" ? "#999A9F" : "#999A9F"}>Number of Users</Text>
               </Center>
               <Center mt="10px">
-                <Text fontSize="3xl" color="" color = {colorMode === "light" ? "#1A365D" : "black"}>18</Text>
+                <Text fontSize="3xl" color="" color = {colorMode === "light" ? "#1A365D" : "white"}>18</Text>
               </Center>
             </Box>
             <Box
               width="300px"
-              ml="30%"
+              ml="70%"
               borderStyle="solid"
               borderColor="#F0F0F0"
               borderWidth="2px"
               h="150px"
               rounded="15px"
-              bg="white"
+              bg={colorMode === "light" ? "white" : "#363740"}
             >
               <Center mt= "20px">
                 <Text fontSize="3xl" color="#999A9F">Your Name</Text>
               </Center>
               <Center mt="10px">
-                {/* <Text fontSize="3xl" color = {colorMode === "light" ? "#1A365D" : "black"} >{JSON.parse(localStorage.getItem("user"))["first_name"]}</Text> */}
+                <Text fontSize="3xl" color = {colorMode === "light" ? "#1A365D" : "white"} >{JSON.parse(localStorage.getItem("user"))["first_name"]}</Text>
               </Center>
             </Box>
           </Grid>

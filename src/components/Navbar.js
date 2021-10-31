@@ -67,6 +67,7 @@ function Navbar(props) {
         <Img ml="1.5rem" src="../logo2.png" alt="logo" h="80px" w="80px" />
         <Text
           bgGradient="linear(to-l, #7928CA,#FF0080)"
+          bgGradient={colorMode === "light" ? "linear(to-l, #1A365D, #1A365D)" : "linear(to-l, #1A365D, white)"}
           bgClip="text"
           fontSize="2xl"
           fontWeight="extrabold"
