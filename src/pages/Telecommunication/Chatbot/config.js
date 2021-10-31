@@ -15,11 +15,14 @@ import CurrencyValues from "../Components/CurrencyValues/CurrencyValues";
 import CryptoPrice from "../Components/CryptoPrice/CryptoPrice";
 import CryptoPriceLKR from "../Components/CryptoPriceLKR/CryptoPriceLKR";
 import Rating from "../Components/Rating/rating";
+import ViewComplaints from "../Components/Complaint/Complaints";
 
 // Widgets are components that create you own and then you register them in the config
 // because we want the widget to be decorated with some things that only the chatbot can give us
 
-
+////////////////////////////////
+//// Initial Config
+///////////////////////////////
 const config = {
   initialMessages: [
     createChatBotMessage("Hey there 👋👋👋👋"),
@@ -32,7 +35,7 @@ const config = {
       }
     ),
   ],
-  botName: "XYRON",
+  botName: "XYRON", // Chatbot Name
   customComponents: {
     header: () => (
       <Flex backgroundColor="#00004d">
@@ -52,24 +55,28 @@ const config = {
     ),
     botAvatar: (props) => <BotAvatar {...props} />,
   },
+  ////////////////////////////////
+  //// States
+  ///////////////////////////////
   state: {
     currentState: "normal",
-    provider: "",
-    packageTypes: [],
-    packageType: "",
-    packages: [],
-    package: "",
+    provider: "", // Internet Provider
+    packageTypes: [], // Package Types from backend
+    packageType: "", // Selected package type
+    packages: [], // Packages from backend
+    package: "", // Selected package
     selectedPackage: "",
     selectedPackageType: "",
-    packageDetails: [],
+    packageDetails: [], 
     user: [], //Get full user
-    subject: "",
+    subject: "", // Subject of the email
     activatedPackages: [],
     pricesLKR: [],
     pricesCurrency: [],
     pricesCrypto: [],
     prices: [],
-    rating: ''
+    rating: '',
+    complaints: [] // Complaints that got from the database
 
   },
 // widgetName - defines the name of the widget
@@ -140,6 +147,11 @@ const config = {
     {
       widgetName: "rating",
       widgetFunc: (props) => <Rating {...props} />,
+    },
+    {
+      widgetName: "complaint",
+      widgetFunc: (props) => <ViewComplaints {...props} />,
+      mapStateToProps: ["complaints"]
     },
     
     // {

@@ -1,11 +1,17 @@
+////////////////////////////////
+//// Import Modules
+///////////////////////////////
 import { useState, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
 import Axios from "axios";
+
+////////////////////////////////
+//// Import Pages
+///////////////////////////////
 import Navbar from "./components/Navbar";
 import SideNav from "./components/SideNav/SideNav";
-
 import SignIn from "./pages/SignIn/index";
 import SignUp from "./pages/SignUp/index";
 // import DomainSelection from './pages/DomainSelection';
@@ -22,6 +28,7 @@ import Rating from "./pages/Admin/rating";
 import Admin from "./pages/Admin/index";
 import AboutUs from "./pages/AboutUs/index";
 // import Location from "./pages/Location/CurrentLocation";
+
 
 function App() {
   const [auth, setAuth] = useState({ isLoggedIn: false, userID: 0 });
@@ -46,7 +53,14 @@ function App() {
     }
     // });
   }, [!!localStorage.access_token]);
+
+  ////////////////////////////////
+  //// If User Logged In
+  ///////////////////////////////
   if (auth.isLoggedIn) {
+    ////////////////////////////////
+    //// If user is an admin
+    ///////////////////////////////
     if (auth.userID === 1) {
       return (
         <ChakraProvider>
@@ -61,6 +75,9 @@ function App() {
           </Router>
         </ChakraProvider>
       );
+    ////////////////////////////////
+    //// If user is a normal user
+    ///////////////////////////////
     } else {
       return (
         <ChakraProvider>

@@ -14,7 +14,7 @@ class ActionProvider {
   // Set chatbot Message
   setChatbotMessage = (message) => {
     this.setState((state) => ({
-      ...state,
+      ...state, // Remain other states as it is
       messages: [...state.messages, message],
     }));
   };
@@ -32,7 +32,7 @@ class ActionProvider {
     const message = this.createChatBotMessage(
       "I have data package details about Mobitel, Dialog, Hutch and Airtel",
       {
-        widget: "InternetProvider",
+        widget: "InternetProvider", // Show this widget
       }
     );
     this.setChatbotMessage(message);
@@ -45,7 +45,7 @@ class ActionProvider {
       this.setState((state) => ({
         ...state,
         provider: type,
-        packageTypes: response.data.packageTypes,
+        packageTypes: response.data.packageTypes, // Add package types got from backend to the state
       }));
       const message = this.createChatBotMessage(`${type} Plans and Rates`, {
         widget: "packageTypess",
@@ -61,8 +61,8 @@ class ActionProvider {
     }).then((response) => {
       this.setState((state) => ({
         ...state,
-        packageType: package_type,
-        packages: response.data.packages,
+        packageType: package_type, // Selected package
+        packages: response.data.packages, // Add packages got from backend to the state
       }));
       const message = this.createChatBotMessage(`${package_type}`, {
         widget: "packages",
@@ -81,7 +81,7 @@ class ActionProvider {
       // console.log(response.data.packageDetails)
       this.setState((state) => ({
         ...state,
-        packageDetails: response.data.packageDetails,
+        packageDetails: response.data.packageDetails, // Add package details got from backend to the state
       }));
       const message = this.createChatBotMessage(
         `${provider} -> ${packageType} -> ${packageName}`,
@@ -154,7 +154,7 @@ class ActionProvider {
 
   //Display current balance
   makeComplaint = (msg, subject) => {
-    Axios.post("http://127.0.0.1:5000/makeComplaint", {
+    Axios.post("http://localhost:5000/makeComplaint", {
       subject: subject,
       body: msg,
       userID: JSON.parse(localStorage.getItem("user"))["user_id"],
@@ -166,6 +166,33 @@ class ActionProvider {
       }));
       const message = this.createChatBotMessage(`${response.data.res}`);
       this.setChatbotMessage(message);
+    });
+  };
+
+  //View Complaints
+  viewComplaints = () => {
+    Axios.post("http://127.0.0.1:5000/viewComplaint", {
+      userID: JSON.parse(localStorage.getItem("user"))["user_id"]
+    }).then((response) => {
+      if (response.data.Null == 0) {
+        this.setState((state) => ({
+          ...state,
+          complaints: response.data.complaints,
+        }));
+        const message = this.createChatBotMessage(
+          ``,
+          {
+            widget: "complaint",
+          }
+        );
+        this.setChatbotMessage(message);
+      } else {
+        const message = this.createChatBotMessage(
+          `There are no complaints`
+        );
+        this.setChatbotMessage(message);
+      }
+      
     });
   };
 
@@ -340,6 +367,10 @@ sendFeedback = (message, rating) => {
     feedback: message,
     rating: rating
   }).then((response) => {
+    this.setState((state) => ({
+      ...state,
+      currentState: "normal"
+    }));
     msg = this.createChatBotMessage("Thank you for your feedback");
     this.setChatbotMessage(msg);
   });
@@ -364,6 +395,19 @@ rateHandle = (message) => {
   }
   this.setChatbotMessage(msg);
 };
+
+// Rate chatbot when the option is clicked
+rateChatbot = () => {
+  var msg;
+  msg = this.createChatBotMessage(
+    "I value your feedbacks and ratings. Select a rating for me",
+    {
+      widget: "rating",
+    }
+  );
+  this.setChatbotMessage(msg);
+}
+
   //Normal chatbot message handler
 helloHandler = (message) => {
   var msg;
