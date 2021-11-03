@@ -129,7 +129,7 @@ export default function Landing() {
               as="h1"
               size="xl"
               fontWeight="bold"
-              color="primary.800"
+              color={colorMode === "light" ? "blue.900" : "white"}
               textAlign={["center", "center", "left", "left"]}
             >
               Light, Fast & Powerful
