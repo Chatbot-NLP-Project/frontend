@@ -1,5 +1,6 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
+# git push origin geex
+#git psh origin development2
 # dependencies
 /node_modules
 /.pnp
