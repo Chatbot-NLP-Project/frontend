@@ -4,6 +4,7 @@ import config from "./Chatbot/config.js";
 import MessageParser from "./Chatbot/messageParser.js";
 import ActionProvider from "./Chatbot/actionProvider";
 import Chatbot from "react-chatbot-kit";
+import './main.css'
 import "./index1.css";
 import styled from "styled-components";
 import { useColorMode } from "@chakra-ui/color-mode";
@@ -69,7 +70,7 @@ function Chat(props) {
               can select packages whatever you want. Fast Responses.
             </Heading>
           </Stack>
-          <Box>
+          <Box w="100%">
             <Chatbot
               config={config}
               messageParser={MessageParser}
