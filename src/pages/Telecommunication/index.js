@@ -7,6 +7,7 @@ import Chatbot from "react-chatbot-kit";
 // import './main.css'
 // import "./index1.css";
 // import "../../App.css";
+import 'react-chatbot-kit/build/main.css'
 import styled from "styled-components";
 import { useColorMode } from "@chakra-ui/color-mode";
 
