@@ -92,7 +92,7 @@ function Sidebar2(props) {
               </Button>
               {/* </Link> */}
 
-              <a href="http://localhost:3000/rating"> 
+              <a href="https://xyronchatbot.herokuapp.com/rating"> 
               <Button
                 h="50px"
                 w="100%"

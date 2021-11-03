@@ -12,7 +12,7 @@ const Mid = () => {
     const [phoneNumber,setPhoneNumber] = useState('');
 
     useEffect(()=> {
-        Axios.get("http://localhost:5000/profile", {
+        Axios.get("https://xyrontelecom.azurewebsites.net/profile", {
             params : {
                 user_id:JSON.parse(localStorage.getItem("user"))["user_id"]   // set the user id by session_id
             }
@@ -34,7 +34,7 @@ const Mid = () => {
         e.preventDefault();
 
         setIsPending(true);
-        Axios.post("http://localhost:5000/profile", {
+        Axios.post("https://xyrontelecom.azurewebsites.net/profile", {
                 user_id:JSON.parse(localStorage.getItem("user"))["user_id"],   // set the user id by session_id
                 email: email,
                 first_name: firstName,

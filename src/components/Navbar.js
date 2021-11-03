@@ -40,7 +40,7 @@ function Navbar(props) {
     console.log("handle log out clicked")
     localStorage.removeItem('user')
     localStorage.removeItem('access_token')
-    Axios.get("http://localhost:5000/logout").then((response) => {
+    Axios.get("https://xyrontelecom.azurewebsites.net/logout").then((response) => {
       console.log("sadsadsdadds")
       
       return <Redirect to='/' />

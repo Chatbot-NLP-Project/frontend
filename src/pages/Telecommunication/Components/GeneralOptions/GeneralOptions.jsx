@@ -6,7 +6,7 @@ const GeneralOptions = props => {
   const [provider, setProvider] = useState("");
 
   useEffect(() => {
-    Axios.post("http://localhost:5000/getUser", {
+    Axios.post("https://xyrontelecom.azurewebsites.net/getUser", {
       userID : JSON.parse(localStorage.getItem("user"))["user_id"] 
   }).then((response) => {
     console.log(response.data.user)
