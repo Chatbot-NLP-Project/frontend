@@ -54,7 +54,7 @@ function Chat(props) {
           >
             <Box w="500px" mb={{ base: 12, md: 0 }}>
               {/* TODO: Make this change every X secs */}
-              <Image src="../telecommunication/tel.png" size="100%" />
+              <Image src="../Telecommunication/tel.png" size="100%" />
             </Box>
 
             <Heading

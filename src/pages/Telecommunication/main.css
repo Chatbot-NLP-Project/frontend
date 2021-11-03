@@ -78,11 +78,11 @@
     padding: 10px;
     border-radius: 5px;
     font-size: 0.9rem;
-    color: #fff;
+    /* color: #fff; */
     font-weight: medium;
     position: relative;
     width: 184.5px;
-    margin-left: auto;
+    /* margin-left: auto; */
     text-align: left;
   }
   
@@ -136,7 +136,7 @@
   
   .react-chatbot-kit-chat-container {
     position: relative;
-    width: 275px;
+    width: 100%;
   }
   
   .react-chatbot-kit-chat-inner-container {
