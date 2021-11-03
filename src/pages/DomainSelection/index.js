@@ -190,7 +190,7 @@ export default function DSelection() {
 
             <Stack marginTop={10} marginTop={50}>
               <Heading fontSize="20px" color="blue.800">
-                Dashboard
+                Profile
               </Heading>
               <Heading
                 as="h3"

@@ -103,7 +103,7 @@ function Navbar(props) {
               Dashboard
             </Link>
           ) : (
-            <Link as={ReactRouterLink} to="/customerdashboard">
+            <Link as={ReactRouterLink} to="/profile">
               Dashboard
             </Link>
           )}
