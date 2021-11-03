@@ -97,7 +97,7 @@ export default function DSelection() {
                 w="fit-content"
               />
             </Box>
-            <a className="domain-link" href="http://localhost:3000/healthcare">
+            <a className="domain-link" href="https://xyronchatbot.herokuapp.com/healthcare">
             <Stack marginTop={10} marginTop={50}>
               <Heading fontSize="20px" color="blue.800">
                 Healthcare
@@ -123,7 +123,7 @@ export default function DSelection() {
             <Box h={"100px"} mt={-6} mx={-6} mb={6} pos={"relative"}>
               <Image src="../Healthcare/d2.png" size="100%" layout={"fill"} />
             </Box>
-            <a href="http://localhost:3000/telecommunication">
+            <a href="https://xyronchatbot.herokuapp.com/telecommunication">
               <Stack marginTop={10} marginTop={50}>
                 <Heading fontSize="20px" color="blue.800">
                   Telecommuncation{" "}
