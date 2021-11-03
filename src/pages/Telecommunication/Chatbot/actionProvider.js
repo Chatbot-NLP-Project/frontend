@@ -421,7 +421,7 @@ helloHandler = (message) => {
     this.setChatbotMessage(msg);
     
   } else { 
-    Axios.post("http://127.0.0.1:5000/reply", { msg: message }).then(
+    Axios.post("http://xyrontelecom.azurewebsites.net/reply", { msg: message }).then(
     (response) => {
       console.log("Hello Handler called, Response :");
       console.log(response.data.reply);
