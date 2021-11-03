@@ -4,8 +4,9 @@ import config from "./Chatbot/config.js";
 import MessageParser from "./Chatbot/messageParser.js";
 import ActionProvider from "./Chatbot/actionProvider";
 import Chatbot from "react-chatbot-kit";
-import './main.css'
+// import './main.css'
 // import "./index1.css";
+// import "../../App.css";
 import styled from "styled-components";
 import { useColorMode } from "@chakra-ui/color-mode";
 
