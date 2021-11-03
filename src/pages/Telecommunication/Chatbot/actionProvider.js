@@ -39,7 +39,7 @@ class ActionProvider {
   };
   //Display Package Types
   handleProvider = (type) => {
-    Axios.post("http://127.0.0.1:5000/getPackageTypes", {
+    Axios.post("https://xyrontelecom.azurewebsites.net/getPackageTypes", {
       provider: type,
     }).then((response) => {
       this.setState((state) => ({
@@ -55,7 +55,7 @@ class ActionProvider {
   };
   //Display packages of package type
   selectPackageType = (package_type, provider) => {
-    Axios.post("http://127.0.0.1:5000/getPackages", {
+    Axios.post("https://xyrontelecom.azurewebsites.net/getPackages", {
       provider: provider,
       packageType: package_type,
     }).then((response) => {
@@ -73,7 +73,7 @@ class ActionProvider {
 
   //Display package info
   getPackageInfo = (packageName, packageType, provider) => {
-    Axios.post("http://127.0.0.1:5000/getPackage", {
+    Axios.post("https://xyrontelecom.azurewebsites.net/getPackage", {
       packageName: packageName,
       packageType: packageType,
       provider: provider,
@@ -97,7 +97,7 @@ class ActionProvider {
   activateDataPackage = (packageName, provider) => {
     // console.log("activateDataPackage")
     // console.log(provider)
-    Axios.post("http://127.0.0.1:5000/activateDataPackage", {
+    Axios.post("https://xyrontelecom.azurewebsites.net/activateDataPackage", {
       packageName: packageName,
       provider: provider,
       userID: JSON.parse(localStorage.getItem("user"))["user_id"],
@@ -110,7 +110,7 @@ class ActionProvider {
   //Display current balance
   getCurrentBalance = () => {
     // console.log("getCurrentBalance")
-    Axios.post("http://127.0.0.1:5000/getCurrentBalance", {
+    Axios.post("https://xyrontelecom.azurewebsites.net/getCurrentBalance", {
       userID: JSON.parse(localStorage.getItem("user"))["user_id"],
     }).then((response) => {
       this.setState((state) => ({
@@ -154,7 +154,7 @@ class ActionProvider {
 
   //Display current balance
   makeComplaint = (msg, subject) => {
-    Axios.post("http://localhost:5000/makeComplaint", {
+    Axios.post("https://xyrontelecom.azurewebsites.net/makeComplaint", {
       subject: subject,
       body: msg,
       userID: JSON.parse(localStorage.getItem("user"))["user_id"],
@@ -171,7 +171,7 @@ class ActionProvider {
 
   //View Complaints
   viewComplaints = () => {
-    Axios.post("http://127.0.0.1:5000/viewComplaint", {
+    Axios.post("https://xyrontelecom.azurewebsites.net/viewComplaint", {
       userID: JSON.parse(localStorage.getItem("user"))["user_id"]
     }).then((response) => {
       if (response.data.Null == 0) {
@@ -199,7 +199,7 @@ class ActionProvider {
   //View all activated packages
   viewActivatedPackages = () => {
     console.log("view activated packages")
-    Axios.post("http://127.0.0.1:5000/viewActivatedPackages", {
+    Axios.post("https://xyrontelecom.azurewebsites.net/viewActivatedPackages", {
       userID: JSON.parse(localStorage.getItem("user"))["user_id"],
     }).then((response) => {
       if (response.data.Null == 0) {
@@ -247,7 +247,7 @@ class ActionProvider {
         ? "-" + value.getDate()
         : "-0" + value.getDate();
     var date = value.getFullYear() + month + day;
-    Axios.post("http://127.0.0.1:5000/viewActivatedPackagesByDate", {
+    Axios.post("https://xyrontelecom.azurewebsites.net/viewActivatedPackagesByDate", {
       userID: JSON.parse(localStorage.getItem("user"))["user_id"],
       date: date,
     }).then((response) => {
@@ -275,7 +275,7 @@ class ActionProvider {
 
   //View LKR Price per USD
   viewLKRValue = () => {
-    Axios.post("http://127.0.0.1:5000/getMoneyValue")
+    Axios.post("https://xyrontelecom.azurewebsites.net/getMoneyValue")
     .then((response) => {
       console.log("viewLKRValue")
       console.log(response.data)
@@ -295,7 +295,7 @@ class ActionProvider {
 
     //View Currency values per USD
     viewCurrencyValues = () => {
-      Axios.post("http://127.0.0.1:5000/getMoneyValue")
+      Axios.post("https://xyrontelecom.azurewebsites.net/getMoneyValue")
       .then((response) => {
         this.setState((state) => ({
           ...state,
@@ -313,7 +313,7 @@ class ActionProvider {
 
       //View CryptoCurrency Values
       viewCryptoCurrencyPrice = () => {
-        Axios.post("http://127.0.0.1:5000/getCryptoPrice")
+        Axios.post("https://xyrontelecom.azurewebsites.net/getCryptoPrice")
         .then((response) => {
           this.setState((state) => ({
             ...state,
@@ -333,7 +333,7 @@ class ActionProvider {
       
   //View CryptoCurrency Values
   viewCryptoCurrencyPriceInLKR = () => {
-    Axios.post("http://127.0.0.1:5000/getCryptoPriceLKR")
+    Axios.post("https://xyrontelecom.azurewebsites.net/getCryptoPriceLKR")
     .then((response) => {
       this.setState((state) => ({
         ...state,
@@ -362,7 +362,7 @@ viewGeneralOptions = () => {
 
 sendFeedback = (message, rating) => {
   var msg;
-  Axios.post("http://127.0.0.1:5000/sendFeedback", {
+  Axios.post("https://xyrontelecom.azurewebsites.net/sendFeedback", {
     userID: JSON.parse(localStorage.getItem("user"))["user_id"],
     feedback: message,
     rating: rating
@@ -421,7 +421,7 @@ helloHandler = (message) => {
     this.setChatbotMessage(msg);
     
   } else { 
-    Axios.post("http://127.0.0.1:5000/reply", { msg: message }).then(
+    Axios.post("https://xyrontelecom.azurewebsites.net/reply", { msg: message }).then(
     (response) => {
       console.log("Hello Handler called, Response :");
       console.log(response.data.reply);

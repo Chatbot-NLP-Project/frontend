@@ -25,13 +25,13 @@ import { useEffect } from "react";
 
 function Rating() {
   const { colorMode, toggleColorMode } = useColorMode();
-  Axios.get("http://127.0.0.1:5000/getFeedbacks").then((response) => {
+  Axios.get("https://xyrontelecom.azurewebsites.net/getFeedbacks").then((response) => {
     localStorage.setItem("feedbacks", JSON.stringify(response.data.feedbacks));
 
     // localStorage.setItem("feedbacks2", JSON.stringify(result));
   });
   useEffect(() => {
-    Axios.get("http://127.0.0.1:5000/getNumberOfUsers").then((response) => {
+    Axios.get("https://xyrontelecom.azurewebsites.net/getNumberOfUsers").then((response) => {
       localStorage.setItem(
         "numberOfUsers",
         JSON.stringify(response.data.numberOfUsers)
