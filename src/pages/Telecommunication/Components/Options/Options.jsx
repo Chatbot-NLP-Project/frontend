@@ -8,7 +8,7 @@ const Options = props => {
   return (
     <div className="options">
       <h1 className="options-header">{props.title}</h1>
-      <h1 className="options-header">{props.extra}</h1>
+      <h1 className="options-headers">{props.extra}</h1>
       <div className="options-container">
         {props.options.map(option => {
           return (

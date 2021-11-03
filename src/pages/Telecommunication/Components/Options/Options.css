@@ -7,6 +7,12 @@
   font-weight: normal;
 }
 
+.options-headers {
+  font-size: 0.85rem;
+  font-weight: normal;
+}
+
+
 .options-container {
   display: flex;
   flex-wrap: wrap;

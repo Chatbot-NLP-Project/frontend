@@ -14,7 +14,7 @@ const PackageDetails = ({ user, setState, packageDetails, actionProvider }) => {
         // borderColor="red"
         // borderStyle="solid"
         // borderWidth="2px"
-        h="320px"
+        h="340px"
         w="50%"
         bg="#2898EC"
         borderRadius="5px"
@@ -62,7 +62,7 @@ const PackageDetails = ({ user, setState, packageDetails, actionProvider }) => {
 
         <Divider orientation="horizontal" />
         <Heading as="h6" size="xs" color="white" p="5px">
-          Night Time Data
+          4G Data
           <Heading as="h6" size="sm" color="white" p="5px">
             {user["4g_data"]} MB
           </Heading>

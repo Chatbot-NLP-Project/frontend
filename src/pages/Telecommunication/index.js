@@ -4,7 +4,7 @@ import config from "./Chatbot/config.js";
 import MessageParser from "./Chatbot/messageParser.js";
 import ActionProvider from "./Chatbot/actionProvider";
 import Chatbot from "react-chatbot-kit";
-// import './main.css'
+import './main.css'
 // import "./index1.css";
 // import "../../App.css";
 import 'react-chatbot-kit/build/main.css'

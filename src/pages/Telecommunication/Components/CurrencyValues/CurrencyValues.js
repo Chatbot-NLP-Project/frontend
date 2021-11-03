@@ -34,7 +34,7 @@ function CurrencyValues({ actionProvider, pricesCurrency }) {
           rounded="5px"
           mt="0px"
           ml="10px"
-          bg="yellow"
+          bg="#CEDE37"
         >
           <Heading as="h2" size="md" p="10px">
             {pricesCurrency.AuD}
@@ -49,7 +49,7 @@ function CurrencyValues({ actionProvider, pricesCurrency }) {
           rounded="5px"
           mt="5px"
           ml="10px"
-          bg="green.400"
+          bg="#63B247"
 
         >
           <Heading as="h2" size="md" p="10px">
@@ -65,7 +65,7 @@ function CurrencyValues({ actionProvider, pricesCurrency }) {
           rounded="5px"
           mt="5px"
           ml="10px"
-          bg="blue.400"
+          bg="#1695CE"
 
         >
           <Heading as="h2" size="md" p="10px">
@@ -81,7 +81,7 @@ function CurrencyValues({ actionProvider, pricesCurrency }) {
           rounded="5px"
           mt="5px"
           ml="10px"
-          bg="red.400"
+          bg="#3E5FAD"
 
         >
           <Heading as="h2" size="md" p="10px">
@@ -97,7 +97,7 @@ function CurrencyValues({ actionProvider, pricesCurrency }) {
           rounded="5px"
           mt="5px"
           ml="10px"
-          bg="teal.300"
+          bg="#483290"
 
         >
           <Heading as="h2" size="md" p="10px">

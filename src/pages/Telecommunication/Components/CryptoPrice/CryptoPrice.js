@@ -123,7 +123,7 @@ function CryptoPrice({ pricesCrypto, actionProvider }) {
             <Image
               boxSize="70px"
               objectFit="cover"
-              src="imgs/bitcoin-cash.png"
+              src="imgs/Bitcoin-Cash.png"
               alt="Bitcoin Cash"
             />
           </Box>
