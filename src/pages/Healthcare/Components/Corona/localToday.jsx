@@ -15,16 +15,17 @@ function local(props) {
       borderRadius={5}
       padding="4px"
       width="60%"
-      height="33%"
+      height="auto"
       fontSize="10px"
+      bg="#fcf8e6"
     >
       <Flex mb="9px">
-        <Box>
+        <Box width="80%">
           <Heading size="xs" color="#00004d" ml={2}>
             In Sri Lanka
           </Heading>
         </Box>
-        <Box ml="30%" bg="#fcde8b" borderWidth="1px" borderRadius={5}>
+        <Box bg="#fcde8b" borderWidth="1px" borderRadius={5}>
           <Heading as="h3" size="xs" color="black" padding="2px" margin="2px">
             Up to {date}
           </Heading>

@@ -34,7 +34,9 @@ function EducationMain() {
         </Text>
       </Heading>
 
-      <p color={colorMode === "light" ? "white" : "black"}>What do you want to know?</p>
+      <p color={colorMode === "light" ? "white" : "black"}>
+        What do you want to know?
+      </p>
       <div>
         <Center mt="20px">
           <GiRobotGolem
@@ -43,7 +45,7 @@ function EducationMain() {
             color={colorMode === "light" ? "white" : "black"}
           />
         </Center>
-        <a href="https://xyronchatbot.herokuapp.com/chatbothc">
+        <a href="/chatbothc">
           <Box
             as="button"
             p={4}

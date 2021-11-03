@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   Box,
@@ -13,11 +13,14 @@ import {
 // import { IoPersonCircle } from "react-icons/fa";
 
 const Doctors = (props) => {
+  const [disable, setDisable] = useState(false);
+
   const renderDoctor = () => {
     return props.doctors.map((doctor) => {
       function selectDate() {
         props.actionProvider.selectDoctor(props.doctors.indexOf(doctor));
         console.log(props);
+        setDisable(true);
       }
       return (
         <StackItem key={doctor.doctorID}>
@@ -61,6 +64,7 @@ const Doctors = (props) => {
                 size="md"
                 // ml={3}
                 mr={3}
+                isDisabled={disable}
                 onClick={selectDate}
               >
                 Channel

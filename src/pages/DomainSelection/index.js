@@ -11,6 +11,7 @@ import {
   Flex,
   Text,
   Button,
+  useColorMode,
 } from "@chakra-ui/react";
 import { Link } from "@chakra-ui/react";
 import Header from "../../components/Sections/Header";
@@ -64,6 +65,8 @@ export const Card = styled(Link)`
 `;
 
 export default function DSelection() {
+  const { colorMode, toggleColorMode } = useColorMode();
+
   return (
     <Box>
       <Header />
@@ -76,7 +79,12 @@ export default function DSelection() {
         // bgImage="url('../b2.png')"
       >
         <Box marginTop="10%">
-          <Heading as="h1" size="xl" fontWeight="bold" color="blue.900">
+          <Heading
+            as="h1"
+            size="xl"
+            fontWeight="bold"
+            color={colorMode === "light" ? "blue.900" : "white"}
+          >
             Chatbot Domains
           </Heading>
         </Box>
@@ -97,26 +105,28 @@ export default function DSelection() {
                 w="fit-content"
               />
             </Box>
-            <a className="domain-link" href="https://xyronchatbot.herokuapp.com/healthcare">
-            <Stack marginTop={10} marginTop={50}>
-              <Heading fontSize="20px" color="blue.800">
-                Healthcare
-              </Heading>
-              <Heading
-                as="h3"
-                size="sm"
-                color="primary.800"
-                opacity="0.8"
-                fontWeight="normal"
-                lineHeight={1.5}
-              >
-                Do you want to channel a doctor?
-              </Heading>
-              <Text color={"gray.500"}></Text>
-     
+            <a className="domain-link" href="/healthcare">
+              <Stack marginTop={10} marginTop={50}>
+                <Heading
+                  fontSize="20px"
+                  color={colorMode === "light" ? "blue.900" : "white"}
+                >
+                  Healthcare
+                </Heading>
+                <Heading
+                  as="h3"
+                  size="sm"
+                  color="primary.800"
+                  opacity="0.8"
+                  fontWeight="normal"
+                  lineHeight={1.5}
+                >
+                  Do you want to channel a doctor?
+                </Heading>
+                <Text color={"gray.500"}></Text>
+
                 <Button>Chat now</Button>
-   
-            </Stack>
+              </Stack>
             </a>
           </Card>
           <Card>
@@ -125,7 +135,10 @@ export default function DSelection() {
             </Box>
             <a href="https://xyronchatbot.herokuapp.com/telecommunication">
               <Stack marginTop={10} marginTop={50}>
-                <Heading fontSize="20px" color="blue.800">
+                <Heading
+                  fontSize="20px"
+                  color={colorMode === "light" ? "blue.900" : "white"}
+                >
                   Telecommuncation{" "}
                 </Heading>
                 <Heading
@@ -140,8 +153,8 @@ export default function DSelection() {
                 </Heading>
 
                 <Text color={"gray.500"}></Text>
-                
-                  <Button>Chat now</Button>
+
+                <Button>Chat now</Button>
               </Stack>
             </a>
           </Card>
@@ -150,24 +163,27 @@ export default function DSelection() {
               <Image src="../Healthcare/d3.png" size="100%" layout={"fill"} />
             </Box>
             <a href="https://xyronchatbot.herokuapp.com/transport">
-            <Stack marginTop={10} marginTop={50}>
-              <Heading fontSize="20px" color="blue.800">
-                Public Transport{" "}
-              </Heading>
-              <Heading
-                as="h3"
-                size="sm"
-                color="primary.800"
-                opacity="0.8"
-                fontWeight="normal"
-                lineHeight={1.5}
-              >
-                View today train and bus schedules.{" "}
-              </Heading>
+              <Stack marginTop={10} marginTop={50}>
+                <Heading
+                  fontSize="20px"
+                  color={colorMode === "light" ? "blue.900" : "white"}
+                >
+                  Public Transport{" "}
+                </Heading>
+                <Heading
+                  as="h3"
+                  size="sm"
+                  color="primary.800"
+                  opacity="0.8"
+                  fontWeight="normal"
+                  lineHeight={1.5}
+                >
+                  View today train and bus schedules.{" "}
+                </Heading>
 
-              <Text color={"gray.500"}></Text>
-              <Button>Chat now</Button>
-            </Stack>
+                <Text color={"gray.500"}></Text>
+                <Button>Chat now</Button>
+              </Stack>
             </a>
           </Card>
           <Card>
@@ -187,25 +203,27 @@ export default function DSelection() {
               />
             </Box>
             <a href="https://xyronchatbot.herokuapp.com/profile">
+              <Stack marginTop={10} marginTop={50}>
+                <Heading
+                  fontSize="20px"
+                  color={colorMode === "light" ? "blue.900" : "white"}
+                >
+                  Dashboard
+                </Heading>
+                <Heading
+                  as="h3"
+                  size="sm"
+                  color="primary.800"
+                  opacity="0.8"
+                  fontWeight="normal"
+                  lineHeight={1.5}
+                >
+                  Personalize your settings using your dashboard.{" "}
+                </Heading>
 
-            <Stack marginTop={10} marginTop={50}>
-              <Heading fontSize="20px" color="blue.800">
-                Dashboard
-              </Heading>
-              <Heading
-                as="h3"
-                size="sm"
-                color="primary.800"
-                opacity="0.8"
-                fontWeight="normal"
-                lineHeight={1.5}
-              >
-                Personalize your settings using your dashboard.{" "}
-              </Heading>
-
-              <Text color={"gray.500"}></Text>
-              <Button>Chat now</Button>
-            </Stack>
+                <Text color={"gray.500"}></Text>
+                <Button>Chat now</Button>
+              </Stack>
             </a>
           </Card>
         </Container>
