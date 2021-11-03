@@ -336,7 +336,7 @@ class ActionProvider {
           this.createChatBotMessage(this.reservationHandler(message))
           msg = this.createChatBotMessage("Make your reservation from here.", { widget: "links" });
         } else if (response.data.members == "schedule") {
-          msg = this.createChatBotMessage('To view  train schedules, visit https://eservices.railway.gov.lk/schedule/homeAction.action');
+          msg = this.createChatBotMessage("Get train schedule details from here.", { widget: "schedules" });
         }
         else {
           msg = this.createChatBotMessage(response.data.members);

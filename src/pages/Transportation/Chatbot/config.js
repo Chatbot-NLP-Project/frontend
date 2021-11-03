@@ -5,6 +5,7 @@ import BotIcon from "../Components/botIcon";
 // import Options from "../components/Options/Options";
 import Methods from "../Components/Methods/methods";
 import Links from "../Components/Links/links";
+import Schedules from "../Components/Schedules/schedules";
 
 const config = {
   initialMessages: [
@@ -57,6 +58,11 @@ const config = {
       widgetName: "links",
       widgetFunc: (props) => <Links {...props} />,
       mapStateToProps: ["links"],
+    },
+    {
+      widgetName: "schedules",
+      widgetFunc: (props) => <Schedules {...props} />,
+      mapStateToProps: ["schedules"],
     },
   ],
   customStyles: {
