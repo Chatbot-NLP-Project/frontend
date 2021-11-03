@@ -5,7 +5,7 @@ import BotIcon from "../Components/botIcon";
 import GeneralOptions from "../Components/GeneralOptions/GeneralOptions";
 import InternetProvider from "../Components/InternetProvider/InternetProvider";
 import PackageDetails from "../Components/PackageDetails/PackageDetails";
-import PackageTypes from "../Components/PackageTypes/packageTypes";
+import PackageTypes from "../Components/PackageTypes/PackageTypes";
 import Packages from "../Components/Packagez/Packages";
 import Balance from "../Components/Balance/Balance";
 import ActivatedPackages from "../Components/ActivatedPackages/ActivatedPackages";
@@ -60,8 +60,6 @@ const config = {
     selectedPackageType: "",
     packageDetails: [],
     user: [], //Get full user
-<<<<<<< HEAD
-=======
     subject: "",
     activatedPackages: [],
     pricesLKR: [],
@@ -69,7 +67,6 @@ const config = {
     pricesCrypto: [],
     prices: [],
 
->>>>>>> dd40130beddee0bd002ab19a18b18d01d627ed58
   },
   // widgetName - defines the name of the widget
   // widgetFunc - define a function that returns the component. The function must take props and spread it into the component.
@@ -110,9 +107,6 @@ const config = {
       widgetFunc: (props) => <Balance {...props} />,
       mapStateToProps: ["user"],
     },
-<<<<<<< HEAD
-
-=======
     {
       widgetName: "activatedPackages",
       widgetFunc: (props) => <ActivatedPackages {...props} />,
@@ -144,7 +138,6 @@ const config = {
       mapStateToProps: ["prices"]
     },
     
->>>>>>> dd40130beddee0bd002ab19a18b18d01d627ed58
     // {
     //   widgetName: "doctors", //Name that we give to refer to it
     //   widgetFunc: (props) => <Doctors {...props} />, //returns the component that we created

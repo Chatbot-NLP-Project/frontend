@@ -149,7 +149,7 @@ export default function DSelection() {
             <Box h={"100px"} mt={-6} mx={-6} mb={6} pos={"relative"}>
               <Image src="../Healthcare/d3.png" size="100%" layout={"fill"} />
             </Box>
-            <a href="https://xyronchatbot.azurewebsites.net/transport">
+            <a href="http://localhost:3000/transport">
             <Stack marginTop={10} marginTop={50}>
               <Heading fontSize="20px" color="blue.800">
                 Public Transport{" "}
@@ -186,7 +186,7 @@ export default function DSelection() {
                 // alignItems="center"
               />
             </Box>
-            <a href="https://xyronchatbot.azurewebsites.net/profile">
+            <a href="http://localhost:3000/profile">
 
             <Stack marginTop={10} marginTop={50}>
               <Heading fontSize="20px" color="blue.800">

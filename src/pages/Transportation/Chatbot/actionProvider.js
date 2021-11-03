@@ -121,7 +121,7 @@ class ActionProvider {
     }
 
     let msg;
-    Axios.post("http://127.0.0.1:5000/sendEmail", { email: email, subject: subject, message: body, }).then(
+    Axios.post("https://xyrontransport.azurewebsites.net/sendEmail", { email: email, subject: subject, message: body, }).then(
       (response) => {
         console.log(response);
       }
@@ -196,7 +196,7 @@ class ActionProvider {
 
   methodHandler = (to, from, mode) => {
     var msg;
-    Axios.post("http://127.0.0.1:5000/travel", { to: to, from: from, mode: mode, }).then(
+    Axios.post("https://xyrontransport.azurewebsites.net/travel", { to: to, from: from, mode: mode, }).then(
       (response) => {
         if (response.data.er == 1) {
           this.setChatbotState("normal");
@@ -294,9 +294,23 @@ class ActionProvider {
     }
   };
 
+  reservationHandler = (message) => {
+    var msg;
+    var wrds = message.split(' ').map(v => v.toLowerCase());
+
+    if ( wrds.includes('bus') ) {
+      return('https://busseat.lk/');
+    }
+    else if ( wrds.includes('train') ) {
+      return('http://www.railway.gov.lk/web/index.php?option=com_content&view=article&id=61&Itemid=68&lang=en');
+    } else {
+      return('https://busseat.lk/');
+    }
+  };
+
   messageHandler = (message, state) => {
     var msg;
-    Axios.post("http://127.0.0.1:5000/reply", { msg: message }).then(
+    Axios.post("https://xyrontransport.azurewebsites.net/reply", { msg: message }).then(
       (response) => {
         if (response.data.members == "travel") {
           this.setChatbotState("travel");
@@ -306,6 +320,10 @@ class ActionProvider {
           this.setChatbotState("complaint");
           this.stationHandler(message);
           msg = this.createChatBotMessage('Do you want to make a complaint? ');
+        } else if (response.data.members == "reserve") {
+          msg = this.createChatBotMessage(this.reservationHandler(message));
+        } else if (response.data.members == "schedule") {
+          msg = this.createChatBotMessage('To view  train schedules, visit https://eservices.railway.gov.lk/schedule/homeAction.action');
         }
         else {
           msg = this.createChatBotMessage(response.data.members);
