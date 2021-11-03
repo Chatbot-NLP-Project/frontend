@@ -28,7 +28,7 @@ const useForm = (callback, validate, setSignInClicked) => {
     e.preventDefault();
     setErrors(validate(values));
     if (Object.keys(errors).length === 0 && Object.keys(JSON.stringify(validate(values))).length === 2) {
-      Axios.post("http://xyrontelecom.azurewebsites.net/login", {
+      Axios.post("https://xyrontelecom.azurewebsites.net/login", {
         email: email,
         password: password,
       }).then((response) => {
