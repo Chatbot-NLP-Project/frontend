@@ -1,9 +1,10 @@
 .form-img {
-    width: 68%;
-    height: 65%;
+    width: 60% !important;
+    height: 60% !important;
+
     position: absolute;
-    top: 45%;
-    left: 50%;
+    top: 45% !important;
+    left: 50% !important;
     transform: translate(-50%, -50%);
   }
   .overview{
@@ -16,11 +17,12 @@
   }
 
   .rectangle{
-    width: 40%;
-    height: 40%;
+    margin-top: 8%;
+    width: 40% !important;
+    height: 40% !important;
     position: absolute;
-    top: 70%;
-    left: 80%;
+    top: 70% !important;
+    left: 80% !important;
     transform: translate(-50%, -50%);
   }
 /* 

@@ -138,7 +138,7 @@ function Rating() {
             
             </Box> */}
           <img className="form-img" src="main1.png" alt="Overview" />
-          <img className="rectangle" src="rectangle.png" alt="Overview" />
+          <img className="rectangle" src="Rectangle.png" alt="Overview" />
         </Flex>
       </Box>
     </>
