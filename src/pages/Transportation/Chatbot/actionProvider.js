@@ -109,7 +109,7 @@ class ActionProvider {
     body += '\nUser has described the transportation method he\'s reffering to as followed. \n'
     body += '\n\"' + description + '\"\n';
 
-    let email = "gkkpathirana@gmail.com";
+    let email = "";
     let subject = "User Complaint"
 
     if(mode == 'bus'){
