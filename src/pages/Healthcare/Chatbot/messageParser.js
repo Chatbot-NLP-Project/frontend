@@ -13,7 +13,7 @@ class MessageParser {
 
     if (
       this.state.currentState[siz] == "predict" &&
-      this.state.sympthoms.length < 3
+      this.state.sympthoms.length < 4
     ) {
       this.actionProvider.addDisease(message);
       if (this.state.sympthoms.length == 3) {
