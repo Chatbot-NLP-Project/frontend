@@ -22,7 +22,6 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 20px;
-
   @media screen and (max-width: 960px) {
     display: flex;
     flex-direction: column;
@@ -44,20 +43,16 @@ export const Card = styled(Link)`
   margin: 20px;
   padding: 20px;
   height: 350px;
-
   &:nth-child(2) {
     margin: 24px;
   }
-
   &:hover {
     transform: scale(1.06);
     transition: all 0.3s ease-out;
     color: #1c2237;
   }
-
   @media screen and (max-width: 960px) {
     width: 90%;
-
     &:hover {
       transform: none;
     }
@@ -224,24 +219,9 @@ export default function DSelection() {
                   Personalize your settings using your dashboard.{" "}
                 </Heading>
 
-            <Stack marginTop={10} marginTop={50}>
-              <Heading fontSize="20px" color="blue.800">
-                Profile
-              </Heading>
-              <Heading
-                as="h3"
-                size="sm"
-                color="primary.800"
-                opacity="0.8"
-                fontWeight="normal"
-                lineHeight={1.5}
-              >
-                Personalize your settings using your dashboard.{" "}
-              </Heading>
-
-              <Text color={"gray.500"}></Text>
-              <Button>Chat now</Button>
-            </Stack>
+                <Text color={"gray.500"}></Text>
+                <Button>Chat now</Button>
+              </Stack>
             </a>
           </Card>
         </Container>
