@@ -67,7 +67,7 @@ class ActionProvider {
       userID: JSON.parse(localStorage.getItem("user"))["user_id"],
       msg: message,
     };
-    Axios.post("http://127.0.0.1:5000/sendFeedback", {
+    Axios.post("https://xyronhealthcarebot.azurewebsites.net/sendFeedback", {
       feedback: feedback,
     }).then((response) => {
       console.log(response.data);
@@ -78,9 +78,8 @@ class ActionProvider {
   };
 
   predictHandler = (message) => {
-    console.log(message);
     var msg;
-    Axios.post("https://xyronhealthcarebot.azurewebsites.net/predict", {
+    Axios.post("https://xyhealthbot.azurewebsites.net/predict", {
       diseases: message,
     }).then((response) => {
       console.log(message);
@@ -194,7 +193,7 @@ class ActionProvider {
         this.setChatbotMessage(msg);
       } else if (response.data.members == "findDoctor") {
         this.setChatbotState("findDoctor");
-        msg = this.createChatBotMessage("Please enter the specialist ?");
+        msg = this.createChatBotMessage("Please enter the speciality ?");
         this.setChatbotMessage(msg);
       } else if (response.data.members == "covidLocalCurrent") {
         this.setChatbotState("covidLocalCurrent");
@@ -208,11 +207,18 @@ class ActionProvider {
         this.setChatbotState("covidGlobalCurrent");
         console.log("covidGlobalCurrent");
         this.getCovidData("covidGlobalCurrent");
+      } else if (response.data.members == "clinic") {
+        this.setChatbotState("clinic");
+        console.log("clinic");
+        msg = this.createChatBotMessage("Please select the Hospital.", {
+          widget: "hospital",
+        });
+        this.setChatbotMessage(msg);
       } else if (response.data.members == "thanks") {
         this.setChatbotState("thanks");
         console.log("thanks");
         msg = this.createChatBotMessage(
-          "You are welcome ! If you are satisfied with our service please rate us",
+          "You are welcome ! If you are satisfied with our service please rate us.",
           {
             widget: "rating",
           }

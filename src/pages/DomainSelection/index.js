@@ -105,7 +105,10 @@ export default function DSelection() {
                 w="fit-content"
               />
             </Box>
-            <a className="domain-link" href="/healthcare">
+            <a
+              className="domain-link"
+              href="https://xyronchatbot.herokuapp.com/healthcare"
+            >
               <Stack marginTop={10} marginTop={50}>
                 <Heading
                   fontSize="20px"
