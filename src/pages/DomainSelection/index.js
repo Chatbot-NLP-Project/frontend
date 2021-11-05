@@ -206,7 +206,7 @@ export default function DSelection() {
                   fontSize="20px"
                   color={colorMode === "light" ? "blue.900" : "white"}
                 >
-                  Dashboard
+                  Profile
                 </Heading>
                 <Heading
                   as="h3"
