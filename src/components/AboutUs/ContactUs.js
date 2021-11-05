@@ -7,18 +7,43 @@ import {
     Input,
     Stack,
     useColorModeValue,
+    FormHelperText,
   } from '@chakra-ui/react';
+import { useState } from 'react';
+import Axios from "axios";
   
-  export default function ContactUsForm() {
+
+  const ContactUsForm = () => {
+
+    const [email, setEmail] = useState('');
+    const [message, setMessage] = useState('');
+    const [successStatus, setSuccessStatus] = useState('');
+     
+    // send email after submission
+    const handleSubmit = () => {
+      let body = 'A visitor is trying to contact you\n'
+      body += '\nMessage: ' + message +'\n';
+      body += '\nEmail: ' + email +'\n';
+
+      Axios.post("https://xyrontransport.azurewebsites.net/sendEmail", { email: "gkkpathirana@gmail.com", subject: "Contact Us", message: body, }).then(
+        (response) => {
+          if (response.status == 200){
+            setSuccessStatus('We got your message.');
+          } else {
+            setSuccessStatus('Message was not sent.');
+          }
+        }
+      ).catch((error) => {
+        setSuccessStatus('An error occured while sending your message.');
+      });
+
+    }
 
     return (
       <Flex
         align={'center'}
         justify={'center'}
         bg={useColorModeValue('white', 'gray.800')}>
-        {/* <Heading ml={'30%'} mb={'15em'} mt={'1em'} textAlign={'ceneter'} lineHeight={1.1} fontSize={{ base: '2xl', md: '3xl' }}>
-            Contact Us
-        </Heading> */}
         <Stack
           spacing={4}
           w={'full'}
@@ -37,14 +62,20 @@ import {
               placeholder="your-email@example.com"
               _placeholder={{ color: 'gray.500' }}
               type="email"
+              onChange = {(e) => setEmail(e.target.value)}
+
             />
           </FormControl>
-          <FormControl id="password" isRequired>
+          <FormControl id="message" isRequired>
             <FormLabel>Message</FormLabel>
-            <Input type="text" />
+            <Input type="text"
+            onChange = {(e) => setMessage(e.target.value)}
+            />
+            <FormHelperText>{successStatus}</FormHelperText>
           </FormControl>
           <Stack spacing={6}>
             <Button
+            onClick={()=>handleSubmit()}
               bg={'blue.400'}
               color={'white'}
               _hover={{
@@ -57,3 +88,5 @@ import {
       </Flex>
     );
   }
+
+  export default ContactUsForm;

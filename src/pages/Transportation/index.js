@@ -26,10 +26,10 @@ function Chat(props) {
           w={{ base: "80%", md: "40%" }}
           align={["center", "center", "flex-start", "flex-start"]}
         >
-          <Box w="500px" mb={{ base: 12, md: 0 }}>
+          <Box ml="55" w="500px" mb={{ base: 12, md: 0 }}>
             {/* TODO: Make this change every X secs */}
             {/* <Image src="../Healthcare/bot.jpg" size="100%" /> */}
-            <Image src="../Transporation/bot.png" size="100%" />
+            <Image src="../Transporation/botpt.png" size="100%" />
           </Box>
           <Heading
             as="h1"
