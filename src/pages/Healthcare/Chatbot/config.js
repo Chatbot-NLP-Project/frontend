@@ -9,14 +9,18 @@ import CovidLocalCurrent from "../Components/Corona/local";
 import CovidLocalToday from "../Components/Corona/localToday";
 import CovidGlobalCurrent from "../Components/Corona/global";
 import Rating from "../Components/Rating/rating";
+import Time from "../Components/Clock/clock";
+import Disease from "../Components/Disease/disease";
+import Moreinfo from "../Components/Disease/moreInfo";
+import Hospital from "../Components/Hospital/hospital";
+import NationalClinic from "../Components/Hospital/nationalClinic";
+import EyeClinic from "../Components/Hospital/eyeClinic";
+import Clinic from "../Components/Hospital/clinic";
 
 const config = {
   initialMessages: [
     createChatBotMessage(
-      `Hey there 👋👋👋👋
-  Thanks for your interest in XYRON.
-  Before we begin can I have your name ?`,
-      { widget: "options" }
+      `Hey there 👋👋👋👋Thanks for your interest in XYRON.`
     ),
   ],
   botName: "XYRON",
@@ -48,6 +52,10 @@ const config = {
     covidLocalCurrent: [],
     covidLocalToday: [],
     covidGlobalCurrent: [],
+    time: [],
+    disease: [],
+    hospital: [],
+    clinic: [],
   },
   widgets: [
     {
@@ -77,6 +85,38 @@ const config = {
     {
       widgetName: "rating",
       widgetFunc: (props) => <Rating {...props} />,
+    },
+    {
+      widgetName: "time",
+      widgetFunc: (props) => <Time {...props} />,
+      mapStateToProps: ["channel", "date"],
+    },
+    {
+      widgetName: "disease",
+      widgetFunc: (props) => <Disease {...props} />,
+      mapStateToProps: ["disease"],
+    },
+    {
+      widgetName: "moreinfo",
+      widgetFunc: (props) => <Moreinfo {...props} />,
+    },
+    {
+      widgetName: "hospital",
+      widgetFunc: (props) => <Hospital {...props} />,
+      mapStateToProps: ["hospital"],
+    },
+    {
+      widgetName: "nationalClinic",
+      widgetFunc: (props) => <NationalClinic {...props} />,
+    },
+    {
+      widgetName: "eyeClinic",
+      widgetFunc: (props) => <EyeClinic {...props} />,
+    },
+    {
+      widgetName: "clinic",
+      widgetFunc: (props) => <Clinic {...props} />,
+      mapStateToProps: ["clinic"],
     },
   ],
 

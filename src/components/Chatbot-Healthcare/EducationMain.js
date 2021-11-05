@@ -34,7 +34,9 @@ function EducationMain() {
         </Text>
       </Heading>
 
-      <p color={colorMode === "light" ? "white" : "black"}>What do you want to know?</p>
+      <p color={colorMode === "light" ? "white" : "black"}>
+        What do you want to know?
+      </p>
       <div>
         <Center mt="20px">
           <GiRobotGolem
