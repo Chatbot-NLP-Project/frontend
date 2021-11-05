@@ -104,7 +104,7 @@ const Footer = (props) => {
         >
           Do you have any problem? Email US.
         </Heading>
-        <Link to="">
+        <Link to="/aboutus">
           <Button
             color={colorMode === "light" ? "blue.900" : "white"}
             colorScheme="blue"
