@@ -18,9 +18,31 @@ import Axios from "axios";
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
     const [successStatus, setSuccessStatus] = useState('');
+    const [color, setColor] = useState('red');
+
+    // validate email address
+    const checkEmail = (email) => {
+     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))
+      {
+        return (true)
+      }
+        return (false)
+    }
      
     // send email after submission
     const handleSubmit = () => {
+
+      if(!email || !message){
+        setSuccessStatus('Please fill the required fields.')
+        return 
+      } else {
+        if (!checkEmail(email)){
+          setSuccessStatus('Your email address is not valid.')
+          return
+        }
+        setColor('grey');
+        setSuccessStatus('Sending your message.')
+      }
       let body = 'A visitor is trying to contact you\n'
       body += '\nMessage: ' + message +'\n';
       body += '\nEmail: ' + email +'\n';
@@ -28,7 +50,10 @@ import Axios from "axios";
       Axios.post("https://xyrontransport.azurewebsites.net/sendEmail", { email: "gkkpathirana@gmail.com", subject: "Contact Us", message: body, }).then(
         (response) => {
           if (response.status == 200){
+            setColor('green');
             setSuccessStatus('We got your message.');
+            setMessage('')
+            setEmail('')
           } else {
             setSuccessStatus('Message was not sent.');
           }
@@ -56,22 +81,26 @@ import Axios from "axios";
           <Heading lineHeight={1.1} fontSize={{ base: '2xl', md: '2xl' }}>
             How Can We Help You?
           </Heading>
-          <FormControl id="email" isRequired>
+          <FormControl id="email" isRequired="true">
             <FormLabel>Email Address</FormLabel>
             <Input
               placeholder="your-email@example.com"
               _placeholder={{ color: 'gray.500' }}
               type="email"
               onChange = {(e) => setEmail(e.target.value)}
+              isRequired="true"
+              value={email}
 
             />
           </FormControl>
           <FormControl id="message" isRequired>
             <FormLabel>Message</FormLabel>
-            <Input type="text"
+            <Input type="text" 
             onChange = {(e) => setMessage(e.target.value)}
+            isRequired="true"
+            value={message}
             />
-            <FormHelperText>{successStatus}</FormHelperText>
+            <FormHelperText color={color}>{successStatus}</FormHelperText>
           </FormControl>
           <Stack spacing={6}>
             <Button
