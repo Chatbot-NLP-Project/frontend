@@ -44,6 +44,15 @@
   font-size: 2em;
 }
 
+#edit-details h1 {
+  width: 80%;
+  margin: 0px auto 2em;
+  text-align: center;
+  display: inline-block;
+  font-size: 1.2em;
+  color: red;
+}
+
 #profile-details button {
   width: 20%;
   font-size: 1.1em;
