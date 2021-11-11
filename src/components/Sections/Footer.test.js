@@ -20,10 +20,6 @@ it("renders without crashing", () => {
     ReactDOM.render(<MemoryRouter><Footer /></MemoryRouter>, div)
 })
 
-test('on initial render, learn more button is enabled', () => {
-    render (<MemoryRouter><Footer /></MemoryRouter>);
-    screen.getByRole();
-})
 
 it("matches snapshot", () => {
     const tree = renderer.create(<MemoryRouter><Footer /></MemoryRouter>).toJSON();
