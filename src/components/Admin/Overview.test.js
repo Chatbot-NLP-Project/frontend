@@ -17,6 +17,8 @@ import Overview from "./Overview";
 afterEach(cleanup);
 
 it("renders without crashing", () => {
+    const user = '{ "first_name":"Amara"}';
+    localStorage.setItem('user', JSON.stringify(user));
     const div = document.createElement("div");
     ReactDOM.render(<MemoryRouter><Overview /></MemoryRouter>, div)
 })
@@ -33,6 +35,8 @@ it("renders without crashing", () => {
 
 
 it("matches snapshot", () => {
+    const user = '{ "first_name":"Amara"}';
+    localStorage.setItem('user', JSON.stringify(user));
     const tree = renderer.create(<MemoryRouter><Overview /></MemoryRouter>).toJSON();
     expect(tree).toMatchSnapshot();
 })

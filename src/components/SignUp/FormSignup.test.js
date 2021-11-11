@@ -22,6 +22,11 @@ it("renders without crashing", () => {
     ReactDOM.render(<MemoryRouter><FormSignup /></MemoryRouter>, div)
 })
 
+test('on initial render, continue button is enabled', () => {
+    render(<FormSignup />)
+    expect(screen.getByRole('button', {name: /continue/i})).toBeEnabled();
+})
+
 test('on initial render, the input fields are editable', () => {
     render(<FormSignup />) 
     userEvent.type(screen.getByPlaceholderText(/Enter your first name/i), "Amara");
@@ -77,7 +82,6 @@ test('land line phone number', () => {
     userEvent.type(screen.getByPlaceholderText(/Enter your phone number/i), "0365956909") ;
     userEvent.click(screen.getByRole('button', {name: /continue/i}));
     expect(screen.getByText(/Phone number should be a mobile number. Not a land line/)).toBeTruthy();
-    screen.debug();
 })
 
 test('invalid service provider', () => {
