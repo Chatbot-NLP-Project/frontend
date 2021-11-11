@@ -40,8 +40,9 @@ exports[`matches snapshot 1`] = `
         onFocus={[Function]}
         placeholder="your-email@example.com"
         readOnly={false}
-        required={true}
+        required="true"
         type="email"
+        value=""
       />
     </div>
     <div
@@ -71,11 +72,12 @@ exports[`matches snapshot 1`] = `
         onChange={[Function]}
         onFocus={[Function]}
         readOnly={false}
-        required={true}
+        required="true"
         type="text"
+        value=""
       />
       <div
-        className="chakra-form__helper-text css-0"
+        className="chakra-form__helper-text css-tokvmb"
         id="message-helptext"
       >
         

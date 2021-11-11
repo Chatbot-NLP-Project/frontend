@@ -9,8 +9,7 @@ import {
   Link,
   Button,
 } from "@chakra-ui/react";
-// import { FaHospital, BsPersonFill } from "react-icons/fa";
-// import { IoPersonCircle } from "react-icons/fa";
+
 
 const Methods = (props) => {
   const renderMethod = () => {
