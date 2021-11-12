@@ -23,7 +23,7 @@ class ActionProvider {
   setChatbotState = (s) => {
     this.setState((state) => ({
       ...state,
-      currentState: [...state.currentState, s],
+      currentState: s,
     }));
   };
 

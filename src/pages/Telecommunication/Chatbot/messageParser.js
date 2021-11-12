@@ -22,7 +22,14 @@ class MessageParser {
     // if (lowercase.includes("ssss") || lowercase.includes("js")) {
       
     // } else 
-    if(lowercase.includes("complaint") || lowercase.includes("complaints")) {
+    if (message.toLowerCase() == "quit") { // Quit user
+      const msg = this.actionProvider.createChatBotMessage(
+        "Thank for chatting with Xyron Telecommunication Chatbot."
+      );
+      this.actionProvider.setChatbotState("normal");
+      this.actionProvider.setChatbotMessage(msg);
+      
+    } else if(lowercase.includes("complaint") || lowercase.includes("complaints")) {
       this.actionProvider.handleComplaint(JSON.parse(localStorage.getItem("user"))["sim_type"])
 
     } else if (lowercase.includes("options") || lowercase.includes("option") || lowercase.includes("menu")){

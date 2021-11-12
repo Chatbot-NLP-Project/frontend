@@ -222,7 +222,7 @@ export default function DSelection() {
                 </Heading>
 
                 <Text color={"gray.500"}></Text>
-                <Button>Chat now</Button>
+                <Button>View Profile</Button>
               </Stack>
             </a>
           </Card>
