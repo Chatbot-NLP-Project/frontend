@@ -129,7 +129,7 @@ class ActionProvider {
     console.log("complaint")
     this.setState((state) => ({
       ...state,
-      currentState: "complaint",
+      currentState: "complaint", 
     }));
     const message = this.createChatBotMessage(
       `Your internet service provider is ${provider}. We will send your complaint as an email to the relevant authorities`
@@ -159,7 +159,7 @@ class ActionProvider {
       body: msg,
       userID: JSON.parse(localStorage.getItem("user"))["user_id"],
     }).then((response) => {
-      this.setState((state) => ({
+      this.setState((state) => ({ // Set state
         ...state,
         currentState: "normal",
         subject: "",

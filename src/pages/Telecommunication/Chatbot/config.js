@@ -1,3 +1,7 @@
+
+////////////////////////////////
+//// Imports
+///////////////////////////////
 import { Flex, Heading } from "@chakra-ui/react";
 import { createChatBotMessage } from "react-chatbot-kit";
 import BotAvatar from "../Components/botAvatar";
@@ -25,7 +29,7 @@ import ViewComplaints from "../Components/Complaint/Complaints";
 ///////////////////////////////
 const config = {
   initialMessages: [
-    createChatBotMessage("Hey there 👋👋👋👋"),
+    createChatBotMessage("Hey there 👋👋👋👋"), // Initial msg
     createChatBotMessage(
       `I am XYRON. I'm here to guide you. Thanks for your interest in XYRON.
   Here are some options.`,
@@ -83,6 +87,10 @@ const config = {
 // widgetFunc - define a function that returns the component. The function must take props and spread it into the component.
 // mapStateToProps - defines which state properties you defined in config should be injected into the widget component.
 // props - option array of props you want to pass to your component.
+
+  ////////////////////////////////
+  //// widgets
+  ///////////////////////////////
   widgets: [
     {
       widgetName: "options",
