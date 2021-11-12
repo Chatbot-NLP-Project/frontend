@@ -52,8 +52,8 @@ function Chat(props) {
           >
             Chat with XYRON Transport Chatbot and let him know 
             what you are looking for. He will tell you how to get to places. 
-            He can get you scheduled times of trains. And of course if you have any complaints, 
-            just let him know.
+            If you have any complaints, 
+            just let him know. And also ask him for any information you want to find. (Ex - Train schedules, Ticket reservation.... )
           </Heading>
         </Stack>
         <Box>
