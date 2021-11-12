@@ -2,12 +2,12 @@ import React from "react";
 import { Flex, Box, Heading, Text, Divider } from "@chakra-ui/react";
 import "./local.css";
 function local(props) {
+  // get relavent data from props
   var date = props.covidGlobalCurrent[0];
   var totalCases = props.covidGlobalCurrent[1];
   var newCases = props.covidGlobalCurrent[2];
   var deathCases = props.covidGlobalCurrent[3];
   var newdeathCases = props.covidGlobalCurrent[4];
-
   var recoverCases = props.covidGlobalCurrent[5];
 
   console.log(props.covidGlobalCurrent);
@@ -42,7 +42,6 @@ function local(props) {
             color="white"
             borderWidth="1px"
             borderRadius={5}
-            // padding="5px"
             margin="2px"
           >
             <Box>
@@ -62,8 +61,6 @@ function local(props) {
             color="white"
             borderWidth="1px"
             borderRadius={5}
-            // padding="5px"
-            // height="100px"
             margin="2px"
           >
             <Box>
@@ -86,7 +83,6 @@ function local(props) {
             color="white"
             borderWidth="1px"
             borderRadius={5}
-            // padding="5px"
             margin="2px"
           >
             <Box>
@@ -106,7 +102,6 @@ function local(props) {
             color="white"
             borderWidth="1px"
             borderRadius={5}
-            // padding="5px"
             height="60%"
             margin="2px"
           >

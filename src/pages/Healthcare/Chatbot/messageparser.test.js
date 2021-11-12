@@ -13,7 +13,7 @@ import renderer from "react-test-renderer";
 
 // import the component for testing
 import { MemoryRouter } from "react-router-dom";
-import actionProvider from "./actionProvider";
+import actionProvider from "./messageParser";
 
 afterEach(cleanup);
 
@@ -26,6 +26,7 @@ it("renders without crashing", () => {
     div
   );
 });
+
 it("matches snapshot", () => {
   const tree = renderer
     .create(

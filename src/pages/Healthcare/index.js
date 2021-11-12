@@ -49,7 +49,80 @@ function Chat(props) {
             textAlign={["center", "center", "left", "left"]}
           >
             Chatbot is built with the latest Artificial Intelligence
-            technologies to give you a better experience. 24/7 Available
+            technologies to give you a better experience. 24/7
+            Available.Following functionalities are available within xyron
+            health care chat bot.
+            <Heading
+              as="h3"
+              size="sm"
+              color="primary.800"
+              opacity="0.8"
+              fontWeight="normal"
+              ml="50px"
+              lineHeight={1.5}
+              textAlign={["center", "center", "left", "left"]}
+            >
+              🔸 Available Doctor details within Sri Lankan hospitals
+            </Heading>
+            <Heading
+              as="h3"
+              size="sm"
+              color="primary.800"
+              opacity="0.8"
+              fontWeight="normal"
+              lineHeight={1.5}
+              ml="50px"
+              textAlign={["center", "center", "left", "left"]}
+            >
+              🔸 Channel a doctor within seconds via online
+            </Heading>
+            <Heading
+              as="h3"
+              size="sm"
+              color="primary.800"
+              opacity="0.8"
+              fontWeight="normal"
+              lineHeight={1.5}
+              ml="50px"
+              textAlign={["center", "center", "left", "left"]}
+            >
+              🔸 Predict your disease with symptoms you suffer
+            </Heading>
+            <Heading
+              as="h3"
+              size="sm"
+              color="primary.800"
+              opacity="0.8"
+              fontWeight="normal"
+              lineHeight={1.5}
+              ml="50px"
+              textAlign={["center", "center", "left", "left"]}
+            >
+              🔸 Get information on available government Clinics details
+            </Heading>
+            <Heading
+              as="h3"
+              size="sm"
+              color="primary.800"
+              opacity="0.8"
+              fontWeight="normal"
+              lineHeight={1.5}
+              ml="50px"
+              textAlign={["center", "center", "left", "left"]}
+            >
+              🔸 Covid-19 up to date details globally & locally
+            </Heading>
+            <Heading
+              as="h3"
+              size="sm"
+              color="primary.800"
+              opacity="0.8"
+              fontWeight="normal"
+              lineHeight={1.5}
+              textAlign={["center", "center", "left", "left"]}
+            >
+              🔴 If you want to end the conversation, type quit
+            </Heading>
           </Heading>
         </Stack>
         <Box width="850px">

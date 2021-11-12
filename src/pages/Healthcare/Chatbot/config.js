@@ -119,17 +119,6 @@ const config = {
       mapStateToProps: ["clinic"],
     },
   ],
-
-  //   widgets: [
-  //     {
-  //       widgetName: "options",
-  //       widgetFunc: (props) => <Options {...props} />,
-  //     },
-  //     {
-  //       widgetName: "predictDisease",
-  //       widgetFunc: (props) => <Options {...props} />,
-  //     },
-  //   ],
   customStyles: {
     botMessageBox: {
       backgroundColor: "#E3F6FC",

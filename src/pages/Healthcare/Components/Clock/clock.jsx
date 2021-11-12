@@ -8,7 +8,9 @@ const GetTime = (props) => {
     sendDate(event.target.value);
     setDisable(true);
   };
+  // pass user selected time and channel details to actionprovider
   const sendDate = (t) => {
+    //  channeling details
     const cha = {
       id: props.channel[0].doctorID,
       userID: JSON.parse(localStorage.getItem("user"))["user_id"],
@@ -27,6 +29,7 @@ const GetTime = (props) => {
         onChange={handleChange}
         placeholder="Select Channeling Time"
         isDisabled={disable}
+        // possiable time slots to channel doctor
       >
         <option value="9.00">9.00 AM</option>
         <option value="10.00">10.00 AM</option>
