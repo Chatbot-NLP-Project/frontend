@@ -11,9 +11,9 @@ class MessageParser {
     var siz = this.state.currentState.length - 1;
     console.log(this.state);
     //  if chatbot state is predict then user input take as diseases
-    if (message == "quit" || message == "Quit") {
+    if (message.toLowerCase() == "quit") {
       const msg = this.actionProvider.createChatBotMessage(
-        "Thank for chat with Xyron Healthcare Chatbot."
+        "Thank for chatting with Xyron Healthcare Chatbot."
       );
       this.actionProvider.setChatbotState("normal");
       this.actionProvider.setChatbotMessage(msg);
