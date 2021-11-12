@@ -5,8 +5,8 @@ import MessageParser from "./Chatbot/messageParser.js";
 import ActionProvider from "./Chatbot/actionProvider";
 import Chatbot from "react-chatbot-kit";
 // import "./index.css";
-import 'react-chatbot-kit/build/main.css'
-import './main.css'
+import "react-chatbot-kit/build/main.css";
+import "./main.css";
 import styled from "styled-components";
 
 function Chat(props) {
@@ -62,7 +62,8 @@ function Chat(props) {
               lineHeight={1.5}
               textAlign={["center", "center", "left", "left"]}
             >
-              🔸 Available Doctor details within Sri Lankan hospitals
+              🔸 Available Doctor details within Sri Lankan hospitals (Get
+              doctor details)
             </Heading>
             <Heading
               as="h3"
@@ -74,7 +75,8 @@ function Chat(props) {
               ml="50px"
               textAlign={["center", "center", "left", "left"]}
             >
-              🔸 Channel a doctor within seconds via online
+              🔸 Channel a doctor within seconds via online (Schedule an
+              appointment)
             </Heading>
             <Heading
               as="h3"
@@ -86,7 +88,7 @@ function Chat(props) {
               ml="50px"
               textAlign={["center", "center", "left", "left"]}
             >
-              🔸 Predict your disease with symptoms you suffer
+              🔸 Predict your disease with symptoms you suffer (Predict disease)
             </Heading>
             <Heading
               as="h3"
@@ -98,7 +100,8 @@ function Chat(props) {
               ml="50px"
               textAlign={["center", "center", "left", "left"]}
             >
-              🔸 Get information on available government Clinics details
+              🔸 Get information on available government Clinics details (Clinic
+              details)
             </Heading>
             <Heading
               as="h3"
@@ -110,7 +113,8 @@ function Chat(props) {
               ml="50px"
               textAlign={["center", "center", "left", "left"]}
             >
-              🔸 Covid-19 up to date details globally & locally
+              🔸 Covid-19 up to date details globally & locally (Current
+              covid-19 situation)
             </Heading>
             <Heading
               as="h3"
