@@ -11,6 +11,8 @@ const Mid = () => {
     const [lastName,setLastName] = useState('');
     const [phoneNumber,setPhoneNumber] = useState('');
 
+    const [msg,setMsg] = useState('');
+
     useEffect(()=> {
         Axios.get("https://xyrontelecom.azurewebsites.net/profile", {
             params : {
@@ -32,17 +34,36 @@ const Mid = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         setIsPending(true);
+
+        let simType = ''
+        const threeDigits = phoneNumber.substr(0,3)
+
+        if(threeDigits == '070' || threeDigits == '071'){
+            simType = 'Mobitel';
+        } else if (threeDigits == '072' || threeDigits == '078'){
+            simType = 'Hutch';
+        } else if (threeDigits == '075'){
+            simType = 'Airtel';
+        } else if (threeDigits == '076' || threeDigits == '077'){
+            simType = 'Dialog';
+        } else {
+            setIsPending(false)
+            setMsg('Phone number is not valid.')
+            return
+        }
+
         Axios.post("https://xyrontelecom.azurewebsites.net/profile", {
                 user_id:JSON.parse(localStorage.getItem("user"))["user_id"],   // set the user id by session_id
                 email: email,
                 first_name: firstName,
                 last_name: lastName,
                 phone_number: phoneNumber,
+                sim_type: simType,
           }).then((response) => {
             console.log(response);
             setChangeDetails(false);
+            setMsg('');
         }).catch((error) => {
             console.log(error);
             setChangeDetails(false);
@@ -70,6 +91,7 @@ const Mid = () => {
                 <div className="details-content-right">
                 <div id="edit-details">
                     <h3>Edit Details</h3>
+                    <h1>{msg}</h1>
                     <form onSubmit={handleSubmit}>
                         <label>First Name</label>
                         <input 
@@ -104,6 +126,7 @@ const Mid = () => {
                         />
                         {!isPending && <button>Save Details</button>}
                         {isPending && <button>Saving...</button>}
+                        
                     </form>
                 </div>
             </div>

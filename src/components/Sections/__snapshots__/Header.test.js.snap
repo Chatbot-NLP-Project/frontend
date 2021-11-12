@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<nav
+  className="css-p5jrz8"
+>
+  <div
+    className="css-k008qs"
+  >
+    <div
+      className="css-1f3o17h"
+    >
+      <p
+        className="chakra-text css-jyeb4h"
+      >
+        <a
+          href="/"
+          onClick={[Function]}
+        >
+          Home
+        </a>
+      </p>
+      <p
+        className="chakra-text css-jyeb4h"
+      >
+        <a
+          href="/how"
+          onClick={[Function]}
+        >
+          Dashborad
+        </a>
+      </p>
+      <p
+        className="chakra-text css-jyeb4h"
+      >
+        <a
+          href="/faetures"
+          onClick={[Function]}
+        >
+          Contaxt Us
+        </a>
+      </p>
+      <img
+        className="chakra-image__placeholder css-delf8h"
+      />
+      <p
+        className="chakra-text css-1g5pnks"
+      >
+        <a
+          href="/signup"
+          onClick={[Function]}
+        >
+          <button
+            className="chakra-button css-dug8gb"
+            type="button"
+          >
+            Sign in
+          </button>
+        </a>
+      </p>
+    </div>
+  </div>
+</nav>
+`;

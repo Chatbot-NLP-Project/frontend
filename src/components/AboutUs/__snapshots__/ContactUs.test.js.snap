@@ -36,11 +36,13 @@ exports[`matches snapshot 1`] = `
         disabled={false}
         id="email"
         onBlur={[Function]}
+        onChange={[Function]}
         onFocus={[Function]}
         placeholder="your-email@example.com"
         readOnly={false}
-        required={true}
+        required="true"
         type="email"
+        value=""
       />
     </div>
     <div
@@ -49,8 +51,8 @@ exports[`matches snapshot 1`] = `
     >
       <label
         className="chakra-form__label css-uvho5g"
-        htmlFor="password"
-        id="password-label"
+        htmlFor="message"
+        id="message-label"
       >
         Message
         <span
@@ -65,19 +67,28 @@ exports[`matches snapshot 1`] = `
         aria-required={true}
         className="chakra-input css-0"
         disabled={false}
-        id="password"
+        id="message"
         onBlur={[Function]}
+        onChange={[Function]}
         onFocus={[Function]}
         readOnly={false}
-        required={true}
+        required="true"
         type="text"
+        value=""
       />
+      <div
+        className="chakra-form__helper-text css-tokvmb"
+        id="message-helptext"
+      >
+        
+      </div>
     </div>
     <div
       className="chakra-stack css-16voevi"
     >
       <button
         className="chakra-button css-18dry65"
+        onClick={[Function]}
         type="button"
       >
         Submit

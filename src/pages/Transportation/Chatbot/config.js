@@ -2,15 +2,16 @@ import { Flex, Heading } from "@chakra-ui/react";
 import { createChatBotMessage } from "react-chatbot-kit";
 import BotAvatar from "../Components/botAvatar";
 import BotIcon from "../Components/botIcon";
-// import Options from "../components/Options/Options";
-import Methods from "../Components/Methods/Methods";
+import Methods from "../Components/Methods/methods";
+import Links from "../Components/Links/links";
+import Schedules from "../Components/Schedules/schedules";
 
 const config = {
   initialMessages: [
     createChatBotMessage(
-      `Hey there 👋👋👋👋
+      `Hey there 😊👋👋👋
   Thanks for your interest in XYRON.
-  Before we begin can I have your name ?`,
+  Tell me what you wanna know? 🚌🚆⌚`,
       { widget: "options" }
     ),
   ],
@@ -39,26 +40,30 @@ const config = {
     from: [],
     to: [],
     mode: [],
+    modeDescription: [],
     schedule: [],
+    complaintDetails: [],
     methods: [],
     schedules: [],
+    links: [],
   },
   widgets: [
-      // {
-      //   widgetName: "options",
-      //   widgetFunc: (props) => <Options {...props} />,
-      // },
+    {
+      widgetName: "methods",
+      widgetFunc: (props) => <Methods {...props} />,
+      mapStateToProps: ["methods"],
+    },
+    {
+      widgetName: "links",
+      widgetFunc: (props) => <Links {...props} />,
+      mapStateToProps: ["links"],
+    },
+    {
+      widgetName: "schedules",
+      widgetFunc: (props) => <Schedules {...props} />,
+      mapStateToProps: ["schedules"],
+    },
   ],
-  //   widgets: [
-  //     {
-  //       widgetName: "options",
-  //       widgetFunc: (props) => <Options {...props} />,
-  //     },
-  //     {
-  //       widgetName: "predictDisease",
-  //       widgetFunc: (props) => <Options {...props} />,
-  //     },
-  //   ],
   customStyles: {
     botMessageBox: {
       backgroundColor: "#E3F6FC",
