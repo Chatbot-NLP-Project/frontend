@@ -10,53 +10,49 @@ class MessageParser {
   parse(message) {
     var siz = this.state.currentState.length - 1;
     console.log(this.state);
-
-    if (
+    //  if chatbot state is predict then user input take as diseases
+    if (message == "quit" || message == "Quit") {
+      const msg = this.actionProvider.createChatBotMessage(
+        "Thank for chat with Xyron Healthcare Chatbot."
+      );
+      this.actionProvider.setChatbotState("normal");
+      this.actionProvider.setChatbotMessage(msg);
+      // user send empty message then if handel
+    } else if (
       this.state.currentState[siz] == "predict" &&
       this.state.sympthoms.length < 4
     ) {
+      // add user input diseases to the disease array
       this.actionProvider.addDisease(message);
       if (this.state.sympthoms.length == 3) {
         this.actionProvider.predictHandler(this.state.sympthoms);
       }
+      // if the chatbot state is findDoctor call relavent action provider action
     } else if (this.state.currentState[siz] == "findDoctor") {
       this.actionProvider.findDoctor(message);
+      // if the chatbot state is feedback call relavent action provider action
     } else if (this.state.currentState[siz] == "feedback") {
       this.actionProvider.sendFeedback(message);
+      // if the chatbot state is channel call relavent action provider action
     } else if (this.state.currentState[siz] == "channel") {
       const msg = this.actionProvider.createChatBotMessage(
         "Please select the date."
-      ); // console.log(cha);
+      );
       this.actionProvider.setChatbotMessage(msg);
-
-      // this.actionProvider.channelDoctor(cha);
+      // if the chatbot state is time call relavent action provider action
     } else if (this.state.currentState[siz] == "time") {
       const msg = this.actionProvider.createChatBotMessage(
         "Please select the time."
-      ); // console.log(cha);
+      );
       this.actionProvider.setChatbotMessage(msg);
-
-      // this.actionProvider.channelDoctor(cha);
+      // user send empty message then if handel
     } else if (message == "") {
       const msg =
         this.actionProvider.createChatBotMessage("I cant understand."); // console.log(cha);
       this.actionProvider.setChatbotMessage(msg);
-
-      // this.actionProvider.channelDoctor(cha);
     } else {
       this.actionProvider.helloHandler(message);
     }
-
-    // var len = this.state.messages.length;
-    // // console.log(this.state);
-    // if (len == 1000) {
-    //   console.log(this.state.messages[2 * len - 3].message);
-    // }
-    // // console.log(this.state.currentState[this.state.currentState.length - 1]);
-    // this.num += 1;
-    // this.num = this.num + 1;
-    // // console.log(this.num);
-    // console.log(this.state);
   }
 }
 

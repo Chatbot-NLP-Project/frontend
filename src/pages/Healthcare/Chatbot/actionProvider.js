@@ -1,6 +1,5 @@
 /* eslint-disable eqeqeq */
 import Axios from "axios";
-import MessageParser from "./messageParser";
 
 class ActionProvider {
   constructor(createChatBotMessage, setStateFunc, createClientMessage) {
@@ -10,6 +9,7 @@ class ActionProvider {
     this.num = 0;
   }
 
+  // set a message to chatbot interface
   setChatbotMessage = (message) => {
     this.setState((state) => ({
       ...state,
@@ -17,6 +17,7 @@ class ActionProvider {
     }));
   };
 
+  // set chatbot state
   setChatbotState = (s) => {
     this.setState((state) => ({
       ...state,
@@ -24,6 +25,7 @@ class ActionProvider {
     }));
   };
 
+  // add a disease to the sympthoms array
   addDisease = (dis) => {
     this.setState((state) => ({
       ...state,
@@ -31,12 +33,15 @@ class ActionProvider {
     }));
   };
 
+  // remove diseases from sympthoms array
   removeDisease = () => {
     this.setState((state) => ({
       ...state,
       sympthoms: [],
     }));
   };
+
+  // remove channel details from channel array
   removeChannel = () => {
     this.setState((state) => ({
       ...state,
@@ -46,7 +51,7 @@ class ActionProvider {
   diseaseHandler = (message) => {
     this.addDisease(message);
   };
-
+  // handel rate funationality after user rate
   rateHandle = (message) => {
     var msg;
     if (message < 3) {
@@ -61,6 +66,7 @@ class ActionProvider {
     this.setChatbotMessage(msg);
   };
 
+  // send user feedback to database
   sendFeedback = (message) => {
     var msg;
     var feedback = {
@@ -77,6 +83,7 @@ class ActionProvider {
     });
   };
 
+  // call predict disease funtion in backend
   predictHandler = (message) => {
     var msg;
     Axios.post("https://xyhealthbot.azurewebsites.net/predict", {
@@ -87,14 +94,13 @@ class ActionProvider {
         msg = this.createChatBotMessage(
           "Sorry I can't make any predictions. Please re-enter 4 symptoms or change the order of symptoms."
         );
-        // this.setChatbotState("predict");
         this.removeDisease();
       } else {
         if (response.data.Precaution_1 == 0) {
           msg = this.createChatBotMessage(response.data.disease);
         } else {
           msg = this.createChatBotMessage(response.data.disease, {
-            widget: "moreinfo",
+            widget: "moreinfo", // set widget for more information
           });
           this.setState((state) => ({
             ...state,
@@ -115,14 +121,14 @@ class ActionProvider {
       this.setChatbotMessage(msg);
     });
   };
+
+  // get doctor details from databse
   findDoctor = (message) => {
     var msg;
     Axios.post("https://xyronhealthcarebot.azurewebsites.net/getDoc", {
       specialist: message,
     }).then((response) => {
       console.log(message);
-      // msg = this.createChatBotMessage(response.data.members);
-      // this.setChatbotMessage(msg);
       if (response.data.er == 1) {
         msg = this.createChatBotMessage("Please re-enter the specialty");
         this.setChatbotMessage(msg);
@@ -130,19 +136,19 @@ class ActionProvider {
         console.log(response.data.doc);
         this.setState((state) => ({ ...state, doctors: response.data.doc }));
         this.setChatbotState("normal");
-        msg = this.createChatBotMessage("Ok sure", { widget: "doctors" });
+        msg = this.createChatBotMessage("Ok sure", { widget: "doctors" }); // set doctor details as widgets
         this.setChatbotMessage(msg);
       }
     });
   };
+
+  // get clinic information of national hospital
   getNationalClinic = (clinic) => {
     var msg;
     Axios.post("https://xyronhealthcarebot.azurewebsites.net/getClinic", {
       clinicType: clinic,
     }).then((response) => {
       console.log(clinic);
-      // msg = this.createChatBotMessage(response.data.members);
-      // this.setChatbotMessage(msg);
       if (response.data.er == 1) {
         msg = this.createChatBotMessage("No data available in this time");
         this.setChatbotMessage(msg);
@@ -158,14 +164,14 @@ class ActionProvider {
       this.setChatbotState("normal");
     });
   };
+
+  // get clinic information of eye hospital
   getEyeClinic = (clinic) => {
     var msg;
     Axios.post("https://xyronhealthcarebot.azurewebsites.net/getEyeClinic", {
       clinicType: clinic,
     }).then((response) => {
       console.log(clinic);
-      // msg = this.createChatBotMessage(response.data.members);
-      // this.setChatbotMessage(msg);
       if (response.data.er == 1) {
         msg = this.createChatBotMessage("No data available in this time");
         this.setChatbotMessage(msg);
@@ -181,32 +187,40 @@ class ActionProvider {
       this.setChatbotState("normal");
     });
   };
+
+  // pass user message to backend (chatbot model) get the response
   helloHandler = (message) => {
     var msg;
     Axios.post("https://xyronhealthcarebot.azurewebsites.net/reply", {
       msg: message,
     }).then((response) => {
       console.log(response.data.members);
+      // change state of chatbot to predict state
       if (response.data.members == "predict") {
         this.setChatbotState("predict");
         msg = this.createChatBotMessage("Please Enter 4 symptoms");
         this.setChatbotMessage(msg);
+        // change state of chatbot to findDoctor
       } else if (response.data.members == "findDoctor") {
         this.setChatbotState("findDoctor");
         msg = this.createChatBotMessage("Please enter the speciality ?");
         this.setChatbotMessage(msg);
+        // change state of chatbot to covidLocalCurrent
       } else if (response.data.members == "covidLocalCurrent") {
         this.setChatbotState("covidLocalCurrent");
         console.log("covidLocalCurrent");
         this.getCovidData("covidLocalCurrent");
+        // change state of chatbot to covidLocalToday
       } else if (response.data.members == "covidLocalToday") {
         this.setChatbotState("covidLocalToday");
         console.log("covidLocalToday");
         this.getCovidData("covidLocalToday");
+        // change state of chatbot to covidGlobalCurrent
       } else if (response.data.members == "covidGlobalCurrent") {
         this.setChatbotState("covidGlobalCurrent");
         console.log("covidGlobalCurrent");
         this.getCovidData("covidGlobalCurrent");
+        // change state of chatbot to clinic
       } else if (response.data.members == "clinic") {
         this.setChatbotState("clinic");
         console.log("clinic");
@@ -214,6 +228,7 @@ class ActionProvider {
           widget: "hospital",
         });
         this.setChatbotMessage(msg);
+        // change state of chatbot to thanks
       } else if (response.data.members == "thanks") {
         this.setChatbotState("thanks");
         console.log("thanks");
@@ -231,17 +246,7 @@ class ActionProvider {
     });
   };
 
-  // Axios.get("http://127.0.0.1:5000/chat").then((response) => {
-  //   console.log(response.data.members[0]);
-  //   msg = this.createChatBotMessage(response.data.members[1]);
-  //   this.setChatbotMessage(msg);
-  // });
-  // var n = msg.toString();
-  // handleJavascriptQuiz = () => {
-  //   const msg = this.createChatBotMessage("Please Enter three symptom");
-  //   this.setChatbotMessage(msg);
-  // };
-
+  // render calender widget after the user select the channeling doctor
   selectDoctor = (docID) => {
     console.log(docID);
     this.setState((state) => ({
@@ -249,16 +254,17 @@ class ActionProvider {
       channel: [state.doctors[docID]],
     }));
     const msg2 = this.createChatBotMessage("Sure. Please select the date.", {
-      widget: "calender",
+      widget: "calender", // set calender widget
     });
     this.setChatbotState("channel");
     this.setChatbotMessage(msg2);
   };
 
+  // handel the selecting channeling time
   selectTime = (value) => {
     const msg1 = this.createChatBotMessage(
       "Please enter time between 9.00 AM - 4.00 PM.",
-      { widget: "time" }
+      { widget: "time" } // set clock widget
     );
     var date =
       value.getFullYear() +
@@ -276,12 +282,13 @@ class ActionProvider {
 
     this.setChatbotMessage(msg1);
   };
+
+  // send channeling details to backend
   channelDoctor = (chObject) => {
     var msg;
     Axios.post("https://xyronhealthcarebot.azurewebsites.net/channelDoc", {
       channel: chObject,
     }).then((response) => {
-      // console.log(message);
       if (response.data.er == 1) {
         msg = this.createChatBotMessage(
           "Please can you select a another time.",
@@ -298,14 +305,13 @@ class ActionProvider {
       }
     });
   };
+
+  // get covid-19 data from government website
   getCovidData = (message) => {
     var msg;
     Axios.get("https://www.hpb.health.gov.lk/api/get-current-statistical").then(
       (response) => {
-        // console.log(response.data.data.update_date_time);
-
-        // msg = this.createChatBotMessage(response.data.members);
-        // this.setChatbotMessage(msg);
+        //  user asking for current covid-19 situation in sri lanka
         if (message == "covidLocalCurrent") {
           this.setState((state) => ({
             ...state,
@@ -323,6 +329,7 @@ class ActionProvider {
             { widget: "covidLocalCurrent" }
           );
           this.setChatbotMessage(msg);
+          //  user asking for today covid-19 situation in sri lanka
         } else if (message == "covidLocalToday") {
           this.setState((state) => ({
             ...state,
@@ -338,6 +345,7 @@ class ActionProvider {
             { widget: "covidLocalToday" }
           );
           this.setChatbotMessage(msg);
+          //  user asking for current covid-19 situation in globaly
         } else if (message == "covidGlobalCurrent") {
           this.setState((state) => ({
             ...state,
@@ -357,13 +365,6 @@ class ActionProvider {
           );
           this.setChatbotMessage(msg);
         }
-        // else {
-        //   console.log(response.data.doc);
-        //   this.setState((state) => ({ ...state, doctors: response.data.doc }));
-        //   this.setChatbotState("normal");
-        //   msg = this.createChatBotMessage("Ok sure", { widget: "doctors" });
-        //   this.setChatbotMessage(msg);
-        // }
       }
     );
   };

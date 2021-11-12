@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-no-duplicate-props */
+/* eslint-disable no-unused-vars */
 import {
   Button,
   ReactRouterLink,
@@ -18,8 +20,6 @@ import {
   GiRobotLeg,
   GiShoppingCart,
 } from "react-icons/gi";
-
-// import "./EducationMain.css";
 
 function EducationMain() {
   const { colorMode, toggleColorMode } = useColorMode();

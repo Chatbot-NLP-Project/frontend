@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-no-duplicate-props */
+/* eslint-disable no-unused-vars */
 import React from "react";
 
 import Footer from "../../components/Sections/Footer";

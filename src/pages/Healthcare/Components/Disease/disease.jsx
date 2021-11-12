@@ -8,7 +8,7 @@ import {
 import React from "react";
 
 const DiseaseDescription = (props) => {
-  //   console.log(packageDetails[0]);
+  // set disease information
   const disease = props.disease[0];
   const description = props.disease[1];
   const precaution_1 = props.disease[2];
