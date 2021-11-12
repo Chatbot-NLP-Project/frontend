@@ -133,6 +133,7 @@ class ActionProvider {
   complaintHandler = (message, state) => {
     var msg;
     var reply  = this.replyFilter(message);
+    console.log(reply);
       if (reply == 'yes'){
         if (state.mode.length != 0){
           if (state.mode == 'bus'){
@@ -148,8 +149,10 @@ class ActionProvider {
         this.setChatbotMessage(msg);
       } else if (reply == 'no') {
         msg = this.createChatBotMessage('I\'m sorry about the bad experience. 🙁');
-        this.setChatbotMessage(msg);
         this.setChatbotState("normal");
+        this.clearStates();
+        this.setChatbotMessage(msg);
+        console.log(state);
       } else if (state.mode[0] != '' && state.modeDescription.length == 0) {
         this.addModeDescription(message);
         msg = this.createChatBotMessage('Please briefly explain your experience in a single message.');
