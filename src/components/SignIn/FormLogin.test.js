@@ -18,7 +18,7 @@ test('buttons are enabled', () => {
 
 test('add inputs to email and password', () => {
     render(<FormLogIn />) //submitForm = {false} setSignInClicked={false}
-
+    
     userEvent.type(screen.getByPlaceholderText(/Enter your email/i), "chalindu@gmail.com");
     userEvent.type(screen.getByPlaceholderText(/Enter your password/i), "0715956909") ;
     userEvent.click(screen.getByRole('button', {name: /continue/i}));

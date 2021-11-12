@@ -36,8 +36,11 @@ const useForm = (callback, validate, setSignInClicked) => {
           console.log("error")
           setBackEndErrors(response.data.msg);
         } else {
+          const now = new Date()
           localStorage.setItem("access_token", response.data.access_token);
           localStorage.setItem("user", JSON.stringify(response.data.user));
+          now.setDate(now.getDate() + 1);
+          localStorage.setItem("expiry", JSON.stringify(now));
           setSignInClicked(true);
           setIsSubmitting(true);
         }

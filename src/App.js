@@ -40,6 +40,14 @@ function App() {
     // console.log("check login called")
     // Axios.get("http://localhost:5000/checkLogin").then((response) => {
     //   console.log("check login axios")
+    // if (!!localStorage.expiry) {
+    //   const now = new Date()
+    //   console.log(JSON.parse(localStorage.getItem("expiry")))
+    //   if(JSON.parse(localStorage.getItem("user")) < now) {
+    //     localStorage.removeItem('expiry')
+    //     localStorage.removeItem('user')
+    //   }
+    // }
     if (!!localStorage.access_token) {
       setAuth({
         isLoggedIn: true,
@@ -52,7 +60,7 @@ function App() {
       setAuth({ isLoggedIn: false, userID: 0 });
     }
     // });
-  }, [!!localStorage.access_token]);
+  }, [localStorage.access_token]);
 
   ////////////////////////////////
   //// If User Logged In

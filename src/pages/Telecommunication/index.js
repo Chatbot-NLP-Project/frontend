@@ -11,7 +11,6 @@ import './main.css'
 import styled from "styled-components";
 import { useColorMode } from "@chakra-ui/color-mode";
 
-
 function Chat(props) {
   const { colorMode, toggleColorMode } = useColorMode();
 
@@ -68,8 +67,7 @@ function Chat(props) {
               lineHeight={1.5}
               textAlign={["center", "center", "left", "left"]}
             >
-              This chatbot will let your works easy. You can recharge fast. You
-              can select packages whatever you want. Fast Responses.
+              This chatbot will make your works easy. This Telecom Chatbot has 8 main functions with 4 additional features. These buttons show those functions. Click those buttons to access each function.
             </Heading>
           </Stack>
           <Box w="100%">
