@@ -50,10 +50,68 @@ function Chat(props) {
             lineHeight={1.5}
             textAlign={["center", "center", "left", "left"]}
           >
-            Chat with XYRON Transport Chatbot and let him know 
-            what you are looking for. He will tell you how to get to places. 
-            If you have any complaints, 
-            just let him know. And also ask him for any information you want to find. (Ex - Train schedules, Ticket reservation.... )
+            Chat with XYRON Transport Chatbot and let him know what you are looking for. 
+            He will tell you how to get to places. If you have any complaints, just let him know. 
+            And of course ask him any information you want to find out. Here are some tips.
+            <Heading
+              as="h3"
+              size="sm"
+              color="primary.800"
+              opacity="0.8"
+              fontWeight="normal"
+              ml="50px"
+              lineHeight={1.5}
+              textAlign={["center", "center", "left", "left"]}
+            >
+              🔸 View travelling options (How to go to Galle)
+            </Heading>
+            <Heading
+              as="h3"
+              size="sm"
+              color="primary.800"
+              opacity="0.8"
+              fontWeight="normal"
+              lineHeight={1.5}
+              ml="50px"
+              textAlign={["center", "center", "left", "left"]}
+            >
+              🔸 Make complaint (The bus is moving too slow)
+            </Heading>
+            <Heading
+              as="h3"
+              size="sm"
+              color="primary.800"
+              opacity="0.8"
+              fontWeight="normal"
+              lineHeight={1.5}
+              ml="50px"
+              textAlign={["center", "center", "left", "left"]}
+            >
+              🔸 Make seat reservation (Book tickets online)
+            </Heading>
+            <Heading
+              as="h3"
+              size="sm"
+              color="primary.800"
+              opacity="0.8"
+              fontWeight="normal"
+              lineHeight={1.5}
+              ml="50px"
+              textAlign={["center", "center", "left", "left"]}
+            >
+              🔸 View train schedules (Get train time tables)
+            </Heading>
+            <Heading
+              as="h3"
+              size="sm"
+              color="primary.800"
+              opacity="0.8"
+              fontWeight="normal"
+              lineHeight={1.5}
+              textAlign={["center", "center", "left", "left"]}
+            >
+              🔴 If you want to end the conversation, type quit
+            </Heading>
           </Heading>
         </Stack>
         <Box>
