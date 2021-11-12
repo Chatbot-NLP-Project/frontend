@@ -2,7 +2,6 @@ import { Flex, Heading } from "@chakra-ui/react";
 import { createChatBotMessage } from "react-chatbot-kit";
 import BotAvatar from "../Components/botAvatar";
 import BotIcon from "../Components/botIcon";
-// import Options from "../components/Options/Options";
 import Methods from "../Components/Methods/methods";
 import Links from "../Components/Links/links";
 import Schedules from "../Components/Schedules/schedules";

@@ -9,6 +9,7 @@ class ActionProvider {
     this.num = 0;
   }
 
+  // Setting and removing methods
   setChatbotMessage = (message) => {
     this.setState((state) => ({
       ...state,
@@ -103,6 +104,7 @@ class ActionProvider {
 
   // Transportation Only
 
+  // Send user complaint as an email
   sendComplaint = (mode, description, details) => {
     let body = 'The following complaint has been made by an passenger. \n ';
     body += '\n\"' + details + '\"\n';
@@ -130,6 +132,7 @@ class ActionProvider {
     });
   }
 
+  // Gather information about user complaints
   complaintHandler = (message, state) => {
     var msg;
     var reply  = this.replyFilter(message);
@@ -145,7 +148,6 @@ class ActionProvider {
           this.addMode('unidentified');
           msg = this.createChatBotMessage("Tell me some details about the transportation method you're using in a single message.");
         }
-        // this.setChatbotState("normal");
         this.setChatbotMessage(msg);
       } else if (reply == 'no') {
         msg = this.createChatBotMessage('I\'m sorry about the bad experience. 🙁');
@@ -169,6 +171,7 @@ class ActionProvider {
       }
   }
 
+  // Filter and match simple user responses
   replyFilter = (reply) => {
     const yes = ['yes','yeah','yep','aye','alright','sure','indeed','absolutely', 'of course', 'by all means'];
     const no = ['no', 'nope', 'not at all', 'never', 'of course not','nah']
@@ -197,6 +200,7 @@ class ActionProvider {
     }
   }
 
+  // Get traveling methods from backend
   methodHandler = (to, from, mode) => {
     var msg;
     Axios.post("https://xyrontransport.azurewebsites.net/travel", { to: to, from: from, mode: mode, }).then(
@@ -218,12 +222,12 @@ class ActionProvider {
     );
   };
 
+  // Setting the starting point of the journey
   fromHandler = (message, state) => {
     var reply = this.replyFilter(message)
     var msg;
     if (state.from.length != 0) {
       if (reply == 'bus' || reply == 'train'){
-      // if (message.toLowerCase() == 'bus' || message.toLowerCase() == 'train'){
           this.addMode(reply);
           if(state.to.length != 0) {
             this.methodHandler(state.to[0], state.from[0], reply)
@@ -259,11 +263,10 @@ class ActionProvider {
     }
   }
 
+  // Setting the destination point of the journey
   toHandler = (message, state) => {
     var msg;
     var reply = this.replyFilter(message);
-    console.log(reply);
-    console.log(state);
     if (reply != '') {
       this.addTo(reply);
       this.methodHandler(reply, state.from[0], state.mode[0]);
@@ -273,6 +276,7 @@ class ActionProvider {
     }   
   }
 
+  // Check if destination and departure points are given in the message
   stationHandler = (message) => {
     var wrds = message.split(' ').map(v => v.toLowerCase());
     const countOccurrences = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);
@@ -297,8 +301,9 @@ class ActionProvider {
     }
   };
 
+
+  // Provide links to do online booking
   reservationHandler = (message) => {
-    var msg;
     var wrds = message.split(' ').map(v => v.toLowerCase());
     var linkBus = [
       {
@@ -323,6 +328,7 @@ class ActionProvider {
     }
   };
 
+  // Handles the initial message of a conversation
   messageHandler = (message, state) => {
     var msg;
     Axios.post("https://xyrontransport.azurewebsites.net/reply", { msg: message }).then(

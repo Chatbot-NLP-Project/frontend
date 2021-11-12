@@ -6,8 +6,8 @@ class MessageParser {
     this.num = 0;
   }
 
+  // Direct the user message to the correct function of action provider
   parse(message) {
-    // console.log(this.state);
     var siz = this.state.currentState.length - 1;
     if ( this.state.currentState[siz] == "travel"){
       this.actionProvider.fromHandler(message, this.state);
@@ -24,7 +24,6 @@ class MessageParser {
     else{
     this.actionProvider.messageHandler(message, this.state);
     }
-
   }
 }
 
