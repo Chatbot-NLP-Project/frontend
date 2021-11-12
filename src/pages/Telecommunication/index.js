@@ -69,77 +69,7 @@ function Chat(props) {
             >
               This chatbot will make your works easy. This Telecom Chatbot has 8 main functions with 4 additional features. These buttons show those functions. Click those buttons to access each function.
             </Heading>
-            <Heading
-              as="h3"
-              size="sm"
-              color="primary.800"
-              opacity="0.8"
-              fontWeight="normal"
-              ml="50px"
-              lineHeight={1.5}
-              textAlign={["center", "center", "left", "left"]}
-            >
-              🔸 Get Data Package Details and Activate (Data Packages)
-            </Heading>
-            <Heading
-              as="h3"
-              size="sm"
-              color="primary.800"
-              opacity="0.8"
-              fontWeight="normal"
-              lineHeight={1.5}
-              ml="50px"
-              textAlign={["center", "center", "left", "left"]}
-            >
-              🔸 View Currently Activated Packages by Date (View Activated Packages and By Date)
-            </Heading>
-            <Heading
-              as="h3"
-              size="sm"
-              color="primary.800"
-              opacity="0.8"
-              fontWeight="normal"
-              lineHeight={1.5}
-              ml="50px"
-              textAlign={["center", "center", "left", "left"]}
-            >
-              🔸 Make a Complaint (Complaints)
-            </Heading>
-            <Heading
-              as="h3"
-              size="sm"
-              color="primary.800"
-              opacity="0.8"
-              fontWeight="normal"
-              lineHeight={1.5}
-              ml="50px"
-              textAlign={["center", "center", "left", "left"]}
-            >
-              🔸 View Your Current Balance (Current Balance)
-            </Heading>
-            <Heading
-              as="h3"
-              size="sm"
-              color="primary.800"
-              opacity="0.8"
-              fontWeight="normal"
-              lineHeight={1.5}
-              ml="50px"
-              textAlign={["center", "center", "left", "left"]}
-            >
-              🔸 Rate your Chatbot and Give Feedback (Rate Chatbot)
-            </Heading>
-            <Heading
-              as="h3"
-              size="sm"
-              color="primary.800"
-              opacity="0.8"
-              fontWeight="normal"
-              lineHeight={1.5}
-              textAlign={["center", "center", "left", "left"]}
-            >
-              🔴 If you want to end the conversation, type quit
-            </Heading>
+            
           </Stack>
           <Box w="100%">
             <Chatbot
