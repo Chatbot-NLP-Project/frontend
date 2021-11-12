@@ -5,7 +5,7 @@ import MessageParser from "./Chatbot/messageParser.js";
 import ActionProvider from "./Chatbot/actionProvider";
 import Chatbot from "react-chatbot-kit";
 // import "./index.css";
-// import "react-chatbot-kit/build/main.css";
+import "react-chatbot-kit/build/main.css";
 import "./main.css";
 import styled from "styled-components";
 
