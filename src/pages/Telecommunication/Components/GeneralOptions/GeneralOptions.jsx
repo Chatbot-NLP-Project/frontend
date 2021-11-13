@@ -6,7 +6,7 @@ const GeneralOptions = props => {
   const [provider, setProvider] = useState("");
 
   useEffect(() => {
-    Axios.post("http://localhost:5000/getUser", {
+    Axios.post("https://xyrontelecom.azurewebsites.net/getUser", {
       userID : JSON.parse(localStorage.getItem("user"))["user_id"] 
   }).then((response) => {
     console.log(response.data.user)
@@ -35,32 +35,42 @@ const GeneralOptions = props => {
     },
     { name: "Complaints", handler: complaint, id: 4 },
     {
+      name: "View Complaints",
+      handler: props.actionProvider.viewComplaints,
+      id: 5
+    },
+    {
       name: "Current Balance",
       handler: props.actionProvider.getCurrentBalance,
-      id: 5
+      id: 6
     },
     {
       name: "View Crypto Price",
       handler: props.actionProvider.viewCryptoCurrencyPrice,
-      id: 6
+      id: 7
     },
     {
       name: "View Crypto Price IN LKR",
       handler: props.actionProvider.viewCryptoCurrencyPriceInLKR,
-      id: 7
+      id: 8
     },
     {
       name: "1 USDT = LKR?",
       handler: props.actionProvider.viewLKRValue,
-      id: 8
+      id: 9
     },
     {
       name: "View Currency Values",
       handler: props.actionProvider.viewCurrencyValues,
-      id: 9
+      id: 10
+    },
+    {
+      name: "Rate Chatbot",
+      handler: props.actionProvider.rateChatbot,
+      id: 11
     }
   ];
-  return <Options options={options} title="General Options" {...props} />;
+  return <Options options={options} title="General Options" extra = "Click an option only once and wait for the answer. Some answers require some time to generate" {...props} />;
 };
 
 export default GeneralOptions;

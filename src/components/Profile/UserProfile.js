@@ -10,7 +10,7 @@ const UserProfile = () => {
     return (  
         <div className="details-container">
         
-            <ProfileImage />
+            {/* <ProfileImage /> */}
             <Mid />
             <Password />
 

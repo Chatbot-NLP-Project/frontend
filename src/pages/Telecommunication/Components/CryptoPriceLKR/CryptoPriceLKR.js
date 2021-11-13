@@ -123,7 +123,7 @@ function CryptoPriceLKR({actionProvider, prices}) {
             <Image
               boxSize="70px"
               objectFit="cover"
-              src="imgs/bitcoin-cash.png"
+              src="imgs/Bitcoincash.png"
               alt="Bitcoin Cash"
             />
           </Box>

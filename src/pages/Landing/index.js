@@ -2,10 +2,20 @@ import React from "react";
 
 import Footer from "../../components/Sections/Footer";
 
-import { Box, Heading, Stack, Image, Flex, Button } from "@chakra-ui/react";
+import {
+  Box,
+  Heading,
+  Stack,
+  Image,
+  Flex,
+  Button,
+  useColorMode,
+} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import Header from "../../components/Sections/Header";
 export default function Landing() {
+  const { colorMode, toggleColorMode } = useColorMode();
+
   return (
     <Box>
       <Header />
@@ -35,7 +45,7 @@ export default function Landing() {
               as="h1"
               size="xl"
               fontWeight="bold"
-              color="blue.900"
+              color={colorMode === "light" ? "blue.900" : "white"}
               textAlign={["center", "center", "left", "left"]}
             >
               Sign Up to chat with XYRON Chatbot
@@ -43,7 +53,7 @@ export default function Landing() {
             <Heading
               as="h3"
               size="sm"
-              color="primary.800"
+              color={colorMode === "light" ? "blue.900" : "cyan.100"}
               opacity="0.8"
               fontWeight="normal"
               lineHeight={1.5}
@@ -56,7 +66,7 @@ export default function Landing() {
               Available
             </Heading>
             <Flex>
-              <Link to="">
+              <Link to="/signup">
                 <Button
                   colorScheme="blue"
                   variant="solid"
@@ -66,10 +76,10 @@ export default function Landing() {
                   size="md"
                   marginRight={10}
                 >
-                  Sing Up
+                  Sign Up
                 </Button>
               </Link>
-              <Link to="">
+              <Link to="/aboutus">
                 <Button
                   colorScheme="blue"
                   variant="outline"
@@ -108,7 +118,7 @@ export default function Landing() {
             align="right"
           >
             {/* TODO: Make this change every X secs */}
-            <Image src="../Healthcare/main2.png" size="100%" />
+            <Image src="../imgs/AI9.png" size="100%" />
           </Box>
           <Stack
             spacing={7}
@@ -119,7 +129,7 @@ export default function Landing() {
               as="h1"
               size="xl"
               fontWeight="bold"
-              color="primary.800"
+              color={colorMode === "light" ? "blue.900" : "white"}
               textAlign={["center", "center", "left", "left"]}
             >
               Light, Fast & Powerful
@@ -150,7 +160,7 @@ export default function Landing() {
                 <Heading
                   as="h3"
                   size="md"
-                  color="black"
+                  color={colorMode === "light" ? "blue.900" : "cyan.100"}
                   fontWeight="bold"
                   textAlign={["center", "center", "left", "left"]}
                 >
@@ -179,7 +189,7 @@ export default function Landing() {
                 <Heading
                   as="h3"
                   size="md"
-                  color="black"
+                  color={colorMode === "light" ? "blue.900" : "cyan.100"}
                   fontWeight="bold"
                   textAlign={["center", "center", "left", "left"]}
                 >
@@ -210,7 +220,7 @@ export default function Landing() {
                 <Heading
                   as="h3"
                   size="md"
-                  color="black"
+                  color={colorMode === "light" ? "blue.900" : "cyan.100"}
                   fontWeight="bold"
                   textAlign={["center", "center", "left", "left"]}
                 >

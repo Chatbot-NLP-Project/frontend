@@ -21,6 +21,10 @@ export default function validateInfo(values) {
     errors.phonenumber = "Phone number should be numeric";
   } else if (values.phonenumber.length < 10) {
     errors.phonenumber = "Phone number must consist of 10 digits"
+  } else if (values.phonenumber.substr(0,3) == "036" ) {
+    errors.phonenumber = "Phone number should be a mobile number. Not a land line"
+  } else if (!(values.phonenumber.substr(0,3) == "071" || values.phonenumber.substr(0,3) == "072" || values.phonenumber.substr(0,3) == "075" || values.phonenumber.substr(0,3) == "076" || values.phonenumber.substr(0,3) == "077" || values.phonenumber.substr(0,3) == "078" || values.phonenumber.substr(0,3) == "070")) {
+    errors.phonenumber = "This number is not valid. It must be 070, 071, 072, 075, 076, 077, or 078"
   }
 
   if (!values.email) {

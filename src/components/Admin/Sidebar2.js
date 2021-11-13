@@ -76,7 +76,7 @@ function Sidebar2(props) {
               align="stretch"
             >
               {/* <Link as={ReactRouterLink} to="/"> */}
-              <a href="http://localhost:3000/admin"> 
+              <a href="https://xyronchatbot.herokuapp.com/admin"> 
               <Button
                 h="50px"
                 w="100%"
@@ -94,7 +94,7 @@ function Sidebar2(props) {
               </a>
               {/* </Link> */}
 
-              <a href="http://localhost:3000/rating"> 
+              <a href="https://xyronchatbot.herokuapp.com/rating"> 
               <Button
                 h="50px"
                 w="100%"

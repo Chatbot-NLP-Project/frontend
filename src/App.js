@@ -1,11 +1,17 @@
+////////////////////////////////
+//// Import Modules
+///////////////////////////////
 import { useState, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
 import Axios from "axios";
+
+////////////////////////////////
+//// Import Pages
+///////////////////////////////
 import Navbar from "./components/Navbar";
 import SideNav from "./components/SideNav/SideNav";
-
 import SignIn from "./pages/SignIn/index";
 import SignUp from "./pages/SignUp/index";
 // import DomainSelection from './pages/DomainSelection';
@@ -23,6 +29,7 @@ import Admin from "./pages/Admin/index";
 import AboutUs from "./pages/AboutUs/index";
 // import Location from "./pages/Location/CurrentLocation";
 
+
 function App() {
   const [auth, setAuth] = useState({ isLoggedIn: false, userID: 0 });
   const [signInClicked, setSignInClicked] = useState(false);
@@ -33,6 +40,14 @@ function App() {
     // console.log("check login called")
     // Axios.get("http://localhost:5000/checkLogin").then((response) => {
     //   console.log("check login axios")
+    // if (!!localStorage.expiry) {
+    //   const now = new Date()
+    //   console.log(JSON.parse(localStorage.getItem("expiry")))
+    //   if(JSON.parse(localStorage.getItem("user")) < now) {
+    //     localStorage.removeItem('expiry')
+    //     localStorage.removeItem('user')
+    //   }
+    // }
     if (!!localStorage.access_token) {
       setAuth({
         isLoggedIn: true,
@@ -45,8 +60,15 @@ function App() {
       setAuth({ isLoggedIn: false, userID: 0 });
     }
     // });
-  }, [!!localStorage.access_token]);
+  }, [localStorage.access_token]);
+
+  ////////////////////////////////
+  //// If User Logged In
+  ///////////////////////////////
   if (auth.isLoggedIn) {
+    ////////////////////////////////
+    //// If user is an admin
+    ///////////////////////////////
     if (auth.userID === 1) {
       return (
         <ChakraProvider>
@@ -61,6 +83,9 @@ function App() {
           </Router>
         </ChakraProvider>
       );
+    ////////////////////////////////
+    //// If user is a normal user
+    ///////////////////////////////
     } else {
       return (
         <ChakraProvider>

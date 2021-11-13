@@ -27,7 +27,7 @@ const Password = () => {
   const handleSubmit = (e) => {
     // process password
     e.preventDefault();
-    Axios.post("http://localhost:5000/password", {
+    Axios.post("https://xyrontelecom.azurewebsites.net/password", {
       user_id: JSON.parse(localStorage.getItem("user"))["user_id"], // set the user id by session_id
       currentPassword: currentPassword,
       newPassword: newPassword,

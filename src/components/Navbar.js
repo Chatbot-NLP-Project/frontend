@@ -40,7 +40,7 @@ function Navbar(props) {
     console.log("handle log out clicked")
     localStorage.removeItem('user')
     localStorage.removeItem('access_token')
-    Axios.get("http://localhost:5000/logout").then((response) => {
+    Axios.get("https://xyrontelecom.azurewebsites.net/logout").then((response) => {
       console.log("sadsadsdadds")
       
       return <Redirect to='/' />
@@ -62,11 +62,12 @@ function Navbar(props) {
       width="100%"
       zIndex="10000"
     >
-      <a href="http://localhost:3000/">
+      <a href="https://xyronchatbot.herokuapp.com/">
       <Flex align="center" mr={10}>
         <Img ml="1.5rem" src="../logo2.png" alt="logo" h="80px" w="80px" />
         <Text
           bgGradient="linear(to-l, #7928CA,#FF0080)"
+          bgGradient={colorMode === "light" ? "linear(to-l, #1A365D, #1A365D)" : "linear(to-l, #1A365D, white)"}
           bgClip="text"
           fontSize="2xl"
           fontWeight="extrabold"
@@ -102,7 +103,7 @@ function Navbar(props) {
               Dashboard
             </Link>
           ) : (
-            <Link as={ReactRouterLink} to="/customerdashboard">
+            <Link as={ReactRouterLink} to="/profile">
               Dashboard
             </Link>
           )}

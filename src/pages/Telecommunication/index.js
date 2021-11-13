@@ -4,10 +4,12 @@ import config from "./Chatbot/config.js";
 import MessageParser from "./Chatbot/messageParser.js";
 import ActionProvider from "./Chatbot/actionProvider";
 import Chatbot from "react-chatbot-kit";
-import "./index1.css";
+// import "./index1.css";
+// import "../../App.css";
+import 'react-chatbot-kit/build/main.css'
+import './main.css'
 import styled from "styled-components";
 import { useColorMode } from "@chakra-ui/color-mode";
-
 
 function Chat(props) {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -53,7 +55,7 @@ function Chat(props) {
           >
             <Box w="500px" mb={{ base: 12, md: 0 }}>
               {/* TODO: Make this change every X secs */}
-              <Image src="../telecommunication/tel.png" size="100%" />
+              <Image src="../Telecommunication/tel.png" size="100%" />
             </Box>
 
             <Heading
@@ -65,11 +67,11 @@ function Chat(props) {
               lineHeight={1.5}
               textAlign={["center", "center", "left", "left"]}
             >
-              This chatbot will let your works easy. You can recharge fast. You
-              can select packages whatever you want. Fast Responses.
+              This chatbot will make your works easy. This Telecom Chatbot has 8 main functions with 4 additional features. These buttons show those functions. Click those buttons to access each function.
             </Heading>
+            
           </Stack>
-          <Box>
+          <Box w="100%">
             <Chatbot
               config={config}
               messageParser={MessageParser}

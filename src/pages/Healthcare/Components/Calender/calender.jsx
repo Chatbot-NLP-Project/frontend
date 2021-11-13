@@ -4,12 +4,14 @@ import "react-calendar/dist/Calendar.css";
 import "./calender.css";
 import { Box } from "@chakra-ui/react";
 import "react-widgets/styles.css";
+
+//  calender widget
 const CalenderObject = (props) => {
   const [value, onChange] = useState(new Date());
   const [isDisable, setDisable] = useState(false);
-  // console.log("sandaruwan");
   function selectDate(params) {
     onChange();
+    //  call select time funtion in actionprovider and pass user selected data
     props.actionProvider.selectTime(params);
     setDisable(true);
   }
@@ -20,7 +22,6 @@ const CalenderObject = (props) => {
       ml="3%"
       boxShadow="0 0 2px 2px #ceddeb"
       bg="#f2fcfc"
-      // width="40%"
       borderWidth="1px"
       borderRadius="lg"
       padding="10px"

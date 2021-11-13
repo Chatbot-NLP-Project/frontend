@@ -56,7 +56,7 @@ export default function Landing() {
               Available
             </Heading>
             <Flex>
-              <Link to="">
+              <Link to="/signin">
                 <Button
                   colorScheme="blue"
                   variant="solid"
@@ -66,7 +66,7 @@ export default function Landing() {
                   size="md"
                   marginRight={10}
                 >
-                  Sing Up
+                  Sign Up
                 </Button>
               </Link>
               <Link to="">

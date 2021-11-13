@@ -12,10 +12,8 @@ const AboutUs = () => {
     return ( 
         <>
             <WeAre />
-            {/* <WhatWeDo /> */}
             <ContactUs />
             <Footer />
-            {/* <BottomFooter /> */}
         </>
      );
 }

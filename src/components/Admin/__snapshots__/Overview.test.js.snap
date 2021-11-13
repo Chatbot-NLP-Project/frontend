@@ -94,7 +94,7 @@ exports[`matches snapshot 1`] = `
           className="chakra-stack__divider css-17dgary"
         />
         <a
-          href="http://localhost:3000/rating"
+          href="https://xyronchatbot.herokuapp.com/rating"
         >
           <button
             className="chakra-button css-lb3dvl"
@@ -129,10 +129,10 @@ exports[`matches snapshot 1`] = `
       src="overview.png"
     />
     <div
-      className="css-1250pax"
+      className="css-19n91rr"
     >
       <div
-        className="css-1f5tsw6"
+        className="css-4hb7is"
       >
         <div
           className="css-1rkqaw3"
@@ -147,14 +147,12 @@ exports[`matches snapshot 1`] = `
           className="css-1yfye7s"
         >
           <p
-            className="chakra-text css-1qnpcq4"
-          >
-            18
-          </p>
+            className="chakra-text css-6kfj2u"
+          />
         </div>
       </div>
       <div
-        className="css-81u7ca"
+        className="css-1jbvt99"
       >
         <div
           className="css-1rkqaw3"
@@ -167,7 +165,11 @@ exports[`matches snapshot 1`] = `
         </div>
         <div
           className="css-1yfye7s"
-        />
+        >
+          <p
+            className="chakra-text css-6kfj2u"
+          />
+        </div>
       </div>
     </div>
     <img
@@ -178,7 +180,7 @@ exports[`matches snapshot 1`] = `
     <img
       alt="Overview"
       className="rectangle"
-      src="rectangle.png"
+      src="Rectangle.png"
     />
   </div>
 </div>

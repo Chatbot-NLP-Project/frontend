@@ -22,21 +22,51 @@ class MessageParser {
     // if (lowercase.includes("ssss") || lowercase.includes("js")) {
       
     // } else 
-    if(lowercase.includes("complaint")) {
+    if (message.toLowerCase() == "quit") { // Quit user
+      const msg = this.actionProvider.createChatBotMessage(
+        "Thank for chatting with Xyron Telecommunication Chatbot."
+      );
+      this.actionProvider.setChatbotState("normal");
+      this.actionProvider.setChatbotMessage(msg);
+      
+    } else if(lowercase.includes("complaint") || lowercase.includes("complaints")) {
       this.actionProvider.handleComplaint(JSON.parse(localStorage.getItem("user"))["sim_type"])
 
-    } else if (lowercase.includes("options")){
+    } else if (lowercase.includes("options") || lowercase.includes("option") || lowercase.includes("menu")){
       this.actionProvider.viewGeneralOptions();
 
-    // } 
-    // else if (lowercase.includes("packages") || lowercase.includes("package")){
-    //   this.actionProvider.handleDataPackage();
+    } else if ((lowercase.includes("my") && (lowercase.includes("package") || lowercase.includes("packages"))) || (lowercase.includes("activated") && (lowercase.includes("package") || lowercase.includes("packages")))){
+      this.actionProvider.viewActivatedPackages();
+
+    } else if ((lowercase.includes("current") && (lowercase.includes("balance") || lowercase.includes("bal"))) || (lowercase.includes("my") && (lowercase.includes("balance") || lowercase.includes("bal")))){
+      this.actionProvider.getCurrentBalance();
+
+    } else if ((lowercase.includes("dialog") && lowercase.includes("mobitel")) || (lowercase.includes("dialog") && lowercase.includes("hutch")) || (lowercase.includes("dialog") && lowercase.includes("airtel")) || (lowercase.includes("hutch") && lowercase.includes("mobitel")) || (lowercase.includes("airtel") && lowercase.includes("mobitel")) || (lowercase.includes("airtel") && lowercase.includes("hutch"))){
+      this.actionProvider.helloHandler("2 or more providers called");
+
+    } else if (lowercase.includes("dialog") && (lowercase.includes("packages") || lowercase.includes("package"))){
+      this.actionProvider.handleProvider("Dialog");
+
+    } else if (lowercase.includes("mobitel") && (lowercase.includes("packages") || lowercase.includes("package"))){
+      this.actionProvider.handleProvider("Mobitel");
+
+    } else if (lowercase.includes("hutch") && (lowercase.includes("packages") || lowercase.includes("package"))){
+      this.actionProvider.handleProvider("Hutch");
+
+    } else if (lowercase.includes("airtel") && (lowercase.includes("packages") || lowercase.includes("package"))){
+      this.actionProvider.handleProvider("Airtel");
 
     } else if (this.state.currentState == "complaint"){
       this.actionProvider.handleSubject(message);
 
-    }else if (this.state.currentState == "subject"){
+     }else if (this.state.currentState == "feedback"){
+      this.actionProvider.sendFeedback(message, this.state.rating);
+
+    } else if (this.state.currentState == "subject"){
       this.actionProvider.makeComplaint(message, this.state.subject);
+
+    } else if (lowercase.includes("thanks")){
+      this.actionProvider.helloHandler("feedback");
     }
     else {
       this.actionProvider.helloHandler(message);

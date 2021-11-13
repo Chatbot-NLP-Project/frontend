@@ -11,17 +11,19 @@ class ActionProvider {
     this.createClientMessage = createClientMessage;
   }
 
+  // Set chatbot Message
   setChatbotMessage = (message) => {
     this.setState((state) => ({
-      ...state,
+      ...state, // Remain other states as it is
       messages: [...state.messages, message],
     }));
   };
 
+  // Change chatbot State
   setChatbotState = (s) => {
     this.setState((state) => ({
       ...state,
-      currentState: [...state.currentState, s],
+      currentState: s,
     }));
   };
 
@@ -30,20 +32,20 @@ class ActionProvider {
     const message = this.createChatBotMessage(
       "I have data package details about Mobitel, Dialog, Hutch and Airtel",
       {
-        widget: "InternetProvider",
+        widget: "InternetProvider", // Show this widget
       }
     );
     this.setChatbotMessage(message);
   };
   //Display Package Types
   handleProvider = (type) => {
-    Axios.post("http://127.0.0.1:5000/getPackageTypes", {
+    Axios.post("https://xyrontelecom.azurewebsites.net/getPackageTypes", {
       provider: type,
     }).then((response) => {
       this.setState((state) => ({
         ...state,
         provider: type,
-        packageTypes: response.data.packageTypes,
+        packageTypes: response.data.packageTypes, // Add package types got from backend to the state
       }));
       const message = this.createChatBotMessage(`${type} Plans and Rates`, {
         widget: "packageTypess",
@@ -53,14 +55,14 @@ class ActionProvider {
   };
   //Display packages of package type
   selectPackageType = (package_type, provider) => {
-    Axios.post("http://127.0.0.1:5000/getPackages", {
+    Axios.post("https://xyrontelecom.azurewebsites.net/getPackages", {
       provider: provider,
       packageType: package_type,
     }).then((response) => {
       this.setState((state) => ({
         ...state,
-        packageType: package_type,
-        packages: response.data.packages,
+        packageType: package_type, // Selected package
+        packages: response.data.packages, // Add packages got from backend to the state
       }));
       const message = this.createChatBotMessage(`${package_type}`, {
         widget: "packages",
@@ -71,7 +73,7 @@ class ActionProvider {
 
   //Display package info
   getPackageInfo = (packageName, packageType, provider) => {
-    Axios.post("http://127.0.0.1:5000/getPackage", {
+    Axios.post("https://xyrontelecom.azurewebsites.net/getPackage", {
       packageName: packageName,
       packageType: packageType,
       provider: provider,
@@ -79,7 +81,7 @@ class ActionProvider {
       // console.log(response.data.packageDetails)
       this.setState((state) => ({
         ...state,
-        packageDetails: response.data.packageDetails,
+        packageDetails: response.data.packageDetails, // Add package details got from backend to the state
       }));
       const message = this.createChatBotMessage(
         `${provider} -> ${packageType} -> ${packageName}`,
@@ -95,7 +97,7 @@ class ActionProvider {
   activateDataPackage = (packageName, provider) => {
     // console.log("activateDataPackage")
     // console.log(provider)
-    Axios.post("http://127.0.0.1:5000/activateDataPackage", {
+    Axios.post("https://xyrontelecom.azurewebsites.net/activateDataPackage", {
       packageName: packageName,
       provider: provider,
       userID: JSON.parse(localStorage.getItem("user"))["user_id"],
@@ -108,7 +110,7 @@ class ActionProvider {
   //Display current balance
   getCurrentBalance = () => {
     // console.log("getCurrentBalance")
-    Axios.post("http://127.0.0.1:5000/getCurrentBalance", {
+    Axios.post("https://xyrontelecom.azurewebsites.net/getCurrentBalance", {
       userID: JSON.parse(localStorage.getItem("user"))["user_id"],
     }).then((response) => {
       this.setState((state) => ({
@@ -124,9 +126,10 @@ class ActionProvider {
 
   //Handle complaints
   handleComplaint = (provider) => {
+    console.log("complaint")
     this.setState((state) => ({
       ...state,
-      currentState: "complaint",
+      currentState: "complaint", 
     }));
     const message = this.createChatBotMessage(
       `Your internet service provider is ${provider}. We will send your complaint as an email to the relevant authorities`
@@ -151,12 +154,12 @@ class ActionProvider {
 
   //Display current balance
   makeComplaint = (msg, subject) => {
-    Axios.post("http://127.0.0.1:5000/makeComplaint", {
+    Axios.post("https://xyrontelecom.azurewebsites.net/makeComplaint", {
       subject: subject,
       body: msg,
       userID: JSON.parse(localStorage.getItem("user"))["user_id"],
     }).then((response) => {
-      this.setState((state) => ({
+      this.setState((state) => ({ // Set state
         ...state,
         currentState: "normal",
         subject: "",
@@ -166,9 +169,37 @@ class ActionProvider {
     });
   };
 
+  //View Complaints
+  viewComplaints = () => {
+    Axios.post("https://xyrontelecom.azurewebsites.net/viewComplaint", {
+      userID: JSON.parse(localStorage.getItem("user"))["user_id"]
+    }).then((response) => {
+      if (response.data.Null == 0) {
+        this.setState((state) => ({
+          ...state,
+          complaints: response.data.complaints,
+        }));
+        const message = this.createChatBotMessage(
+          ``,
+          {
+            widget: "complaint",
+          }
+        );
+        this.setChatbotMessage(message);
+      } else {
+        const message = this.createChatBotMessage(
+          `There are no complaints`
+        );
+        this.setChatbotMessage(message);
+      }
+      
+    });
+  };
+
   //View all activated packages
   viewActivatedPackages = () => {
-    Axios.post("http://127.0.0.1:5000/viewActivatedPackages", {
+    console.log("view activated packages")
+    Axios.post("https://xyrontelecom.azurewebsites.net/viewActivatedPackages", {
       userID: JSON.parse(localStorage.getItem("user"))["user_id"],
     }).then((response) => {
       if (response.data.Null == 0) {
@@ -198,6 +229,7 @@ class ActionProvider {
       ...state,
       currentState: "dateSelection",
     }));
+    console.log("clicked calender")
     const message = this.createChatBotMessage(`Select a date`, {
       widget: "calendar",
     });
@@ -215,7 +247,7 @@ class ActionProvider {
         ? "-" + value.getDate()
         : "-0" + value.getDate();
     var date = value.getFullYear() + month + day;
-    Axios.post("http://127.0.0.1:5000/viewActivatedPackagesByDate", {
+    Axios.post("https://xyrontelecom.azurewebsites.net/viewActivatedPackagesByDate", {
       userID: JSON.parse(localStorage.getItem("user"))["user_id"],
       date: date,
     }).then((response) => {
@@ -243,7 +275,7 @@ class ActionProvider {
 
   //View LKR Price per USD
   viewLKRValue = () => {
-    Axios.post("http://127.0.0.1:5000/getMoneyValue")
+    Axios.post("https://xyrontelecom.azurewebsites.net/getMoneyValue")
     .then((response) => {
       console.log("viewLKRValue")
       console.log(response.data)
@@ -263,7 +295,7 @@ class ActionProvider {
 
     //View Currency values per USD
     viewCurrencyValues = () => {
-      Axios.post("http://127.0.0.1:5000/getMoneyValue")
+      Axios.post("https://xyrontelecom.azurewebsites.net/getMoneyValue")
       .then((response) => {
         this.setState((state) => ({
           ...state,
@@ -281,7 +313,7 @@ class ActionProvider {
 
       //View CryptoCurrency Values
       viewCryptoCurrencyPrice = () => {
-        Axios.post("http://127.0.0.1:5000/getCryptoPrice")
+        Axios.post("https://xyrontelecom.azurewebsites.net/getCryptoPrice")
         .then((response) => {
           this.setState((state) => ({
             ...state,
@@ -301,7 +333,7 @@ class ActionProvider {
       
   //View CryptoCurrency Values
   viewCryptoCurrencyPriceInLKR = () => {
-    Axios.post("http://127.0.0.1:5000/getCryptoPriceLKR")
+    Axios.post("https://xyrontelecom.azurewebsites.net/getCryptoPriceLKR")
     .then((response) => {
       this.setState((state) => ({
         ...state,
@@ -328,31 +360,98 @@ viewGeneralOptions = () => {
 
 };
 
+sendFeedback = (message, rating) => {
+  var msg;
+  Axios.post("https://xyrontelecom.azurewebsites.net/sendFeedback", {
+    userID: JSON.parse(localStorage.getItem("user"))["user_id"],
+    feedback: message,
+    rating: rating
+  }).then((response) => {
+    this.setState((state) => ({
+      ...state,
+      currentState: "normal"
+    }));
+    msg = this.createChatBotMessage("Thank you for your feedback");
+    this.setChatbotMessage(msg);
+  });
+};
+rateHandle = (message) => {
+  var msg;
+  if (message <= 3) {
+    msg = this.createChatBotMessage(
+      "Hmm... I want to improve. Please can you give me a feedback?"
+    );
+    this.setState((state) => ({
+      ...state,
+      currentState: "feedback",
+      rating: message
+    }));
+  } else {
+    msg = this.createChatBotMessage("Excellent");
+    this.setState((state) => ({
+      ...state,
+      currentState: "normal",
+    }));
+  }
+  this.setChatbotMessage(msg);
+};
+
+// Rate chatbot when the option is clicked
+rateChatbot = () => {
+  var msg;
+  msg = this.createChatBotMessage(
+    "I value your feedbacks and ratings. Select a rating for me",
+    {
+      widget: "rating",
+    }
+  );
+  this.setChatbotMessage(msg);
+}
+
   //Normal chatbot message handler
-  helloHandler = (message) => {
-    var msg;
-    Axios.post("http://127.0.0.1:5000/reply", { msg: message }).then(
-      (response) => {
-        console.log("Hello Handler called, Response :");
-        console.log(response.data.reply);
-        if (response.data.reply == "balance") {
-          console.log("balance if");
-          msg = "";
-          this.getCurrentBalance();
-        } else if (response.data.reply == "package") {
-          msg = this.createChatBotMessage("Select package");
-          this.handleDataPackage();
-        } else if (response.data.reply == "complaint") {
-          this.handleComplaint(
-            JSON.parse(localStorage.getItem("user"))["sim_type"]
-          );
-        } else {
-          msg = this.createChatBotMessage(response.data.reply);
-        }
-        this.setChatbotMessage(msg);
+helloHandler = (message) => {
+  var msg;
+  if (message == "feedback") {
+    msg = this.createChatBotMessage(
+      "You are welcome ! If you are satisfied with our service please rate us",
+      {
+        widget: "rating",
       }
     );
-  };
+    this.setChatbotMessage(msg);
+    
+  } else { 
+    Axios.post("https://xyrontelecom.azurewebsites.net/reply", { msg: message }).then(
+    (response) => {
+      console.log("Hello Handler called, Response :");
+      console.log(response.data.reply);
+
+      if (message == "2 or more providers called") {
+        msg = this.createChatBotMessage("I couldn't understand it, it is beyond my understandings");
+
+      } else if (response.data.reply == "balance") {
+        console.log("balance if");
+        msg = "";
+        this.getCurrentBalance();
+
+      } else if (response.data.reply == "package") {
+        msg = this.createChatBotMessage("Select provider");
+        this.handleDataPackage();
+
+      } else if (response.data.reply == "complaint") {
+        this.handleComplaint(
+          JSON.parse(localStorage.getItem("user"))["sim_type"]
+        );
+
+      } else {
+        msg = this.createChatBotMessage(response.data.reply);
+      }
+
+      this.setChatbotMessage(msg);
+      }
+    );
+    }
+  }
 }
 
 export default ActionProvider;

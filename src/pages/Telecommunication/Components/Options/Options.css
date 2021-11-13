@@ -5,7 +5,15 @@
 .options-header {
   font-size: 1rem;
   font-weight: normal;
+  color: black;
 }
+
+.options-headers {
+  font-size: 0.85rem;
+  font-weight: normal;
+  color: black;
+}
+
 
 .options-container {
   display: flex;
@@ -16,7 +24,37 @@
   padding: 8px 15px;
   border: 1px solid #2898ec;
   border-radius: 25px;
+  background-color: white;
   color: #2898ec;
   font-size: 0.9rem;
   margin: 3px;
+  transition: 0.8s ;
+
 }
+
+.option-item:hover {
+  cursor: pointer;
+  background-color: #00004D;
+
+}
+
+/* .option-item:active {
+  cursor: pointer;
+} */
+
+.option-name {
+  color:#2898ec;
+
+}
+
+/* .option-name:hover {
+  color:white;
+  font-size: 140%
+
+}
+
+.option-name:active {
+  color:red;
+  font-size: 250%
+
+} */

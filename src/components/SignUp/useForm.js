@@ -38,7 +38,7 @@ const useForm = (callback, validate) => {
       console.log(errors)
       console.log("registered called")
 
-      Axios.post("https://xyronhealthcarebot.azurewebsites.net/register", {
+      Axios.post("https://xyrontelecom.azurewebsites.net/register", {
         firstName: firstName,
         lastName: lastName,
         email: email,

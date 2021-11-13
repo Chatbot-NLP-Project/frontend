@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Box, Flex, Button, Stack, Heading, Text } from "@chakra-ui/react";
+import { Box, Flex, Button, Stack, Heading, Text, useColorMode } from "@chakra-ui/react";
 import {
   FaFacebook,
   FaInstagram,
@@ -26,6 +26,8 @@ const MenuItem = ({ children, isLast, to = "/", ...rest }) => {
 const Footer = (props) => {
   const [show, setShow] = React.useState(false);
   const toggleMenu = () => setShow(!show);
+  const { colorMode, toggleColorMode } = useColorMode();
+
 
   return (
     <>
@@ -49,7 +51,7 @@ const Footer = (props) => {
           as="h1"
           size="xl"
           fontWeight="bold"
-          color="blue.900"
+          color={colorMode === "light" ? "blue.900" : "#101522"}
           textAlign={["center", "center", "left", "left"]}
         >
           Ease of use for everyone
@@ -58,7 +60,7 @@ const Footer = (props) => {
           <Heading
             as="h3"
             size="sm"
-            color="blue.900"
+            color={colorMode === "light" ? "blue.900" : "white"}
             opacity="0.8"
             fontWeight="normal"
             lineHeight={1.5}
@@ -73,7 +75,7 @@ const Footer = (props) => {
           as="h1"
           size="xl"
           fontWeight="bold"
-          color="blue.900"
+          color={colorMode === "light" ? "blue.900" : "#101522"}
           alignItems="center"
           justifyContent="center"
           top={100}
@@ -83,7 +85,7 @@ const Footer = (props) => {
         <Heading
           as="h3"
           size="sm"
-          color="blue.900"
+          color={colorMode === "light" ? "blue.900" : "white"}
           opacity="0.8"
           fontWeight="normal"
           lineHeight={1.5}
@@ -94,7 +96,7 @@ const Footer = (props) => {
         <Heading
           as="h3"
           size="xs"
-          color="blue.900"
+          color={colorMode === "light" ? "blue.900" : "white"}
           opacity="0.8"
           fontWeight="normal"
           lineHeight={1.5}
@@ -102,9 +104,9 @@ const Footer = (props) => {
         >
           Do you have any problem? Email US.
         </Heading>
-        <Link to="">
+        <Link to="/aboutus">
           <Button
-            color="blue.900"
+            color={colorMode === "light" ? "blue.900" : "white"}
             colorScheme="blue"
             variant="outline"
             py="4"
